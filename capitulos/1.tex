@@ -1,0 +1,110 @@
+\chapter{Conjuntos difusos}
+El contenido de este capítulo se basa en las definiciones que podemos encontrar en la referencia \cite{fuzzyintro}
+
+\section{Subconjuntos difusos}
+La teoría clásica de conjuntos sólo abarca la posibilidad de que un elemento pertenezca o no, a un conjunto. Pero la realidad no es así, y pueden existir ciertos casos en lo que la \textbf{pertenencia} o no, a un conjunto haya que definirlo mediante un \textbf{grado de pertenencia.}
+
+\subsection{Subconjuntos difusos}
+En primer lugar, introduciremos el concepto de conjunto difusos que nos servirá para formalizar el concepto de conjuntos con grados de pertenencia.
+
+\begin{definicion}[Subconjunto difuso]
+	Un \textbf{subconjunto difuso} $A$ es un par ordenado $(\mu_A, \mathbb{U})$ con:
+	\[
+		\mu_A : \mathbb{U} \longrightarrow [0,1]
+	\]
+	Denominamos $\mu_A$ \textbf{función de pertenencia.}
+\end{definicion}
+
+Por tanto, es natural definir la igualdad de conjuntos de la siguiente forma:
+
+\begin{definicion}[Igualdad de conjuntos difusos]
+	Decimos que dos conjuntos difusos $A$ y $B$ en $\mathbb{U}$ son iguales si para todo $x \in \mathbb{U}$, se cumple $\mu_A(x) = \mu_B(x)$
+\end{definicion}
+
+Si se que cumpliese que $\mu_A(\mathbb{U})=\{0, 1\}$ \textbf{tendríamos que $A$ es un conjunto clásico}, y llamamos a $\mu_A$ función característica de $A$. En este caso, tenemos que si $x \in A$, entonces $\mu_A(x)=1$, y por el contrario si $x \notin A$ entonces, $\mu_A(x)=0$
+
+Por tanto, \textbf{la función $\mu_A$ representa una generalización del concepto de función característica clásica} dónde $\mu_A$ representa el grado de pertenencia a un conjunto.
+
+\subsection{$\alpha$-corte}
+Ahora introducimos un concepto fundamental en la teoría de conjuntos difusos, y es el concepto de $\alpha$-corte, que nos permitirá crear particiones de los conjuntos separados por los valores de la función de pertenencia.
+\begin{definicion}[$\alpha$-corte]
+	Dado un conjunto difuso $A$, los $\alpha$-corte son los subconjuntos clásicos dados por:
+	\[
+		[A]_\alpha = \left\{
+			\begin{array}{ccc}
+			\{x \in \mathbb{U} : \mu_A(x) \geq \alpha \} & si & \alpha \in (0, 1] \\
+			cl\{x \in \mathbb{U} : \mu_A(x) > 0\} & si & \alpha=0
+			\end{array}
+		\right.
+	\]
+	Además, se define:
+	\[
+		soporte ~ A = \{x \in \mathbb{U} : \mu_A(x) > 0 \}
+	\]
+	\[
+		nucleo ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
+	\]
+\end{definicion}
+De esta definición, se puede extraer que un conjunto difuso también puede estar definido por sus $\alpha$-corte, de manera que \textbf{dos conjuntos difusos $A$ y $B$ son iguales, si todos sus $\alpha$-corte son iguales.} 
+
+Dado unos $\alpha$-corte podemos construir una función de pertenencia de la siguiente forma: \cite{apuntesfuzzy}
+
+\[
+	\mu_A = \max{\{\alpha A_\alpha(x) : \alpha \in [0, 1]}\}
+\]
+\[
+	A_\alpha(x) = \left\{
+		\begin{array}{ccc}
+			1 & si & x \in [A]_\alpha \\
+			0 & si & x \notin [A]_\alpha
+		\end{array}
+	\right.
+\]
+
+Desde aquí, centraremos nuestro estudio en los $\alpha$-corte de los conjuntos difusos.
+
+\section{Números difusos}
+Para poder trabajar con sistemas de ecuaciones diferenciales difusos, es interesante introducir el concepto de números difusos, que podrían ser valores iniciales de nuestro sistema, o números que aparecen directamente en nuestro sistema de ecuaciones diferenciales. \\
+Necesitamos en primer lugar dos definiciones antes de definir el concepto de número difuso.
+
+\begin{definicion}[Conjunto difuso normal]
+	Un conjunto difuso $A$ decimos que es normal si $nucleo ~ A \neq \emptyset$
+\end{definicion}
+
+\begin{definicion}[Conjunto difuso convexo]
+	Dado un conjunto difuso $A$ decimos que es convexo si su función de pertenencia es cuasicóncava, esto es:
+	\[
+		\mu_A(\lambda x + (1-\lambda)y) \geq \min{\{\mu_A(x), \mu_A(y)\}}, \lambda \in [0, 1], x, y \in \mathbb{U}
+	\]
+\end{definicion}
+
+En este caso, si $\mathbb{U}=\mathbb{R}$ tendríamos que si $A$ es un conjunto difuso convexo, entonces los $\alpha$-corte son intervalos.
+
+Finalmente, introducimos el concepto de número difuso:
+
+\begin{definicion}[Número difuso]
+	Decimos que $A$ es un número difuso si $\mathbb{U}=\mathbb{R}$, $A$ es normal y convexo, y además su función de pertencia es continua por la derecha.
+\end{definicion}
+
+Observamos que si $x \in \mathbb{R}$ el conjunto $\{x\}$ es un número difuso, con la función de pertenencia.
+
+\subsection{Caracterización números difusos}
+A continuación, introducimos dos teoremas que nos permitirán caracterizar los números difusos. Las demostraciones de estos dos resultados se pueden encontrar \cite{apuntesfuzzy}.
+
+\begin{teorema}[Teorema de Stacking]
+	Sea $A$ un número difuso, entonces:
+	\begin{enumerate}
+		\item Sus $\alpha$-cortes son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
+		\item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $[A]_{\alpha_1} \subset [A]_{\alpha_2}$
+		\item Para toda sucesión no decreciente de $\alpha_n \in [0, 1]$ tal que $a_n \longrightarrow \alpha$ se tiene que:
+		\[
+			\bigcap^\infty_{n=1} [A]_{\alpha_n} = [A]_\alpha
+		\]
+		\item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se tiene:
+		\[
+			cl\left(
+				\bigcup^\infty_{n=1} [A]_{\alpha_n} = [A]_0
+			\right)
+		\]
+	\end{enumerate}
+\end{teorema}

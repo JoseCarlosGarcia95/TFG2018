@@ -1,0 +1,28 @@
+\documentclass[twoside,11pt]{PlantillaTFG}
+
+\input{config.tex}
+
+\begin{document}
+	\maketitle
+
+	\frontmatter
+	
+	\selectlanguage{british}
+		\input{parts/abstract.tex}
+	\selectlanguage{spanish}
+	
+	\input{parts/resumen.tex}
+	\input{parts/dedicatoria.tex}
+	
+	\tableofcontents
+	
+	\mainmatter
+
+	\pagestyle{fancy}
+	
+	\input{capitulos/1.tex}
+	
+	\bibliographystyle{ieeetr}
+	\bibliography{biblio}
+	
+\end{document}
