@@ -202,6 +202,6 @@
 \ChTitleVar{\bfseries\Large\sf}
 
 % Teoremas, Definiciones, Lemas, Corolarios...
+\usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{amsthm}
