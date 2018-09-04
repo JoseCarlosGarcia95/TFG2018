@@ -294,6 +294,48 @@ Debido al problema especificado en la sección anterior, \textbf{necesitamos def
 \end{observacion}
 Con esta observación es fácil ver que la H-Diferencia cumple que $A-A=\{0\}$
 
+
+\section{Interactividad}
+El principio de extensión de Zadeh se puede aplicar a funciones de distinto número de argumentos. Los ejemplos más simples podrían ser la suma, la resta, la multiplicación y la división de números difusos. Esta situación es más compleja, debido a que tenemos que tener en cuenta las estructuras entre los distintos argumentos. Esta dependencia mutua entre los distintos conjuntos difusos, viene dada por una función de pertenencia común que llamaremos \textbf{función de pertenencia conjunta}. En términos de conjuntos difusos, esta dependencia se llama interactividad.
+
+\begin{definicion}[Interactividad, función de pertenencia conjunta]
+	Sea $\hat{a} \in \mathcal{F}(V)$ y sea $\hat{b} \in \mathcal{F}(W)$. Entonces la interactividad de $\hat{a}$ y $\hat{b}$ se define por la función de pertenencia conjunta: $\mu_{\hat{a}, \hat{b}} : V \times W \rightarrow [0, 1]$
+\end{definicion}
+Para calcular las funciones de pertenencia marginales, simplemente tenemos que aplicar el principio de extensión de Zadeh:
+
+\begin{definicion}[Función marginal de una función de pertencia conjunta]
+	Definimos la función de pertenencia marginal respecto $a$ como:
+	\[
+	\mu_a(a) = \sup\lim\limits_{b \in W} \mu_{\hat{a}, \hat{b}} (a, b)
+	\]
+\end{definicion}
+
+Se suele suponer no interactividad al trabajar con varios conjuntos difusos, esto es;
+
+\begin{definicion}[No interactivos o independientes]
+	Dos conjuntos difusos $\hat{a} \in \mathcal{F}(V)$ y $\hat{b} \in \mathcal{F}(W)$ se dicen que son no interactivos, o independientes si $\mu_{\hat{a}, \hat{b}} = \min(\mu_{\hat{a}}(a), \mu_{\hat{b}}(b))$
+\end{definicion}
+
+\begin{ejemplo}
+En el caso de conjuntos no interactivos, podemos escribir las operaciones aritméticas de los conjuntos difusos de la siguiente manera:
+
+\[
+[\hat{a} + \hat{b}]_\alpha = [[\hat{a}^-_\alpha + [\hat{b}]_\alpha^-, [\hat{a}]^+_\alpha + [\hat{b}]_\alpha^+]
+\]
+
+\[
+[\hat{a} - \hat{b}]_\alpha = [[\hat{a}^-_\alpha - [\hat{b}]_\alpha^-, [\hat{a}]^+_\alpha - [\hat{b}]_\alpha^+]
+\]
+
+\[
+[\hat{a} * \hat{b}]_\alpha = \max\{ [\hat{a}]_\alpha^i [\hat{b}]^j_\alpha \}, i, j \in \{+, -\}
+\]
+
+\[
+[\hat{a} / \hat{b}]_\alpha = \max\{ [\hat{a}]_\alpha^i / [\hat{b}]^j_\alpha \}, i, j \in \{+, -\}
+\]
+\end{ejemplo}
+
 \section{Métrica en conjuntos difusos}
 En esta sección vamos a generalizar la definición de espacio métrico a conjuntos difusos, y vamos a dar algunos resultados importantes. Todas las demostraciones de esta sección pueden encontrarse en \cite{apuntesfuzzy}. \\
 En primer lugar, nos acercaremos al concepto de métrica:

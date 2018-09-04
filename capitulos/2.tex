@@ -1,4 +1,4 @@
-\chapter{Ecuaciones diferenciales difusas}
+\chapter{\chapter{Ecuaciones diferenciales difusas}
 En el capítulo anterior \textbf{hemos introducido todas las herramientas necesarias} para introducir el concepto de ecuación diferencial difusa.
 
 En este capitulo introduciremos los conceptos necesarios para plantear y resolver ecuaciones diferenciales difusas de forma analítica y numérica.
@@ -9,11 +9,38 @@ También motivaremos al lector con ejemplos y modelos que utilizan ecuaciones di
 No existe consenso aún sobre la definición correcta de lo que es una ecuación diferencial difusa, y es por ello que existen muchas definiciones para ese mismo concepto. Podemos encontrar estas discusiones en las distintas bibliografías que hace referencia \cite{fuzzyeqn}.
 
 \subsection{Definiciones equivalentes}
-Consideramos en primer lugar la ecuación diferencial ordinaria que damos por:
+Consideramos el siguiente sistema de ecuaciones diferenciales difusas:
+\[
+	\frac{d \hat{u}}{dt} (t) = \hat{f} (t, \hat{u}(t)), ~ ~ \hat{u}(0) = \hat{u}_0
+\]
+Donde $t \in [0, \infty]$ representa una variable temporal, la función $\hat{u} : [0, \infty) \rightarrow \mathcal{F}(\mathbb{R})$ es una función dependiente del tiempo, y $\hat{f} : [0, \infty) \times \mathcal{F}(\mathbb{R}) \rightarrow \mathcal{F}(\mathbb{R})$. Pero, de esta definición nos surge otra duda. ¿Qué significa derivar una función difusa respecto una variable? Para ello acudamos a la definición clásica:
+\[
+	\frac{d \hat{u}}{dt} (t) = \lim\limits_{t\rightarrow 0} \frac{\hat{u}(t_0 + t) - \hat{u}(t_0)}{t}
+\]
+Y es claro que es necesario aplicar el principio de extensión de Zadeh para conocer $\hat{u}(t_0 + t) - \hat{u}(t_0)$, lo que nos advierte que el conocimiento de la función de pertenencia $\mu_{\hat{u}(t_0 + t) - \hat{u}(t_0)}$ va a ser necesario a escala infinitesimal.
+
+Introducimos ahora distintas formas de entender el concepto de derivada difusa:
+
+\subsubsection{Inclusión diferencial difusa}
+También conocidas como \textit{FDI}, por su nombre en inglés \textit{Fuzzy Differential Inclusions}, se definen como:
 
 \[
-	\frac{d\hat{u}}{dt} (t) = \lim\limits_{\Delta t \rightarrow 0} \frac{\hat{u}(t + \Delta t) - \hat{u}(t)}{\Delta t}
+	\frac{d u}{dt} (t) \in [\hat{f} (t, u(t))]_\alpha, ~ u(0) \in [\hat{u}_0]_\alpha, ~ \alpha \in [0, 1]
 \]
-Donde $t \in [0, +\infty)$ representa la variable temporal, donde $\hat{u} : [0, \infty) \longrightarrow \mathcal{F}(\mathbb{R})$ es la función difusa dependiente del tiempo. Y la función $\hat{f} : [0, \infty) \times \mathcal{F}(\mathbb{R}) \rightarrow \mathcal{F}(\mathbb{R})$.
 
-Y aplicamos el principio de extensión de Zadeh para poder calcular $\hat{u}(t + \Delta t) - \hat{u}(t)$, se hace claro que es necesario conocer la función de pertenencia $\mu_{\hat{u}(t+\Delta t), \hat{u}(t)}$
+De esta manera, una vez que tenemos las soluciones para todos los $\alpha-$corte podemos construir la solución difusa gracias a  \cite{apuntesfuzzy}. 
+
+Esta forma también se conoce solución de una ecuación diferencial difusa interpretado como una familia de inclusiones. Este proceso es bastante potente a la hora trabajar con él numéricamente, pues podemos aplicar los procedimientos clásicos.
+
+\subsubsection{Derivada de Hukuhara}
+Como introducimos en el primer capítulo, podemos usar esa misma idea para definir la derivada de Hukuhara
+\begin{definicion}[Derivada de Hukuhara]
+	Una función $\hat{u} : \mathbb{R} \rightarrow \mathcal{F}(\mathbb{R})$ es diferenciable según Hukuhara en $t_0 \in \mathbb{R}$ si los límites:
+	
+	\[
+		\lim\limits_{t \rightarrow 0^+} \frac{\hat{u} (t + t_0) \circleddash \hat{u}(t_0)}{t} ~ , ~ \lim\limits_{t \rightarrow 0^+} \frac{ \hat{u}(t_0) \circleddash \hat{u} (t + t_0)}{t}
+	\]
+	
+	Existen, y son iguales. Al límite se le llama derivada de Hukuhara.
+\end{definicion}
+}
