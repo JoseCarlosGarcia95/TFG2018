@@ -1,46 +1,82 @@
-\chapter{\chapter{Ecuaciones diferenciales difusas}
-En el capítulo anterior \textbf{hemos introducido todas las herramientas necesarias} para introducir el concepto de ecuación diferencial difusa.
+\chapter{Cálculo difuso}
+En este capítulo exploramos los diferentes acercamientos a \textbf{conceptos clásicos del cálculo mediante una perspectiva difusa}. Exploramos la definición de integral de Riemann, Aumann \& Henstock, y haremos una revisión de la definición de derivada de Hukuhara (\hyperref[def:hukukara]{Diferencia de Hukuhara}). Además, hablaremos de la \textbf{versión difusa del teorema fundamental del cálculo} que nos ayudará a tener una mejor visión de lo que está pasando.
 
-En este capitulo introduciremos los conceptos necesarios para plantear y resolver ecuaciones diferenciales difusas de forma analítica y numérica.
+\section{Cálculo difuso para funciones definidas en conjuntos difusos}
+En esta sección nos centraremos en aquellas funciones con dominios reales, y que su imagen son conjuntos difusos, es decir,
 
-También motivaremos al lector con ejemplos y modelos que utilizan ecuaciones diferenciales difusas.
+\begin{definicion}[Funciones definidas en conjuntos difusos]
+	\label{def:fizzusetvaluedfunc} Decimos que una función \textbf{$F$ es una función definida en un conjunto difuso} si:
+	\begin{enumerate}
+		\item $dom ~ F \subset \IR$
+		\item $Im ~ F \subset \mathcal{F}_\mathcal{H}(\IR^n)$
+	\end{enumerate}
+\end{definicion}
 
-\section{Definición de ecuación diferencial difusas y su solución}
-No existe consenso aún sobre la definición correcta de lo que es una ecuación diferencial difusa, y es por ello que existen muchas definiciones para ese mismo concepto. Podemos encontrar estas discusiones en las distintas bibliografías que hace referencia \cite{fuzzyeqn}.
+\subsection{Derivada}
 
-\subsection{Definiciones equivalentes}
-Consideramos el siguiente sistema de ecuaciones diferenciales difusas:
-\[
-	\frac{d \hat{u}}{dt} (t) = \hat{f} (t, \hat{u}(t)), ~ ~ \hat{u}(0) = \hat{u}_0
-\]
-Donde $t \in [0, \infty]$ representa una variable temporal, la función $\hat{u} : [0, \infty) \rightarrow \mathcal{F}(\mathbb{R})$ es una función dependiente del tiempo, y $\hat{f} : [0, \infty) \times \mathcal{F}(\mathbb{R}) \rightarrow \mathcal{F}(\mathbb{R})$. Pero, de esta definición nos surge otra duda. ¿Qué significa derivar una función difusa respecto una variable? Para ello acudamos a la definición clásica:
-\[
-	\frac{d \hat{u}}{dt} (t) = \lim\limits_{t\rightarrow 0} \frac{\hat{u}(t_0 + t) - \hat{u}(t_0)}{t}
-\]
-Y es claro que es necesario aplicar el principio de extensión de Zadeh para conocer $\hat{u}(t_0 + t) - \hat{u}(t_0)$, lo que nos advierte que el conocimiento de la función de pertenencia $\mu_{\hat{u}(t_0 + t) - \hat{u}(t_0)}$ va a ser necesario a escala infinitesimal.
+\subsubsection{La derivada de Hukuhara}
+La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad de Hukuhara} para funciones evaluadas en intervalos (\cite{derivatehukuhara})
 
-Introducimos ahora distintas formas de entender el concepto de derivada difusa:
-
-\subsubsection{Inclusión diferencial difusa}
-También conocidas como \textit{FDI}, por su nombre en inglés \textit{Fuzzy Differential Inclusions}, se definen como:
-
-\[
-	\frac{d u}{dt} (t) \in [\hat{f} (t, u(t))]_\alpha, ~ u(0) \in [\hat{u}_0]_\alpha, ~ \alpha \in [0, 1]
-\]
-
-De esta manera, una vez que tenemos las soluciones para todos los $\alpha-$corte podemos construir la solución difusa gracias a  \cite{apuntesfuzzy}. 
-
-Esta forma también se conoce solución de una ecuación diferencial difusa interpretado como una familia de inclusiones. Este proceso es bastante potente a la hora trabajar con él numéricamente, pues podemos aplicar los procedimientos clásicos.
-
-\subsubsection{Derivada de Hukuhara}
-Como introducimos en el primer capítulo, podemos usar esa misma idea para definir la derivada de Hukuhara
-\begin{definicion}[Derivada de Hukuhara]
-	Una función $\hat{u} : \mathbb{R} \rightarrow \mathcal{F}(\mathbb{R})$ es diferenciable según Hukuhara en $t_0 \in \mathbb{R}$ si los límites:
+\begin{definicion}[Diferenciable según Hukuhara]
+	Sea $F$ una función definida en un conjunto difuso. Supongamos que los límites:
 	
 	\[
-		\lim\limits_{t \rightarrow 0^+} \frac{\hat{u} (t + t_0) \circleddash \hat{u}(t_0)}{t} ~ , ~ \lim\limits_{t \rightarrow 0^+} \frac{ \hat{u}(t_0) \circleddash \hat{u} (t + t_0)}{t}
+		\begin{array}{c||c}
+			\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
+		\end{array}
 	\]
 	
-	Existen, y son iguales. Al límite se le llama derivada de Hukuhara.
+	Existen, y son iguales a cierto elemento $F'_H(x_0) \in \mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ es diferenciable según Hukuhara (H-Diferenciable) en $x_0$ y decimos que $F'_H(x_0)$ es su derivada en $x_0$ 
 \end{definicion}
-}
+
+\begin{ejemplo}[Función constante]
+	Sea $F(x)=A$ con $A=(-1;0;1)$, calculemos su H-Derivada en un punto arbitrario $x_0 \in \IR$: 
+	\[
+		F(x_0 + h) \circleddash_H F(x_0) = A \circleddash_H A = 0
+	\]
+	\[
+		F(x_0) \circleddash_H F(x_0 - h) = A \circleddash_H A = 0
+	\]
+	Por tanto, $F_H'(x_0) = 0$
+\end{ejemplo}
+
+\begin{ejemplo}[Función lineal]
+	Sea $F(x)=A x$ con $A=(-1; 0; 1)$, supongamos en primer lugar que $x \geq 0$:
+	\[
+		F(x + h) \circleddash_H F(x) = A(x + h) \circleddash_H A = (-x - h; 0; x+h) \circleddash_H (-x; 0; x) = (-h; 0; h)
+	\]
+	Análogamente, 
+	\[
+		F(x) \circleddash_H F(x - h) = (-h; 0; h)
+	\]
+	De donde,
+	\[
+	\begin{array}{c||c}
+		\lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A & \lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A
+	\end{array}
+	\]
+	Por tanto, $F_H'(x) = A $, si $x > 0$. \\
+	Por otro lado, si $x<0$, podemos ver que $F(x+h) \circleddash_H F(x)$ no está definido, pues:
+	
+	\begin{itemize}
+		\item $(-x-h; 0; x+h)$ no sería un número triangular, pues $-x-h > x+h$
+	\end{itemize}
+
+	Esto se puede ver más fácilmente en un resultado que mostramos a continuación.
+\end{ejemplo}
+
+\begin{proposicion}[Construcción de funciones H-Diferenciables \cite{spingerfuzzy}]
+	Sea $G$ una función definida en conjuntos difusos tal que $G(x)=B g(x)$ donde $g(x)>0, g'(x)>0$ y $B$ es un número difuso entonces, $G(x)$ es H-Diferenciable, más aún, 
+	\[
+		G'_H(x) = B g'(x)
+	\]
+\end{proposicion}
+
+Una función H-Diferenciable tiene $\alpha$-corte diferenciables, sin embargo, que todos los $\alpha$-corte sean diferenciables, no implica que la función sea $H$-diferenciable.
+
+\subsubsection{La derivada de Seikkala}
+Otro tipo de derivada que veremos, será la derivada de Seikkala, que usaremos después para introducir un concepto de derivada más fuerte.
+
+\begin{definicion}[Derivada de Seikkala]
+	Sea $F: [a, b] \rightarrow \mathcal{F}_H(\IR)$ si:
+\end{definicion}

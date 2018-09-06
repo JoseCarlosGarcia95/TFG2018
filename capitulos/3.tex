@@ -1,14 +1,207 @@
-\chapter{Modelos de ecuaciones diferenciales difusos}
+\chapter{Computación científica de alto rendimiento}
+En los anteriores capítulos nos hemos centrado en dar definiciones y técnicas para generalizar los conceptos clásicos del cálculos en un contexto difuso, no obstante el objetivo final de este trabajo es encontrar y desarrollar métodos numéricos para resolver problemas en ecuaciones diferenciales difusas.
 
+En este capítulo, \textbf{abordaremos las distintas técnicas numéricas} que se van a aplicar en los capítulos posteriores para atacar estos problemas de la forma más eficiente posible. 
 
-\section{Aplicaciones a las ciencias naturales}
+Este capítulo trata más los problemas desde el punto de vista informático, que necesitaremos para desarrollar correctamente la resolución numérica de los problemas planteados.
 
-\subsection{Aplicaciones a la mecánica clásica}
-\subsection{Aplicaciones a la mecánica cuántica}
-\subsection{Aplicaciones a reacciones químicas}
-\subsection{Aplicaciones a la biología}
+Este capítulo está escrito desde la experiencia propia avalada por mi breve, pero intensa experiencia laboral en el mundo de los servicios en la nube, por mi curiosidad, y por mis años como alumno colaborador en la Universidad de Cádiz, y basado en el trabajo realizado en esta diapositiva: \cite{paralelo}
+\section{Conceptos básicos}
+Dentro de la computación científica, podemos distinguir \textbf{una serie de conceptos esenciales}, que tienen que ver en cierta medida con las partes que forman un ordenador. Todo el mundo que tiene un ordenador, seguro que conoce ciertas partes de su ordenador, pues todo el mundo ha hablado alguna vez de la \textbf{memoria RAM de su ordenador, el procesador, tarjeta gráfica, tarjeta de red...} pero, ¿Qué impacto tiene cada uno de estos elementos en el desarrollo de la computación científica?
 
-\section{Aplicaciones a las ciencias sociales}
+\subsection{Memoria RAM}
+Los programas que ejecutamos en nuestros ordenadores se alojan en la memoria RAM, y una vez alojados en la memoria RAM, el procesador se encarga de procesar las instrucciones y ejecuta el código que nosotros le hemos pedido que ejecute. \textbf{La memoria RAM es donde se almacenan las instrucciones que va a ejecutar el procesador, y todos los datos que generamos en nuestro sistema operativo.}
+\\ \\
+La memoria RAM nos impone un límite de la cantidad de datos que puede estar en ejecución en un momento dado, y si queremos obtener el máximo rendimiento posible, tenemos que \textbf{evitar escribir más memoria RAM de la disponible}, sino, nuestro sistema operativo empezará a usar el disco duro para alojar información, esta tecnología se le conoce como \textbf{\textit{swap}}, y es \textbf{mucho más lenta que la memoria RAM.}
+\\ \\
+Dentro de un ordenador, podemos \textbf{dividir la memoria RAM en dos grupos}; \textbf{la memoria RAM disponible para el procesador}, y  \textbf{la memoria RAM disponible para la tarjeta gráfica}. Esto es bastante importante, pues cuando trabajemos con la \textbf{tarjeta gráfica, no podremos acceder a punteros alojados en la memoria RAM del procesador}, por tanto, \textbf{antes de acceder a esta información deberemos copiarla a la memoria RAM de la tarjeta gráfica.} La operación de copiar datos desde la memoria de la tarjeta gráfica al procesador es bastante lenta, y es conocido que en este punto tenemos \textbf{un cuello de botella.}
+\\ \\
+Tener mucha memoria RAM en nuestra máquina también podría reducir el consumo energético, pues reduciríamos el acceso al disco duro.
 
-\subsection{Aplicaciones a la economía}
-\subsection{Aplicaciones a crecimientos de población}
+\subsection{Procesador (CPU)}
+El procesador es la parte de nuestro ordenador que se encarga de interpretar las instrucciones que hemos generado con nuestro programa, y es también \textbf{fundamental a la hora de conseguir un rendimiento óptimo de nuestro programa}. \\ \\
+Algunos de los aspectos a tener en cuenta para obtener un \textbf{mejor rendimiento sería los hilos de nuestro procesador, y los GHz}. Los \textbf{hilos del procesador nos permitirá ejecutar tareas de manera simultanea}, de manera que en muchos casos poder realizar tareas simultaneas (o en paralelo). Por ejemplo, si nuestro procesador tiene $10$ hilos, y queremos sumar un vector de $10$ elementos, podemos hacer que las 10 sumas que hacen falta para sumar el vector se hagan simultáneamente.
+
+\subsection{Tarjeta gráfica (GPU)}
+Habitualmente, nos centramos sólo en el mundo \textit{gaming} cuando se habla de tarjetas gráficas, y pensamos que su única utilidad es para jugar a videojuegos en alta resolución. Sin embargo, son más útiles de lo que puede parecer. \\ \\
+En este caso, las gráficas podemos tratarlas de forma parecida a las CPU, sin embargo, la gran ventaja que ofrecen las GPU es que \textbf{están construidas para procesar muchos datos simultáneamente}, debido a que las tarjetas gráficas tienen \textbf{muchos más hilos disponibles que la CPU}, pero por otro lado, \textbf{cada hilo es más lento.}
+
+\subsection{Tarjeta de Red (Internet/Intranet/Cluster)}
+Usar internet o intranet para trabajar con computación de alto rendimiento es una buena práctica también, cuando \textbf{conectamos varios ordenadores y los coordinamos para realizar una tarea, se les llaman \textit{cluster}}. \\ \\
+Es importante saber que la información a través de la tarjeta de red viaja \textbf{más lento que por las otras vías}, y hay otros factores a tener en cuenta, como la distancia física entre los ordenadores, sin embargo si queremos trabajar con \textbf{muchísimos hilos es la mejor opción que existe; conectar muchos ordenadores a realizar una misma operación.}
+
+\section{Técnicas de alto rendimiento}
+
+Una vez introducidos los conceptos básicos acerca de los distintos elementos de la computación científica, vamos a hablar de las distintas técnicas que podemos abordar para \textbf{obtener un rendimiento lo más óptimo posible.}
+
+\subsection{Programación de bajo nivel}
+El \textbf{lenguaje de programación que utilicemos va a decantar la balanza en temas de rendimiento}, si queremos exprimir al máximo nuestros ordenadores no nos quedará más remedio que decantarnos por lenguajes de más bajo nivel como C++ o C, al no ser un lenguaje interpretado, como pasa por ejemplo con Python, nuestro código se ejecuta directamente en nuestra máquina.
+
+En las siguientes pruebas, vamos a revisar como se comporta Python y C, con el mismo código, en términos de tiempo de ejecución, uso de RAM: (\hyperref[prueba:cvspython]{Código del ejemplo}):
+
+\begin{itemize}
+	\item \textbf{C es más eficiente a la hora de administrar la memoria RAM}, al probar 10000000000 iteraciones, \textbf{Python no puede alocar más memoria RAM, sin embargo, C es capaz de alocar la memoria sin ningún tipo de problema.}
+	
+	\item Por otro lado, los tiempos de ejecución son más sorprendente aún. \textbf{Con tan sólo 10 iteraciones, C es 5 veces más rápido que $1000000$ C es 77 veces más rápido que Python, y finalmente con $1000000000$ iteraciones, C es 100 veces más rápido que Python.} Aquí se ve la notable diferencia entre uno y otro. Si queremos trabajar en computación científica, trabajar con C debe ser nuestra primera elección. (Ver figura \ref{fig:cvspython})
+\end{itemize}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{grafica_c_vs_python}
+	\centering
+	\caption{Gráfica comparativa C vs Python}
+	\label{fig:cvspython}
+\end{figure}
+
+\subsection{Precisión mixta}
+Otra técnica menos conocida, pero no por ello menos importante es el uso de precisión mixta. Recordemos en primer lugar, que cuando trabajamos con números en un ordenador debemos de tener en cuenta la precisión a la que estamos trabajando. Existen algunas alternativas para trabajar con números en precisión \textit{<<infinita>>}, sin embargo, no son de nuestro interés pues no rinden tan bien como queremos, así que nos centraremos en dos tipos de precisiones:
+
+\begin{itemize}
+	\item \textbf{Precisión simple: } Los números se representan utilizando 4 bytes, por tanto podemos representar $256^4$.
+	
+	\item \textbf{Precisión doble: } Los números se representan utilizando 8 bytes, por tanto, podemos representar $256^8$
+\end{itemize}
+
+Generalmente, los procesadores están optimizados para trabajar mejor que con simple o doble precisión. Las GPU suelen estar mejor optimizadas para trabajar con simple precisión, así que en estos casos, es útil tener en cuenta lo que llamamos precisión mixta si queremos tener un resultado en doble precisión. El procedimiento para trabajar con precisión mixta es el siguiente:
+
+\begin{itemize}
+	\item Planteamos en primer lugar nuestro problema de forma normal, y lo resolvemos en simple precisión.
+	\item Una vez que tenemos el resultado en simple precisión, inicializamos nuestro problema con el valor obtenido, pero esta vez usando doble precisión.
+\end{itemize}
+
+A continuación, mostramos un ejemplo ilustrativo aplicando el método de Newton usando precisión mixta
+\begin{ejemplo}[Método de Newton precisión mixta, comparativa y desarrollo]
+	Supongamos que queremos encontrar las raices de la siguiente función:
+	\[
+		f(x) = (x-1)^8
+	\]
+	\[
+		f'(x) = 8 (x-1)^7
+	\]
+	Nuestro objetivo es intentar conseguir una precisión que sea el cero de la máquina. En primer lugar resolveremos el problema en simple precisión, aplicando el método de Newton habitual:
+	\begin{itemize}
+		\item \textbf{Tiempo de ejecución: } 0m0,001s
+		\item \textbf{Iteraciones en simple precisión: } 99
+		\item \textbf{Iteraciones en doble precisión: } 0
+		\item \textbf{Resultado: } 0.999998152256011962890625000000
+	\end{itemize}
+
+	Lo resolvemos ahora para doble precisión:
+	\begin{itemize}
+		\item \textbf{Tiempo de ejecución: } 0m0,001s
+		\item \textbf{Iteraciones en simple precisión: } 0
+		\item \textbf{Iteraciones en doble precisión: } 265
+		\item \textbf{Resultado: } 0.999999999999999555910790149937
+	\end{itemize}
+
+	Si ahora resolvemos el problema aplicando los principios de la precisión mixta:
+	\begin{itemize}
+		\item \textbf{Tiempo de ejecución: } 0m0,001s
+		\item \textbf{Iteraciones en simple precisión: } 99
+		\item \textbf{Iteraciones en doble precisión: } 166
+		\item \textbf{Resultado: } 0.999999999999999555910790149937
+	\end{itemize}
+
+	Podemos observar, que al resolver nuestro problema con precisión mixta hemos reducido en 100 las operaciones que tenemos que realizar en doble precisión, obteniendo una mejora de rendimiento.
+\end{ejemplo}
+
+\subsection{Paralelización de algoritmos}
+Una de las técnicas más conocidas para acelerar las operaciones que realizamos con un ordenador, es paralelizar los procesos.  Decimos que \textbf{un algoritmo de $n$ pasos se puede paralelizar} si cada $n$ iteración no depende del resto de iteraciones. \\
+Para conseguir la paralelización, podemos hacerlo mediante diferentes tećnicas:
+
+\begin{itemize}
+	\item \textbf{CPU:} Utilizando los hilos disponibles en el procesador de nuestro ordenador. Todos los hilos son de alto rendimiento, pero la cantidad de hilos es bastante pequeña.
+
+	\item \textbf{GPU:} Utilizando los hilos disponibles en la tarjeta gráfica de nuestro\\ ordenador. Los hilos tienen un menor desempeño que los de la CPU, sin embargo, contiene una gran cantidad de hilos.
+	 
+	\item \textbf{Red:} Distribuimos el trabajo entre varios ordenadores a través de una conexión de red.
+	
+	\item \textbf{Mixta: } Cuando se mezclan distintas técnicas de paralelización, se dice que estamos trabajando en paralelización mixta.
+\end{itemize}
+
+A continuación, vamos a mostrar un ejemplo basado en el esquema de diferencias finitas de la ecuación del calor, a modo de entender mejor las mejoras que suponen cada uno:
+
+\begin{ejemplo}[Diferencias finitas: Secuencial VS. Paralelo VS. GPU \cite{experimentonumerico}]
+	El esquema en diferencias finitas que vamos a tener en cuenta será:
+	\[
+		u_{i, j+1} = u_{i, j} + \mu (u_{i-1, j} - 2 u_{i, j} + u_{i+1, j})
+	\]
+	
+	Podemos observar que los términos que aparecen a la derecha del esquema, dependen exclusivamente de términos de la etapa anterior, por tanto podemos paralelizar cada etapa. Podemos pasar entonces escribir el código\\
+	
+	En esta prueba hemos escrito el mismo código en C, CUDA y hemos utilizado OpenMP para generar una versión en paralelo de nuestro código inicial en C. Con esto conseguimos:
+	\begin{itemize}
+		\item Tener un código sin paralelizar para poder comparar.
+		\item Tener un código exactamente igual al anterior paralelizado en CPU.
+		\item Tener un código parecido al anterior pero que funciona en paralelo en la GPU.
+	\end{itemize}
+
+	En la siguiente tabla, mostramos el tiempo de ejecución en segundos de cada uno de los programas utilizando las distintas técnicas:
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{@{}llll@{}}
+			\toprule
+			Mallado     & C-No paralelo & CPU   & GPU   \\ \midrule
+			5X5         & 0,001         & 0,001 & 0,441 \\
+			25X25       & 0,001         & 0,001 & 0,441 \\
+			50X50       & 0,001         & 0,001 & 0,441 \\
+			70X70       & 0,001         & 0,001 & 0,441 \\
+			100X100     & 0,001         & 0,001 & 0,484 \\
+			1000X1000   & 0,005         & 0,005 & 0,472 \\
+			10000X10000 & 1,178         & 0,624 & 0,997 \\
+			20000X20000 & 8,961         & 7,754 & 2,594 \\
+			22760X22760 & 22,99         & 9,227 & 3,221 \\ \bottomrule
+		\end{tabular}
+	\end{table}
+
+	\newpage
+	A continuación, mostramos el consumo energético en $\mu A / s$:
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{@{}llll@{}}
+			\toprule
+			Mallado     & C-No paralelo & CPU     & GPU    \\ \midrule
+			5X5         & 0,1           & 0,23    & 57,33  \\
+			25X25       & 0,1           & 0,23    & 57,33  \\
+			50X50       & 0,1           & 0,23    & 57,33  \\
+			70X70       & 0,1           & 0,23    & 57,33  \\
+			100X100     & 0,1           & 0,23    & 62,92  \\
+			1000X1000   & 0,5           & 1,15    & 61,36  \\
+			10000X10000 & 117,8         & 143,52  & 129,61 \\
+			20000X20000 & 896,1         & 1783,42 & 337,22 \\
+			22760X22760 & 2299          & 2122,21 & 418,73 \\ \bottomrule
+		\end{tabular}
+	
+		\caption{Medido con:  \href{https://github.com/JoseCarlosGarcia95/power_app_stats}{power\_app\_stats}}
+	\end{table}
+
+	Podemos observar que trabajar con GPU nos ofrece un mejor rendimiento, tanto en términos de tiempo como económicos. El consumo energético es mucho menor en GPU que en CPU a lo largo del tiempo.
+\end{ejemplo}
+
+%\section{Apéndice: Montando un entorno científico en AWS}
+
+\section{Apéndice: Experimentos numéricos}
+
+\subsection{Prueba 1; C Vs Python}
+\label{prueba:cvspython}
+
+\subsubsection{Prueba en Python}
+\lstinputlisting[language=python]{codigo_capitulo3/prueba1.py}
+
+\subsubsection{Prueba en C}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba1.c}
+
+\newpage
+\subsection{Prueba 2: Precisión mixta}
+\label{prueba:mixta}
+\subsubsection{Precisión simple}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba2_simple.c}
+
+\newpage
+\subsubsection{Precisión doble}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba2_doble.c}
+
+\newpage
+\subsubsection{Precisión mixta}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba2_mixta.c}

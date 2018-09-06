@@ -142,6 +142,23 @@ A continuación, introducimos dos teoremas que nos permitirán caracterizar los 
 	Entonces, $A$ es un número difuso.
 \end{teorema}
 
+
+\begin{ejemplo}
+	Sea $\IU=\IR$ y consideremos $\FUZZYM: \IR \longrightarrow [0, 1]$ definida de la siguiente forma:
+	$$
+	\FUZZYM(x)=\left\{
+	\begin{array}{c c c}
+	\frac{x-a}{b-a} & si & x \in [a, b] \\
+	\frac{c-x}{c-b} & si & x \in (b, c] \\
+	0, & si & x \notin [a, c]
+	\end{array}
+	\right.
+	$$
+	Con $a < b < c$. Decimos que \textbf{un número difuso definido de la forma anterior es triangular (a; b; c).} 
+	
+\end{ejemplo}
+
+
 \section{Principio de extensión de Zadeh}
 Nos gustaría ahora que dado un conjunto difuso, y una función clásica, pudiéramos obtener una función difusa, para esto, tenemos el principio de extensión de Zadeh.
 
@@ -218,6 +235,7 @@ La primera implicación es clara por la definición de principio de extensión d
 	Y por la doble inclusión anterior, tenemos que $[\hat{f}(\mathcal{A})]_\alpha \subset f([\mathcal{A}]_\alpha)$ para todo $\alpha \in [0, 1]$
 \end{proof}
 
+
 \section{Aritmética difusa}
 El siguiente paso \textbf{para poder construir métodos numéricos es necesario definir las operaciones aritméticas básicas} entre conjuntos difusos.\\
 La definiciones de \textbf{estas operaciones son bastante naturales}, pero pueden ocasionarnos algunos problemas en ciertos escenarios.\\
@@ -274,7 +292,7 @@ $$
 Si $A\neq 0$ tenemos que $[A-A]_\alpha \neq 0$, por tanto al dividir por $h \longrightarrow 0$, tenemos una indeterminación, de donde, tal y \textbf{como hemos definido las operaciones aritméticas para los conjuntos difusos no tendríamos definidas las derivadas de funciones constantes}, y esto, es un problema. \\
 Necesitamos definir \textbf{un nuevo concepto de diferencia}, que para ello, \textbf{utilizaremos la diferencia de Hukuhara.}
 
-\subsection{Hukuhara y diferencia generalizada}
+\subsection{Hukuhara y diferencia generalizada} \label{def:hukukara}
 Debido al problema especificado en la sección anterior, \textbf{necesitamos definir una operación resta que cumpla que $A-A=\{0\}$}, Hukuhara dio una definición de resta que cumplía esta propiedad.
 
 \begin{definicion}
@@ -369,3 +387,5 @@ En primer lugar, nos acercaremos al concepto de métrica:
 	\label{teorema:banach}
 	El espacio de los números difusos, con la métrica $d_\infty$ es un espacio de Banach.
 \end{teorema}
+
+\section{Funciones difusas}
