@@ -389,3 +389,96 @@ En primer lugar, nos acercaremos al concepto de métrica:
 \end{teorema}
 
 \section{Funciones difusas}
+En la literatura sobre funciones difusas existen dos definiciones para referirnos a funciones difusas, originalmente Dubois y Prade (1980) definieron los siguientes conceptos:
+
+\begin{definicion}[Funciones definidas en conjuntos difusos]
+	\label{def:fizzusetvaluedfunc} Decimos que una función \textbf{$F$ es una función definida en un conjunto difuso} si:
+	\begin{enumerate}
+		\item $dom ~ F \subset \IR$
+		\item $Im ~ F \subset \mathcal{F}_\mathcal{H}(\IR^n)$
+	\end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}
+	La función $f(x) = A x$ donde $A=[a, b]$ con $a, b \in \IR$, es una función definida en conjuntos difusos. Sus imágenes son intervalos.
+\end{ejemplo}
+
+\begin{ejemplo}
+	La función $f(x) = A x$ donde $A=(a;b;c)$ con $a<b<c$, es una función definida en conjuntos difusos. Además, su imágenes son conjuntos números triangulares.
+\end{ejemplo}
+
+\iffalse
+\begin{definicion}[Ristra de funciones difusas]
+	Definimos una ristra de funciones difusas como el subconjunto difuso del espacio de funciones. \\
+	Para cada ristra de funciones difusas, podemos darle una función definida en un conjunto difuso. Para cada $F \in \mathcal{F}(E(I; \IR^n))$ donde $E(I, \IR^n)$ es una espacio de funciones de $I \subset \IR$ a $\IR^n$. Donde:
+	\[
+		[F(t)]_\alpha = [F]_\alpha(t) = \{f(t) : f \in [F]_\alpha\}
+	\]
+\end{definicion}
+
+\begin{ejemplo}
+	Consideramos $f_1, f_2$ y $f_3$ funciones continuas en el intervalo $A=[a, b]$. Y definimos el conjunto difuso $F \in \mathcal{F}(C([a, b]; \IR))$ tal que:
+	\[
+		\mu_F(f) = \left\{
+			\begin{array}{ccc}
+				\alpha & si & f = f_1 + \alpha(f_2 - f_1) \\
+				\alpha & si & f = f_3 + \alpha(f_2 - f_3) \\
+				0 & otro~caso & 
+			\end{array}
+		\right.
+	\]
+	
+	Entonces, decimos que $F$ es una ristra de funciones difusas.
+\end{ejemplo}
+
+\fi
+
+\subsection{Continuidad de funciones difusas}
+Introduciremos en primer lugar dos conceptos de continuidad sobre funciones reales que toman valores en subconjuntos reales. Y luego, usaremos esta misma idea para definir la continuidad sobre conjuntos difusos
+
+\begin{definicion}[Función sobre conjuntos continua]
+	Sea $F : \Omega \rightarrow \mathcal{P}(\IR^n)$, $\Omega \subset \IR^m$ decimos que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
+	\[
+		\rho(F(t), F(t_0))<\varepsilon
+	\]
+	Si $||t-t_0||<\delta$ para $t \in \Omega$. \\
+	Por otro lado, decimos que $F$  es \textbf{semicontinua inferiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
+	\[
+	\rho(F(t_0), F(t))<\varepsilon
+	\]
+	Si $||t-t_0||<\delta$ para $t \in \Omega$. \\
+	Si una función es semicontinua superiormente e inferiormente, decimos que es \textbf{continua.}
+\end{definicion}
+
+\begin{definicion}[Función difusa continua]
+	Sea $F : \Omega \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$, $\Omega \subset \IR^m$ decimos que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
+	\[
+	\rho([F(t)]^\alpha, [F(t_0)]^\alpha)<\varepsilon
+	\]
+	Si $||t-t_0||<\delta$ para $t \in \Omega$, para todo $\alpha \in [0, 1]$. \\
+	Por otro lado, decimos que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
+	\[
+	\rho([F(t_0)]^\alpha, [F(t)]^\alpha)<\varepsilon
+	\]
+	Si $||t-t_0||<\delta$ para $t \in \Omega$, para todo $\alpha \in [0, 1]$. \\
+	Si una función es semicontinua superiormente e inferiormente, decimos que es \textbf{continua.}
+\end{definicion}
+
+\subsection{Representación gráfica de funciones difusas}
+En este sección se va a buscar una solución al problema de representar funciones difusas.
+
+Una representación gráfica de una función difusa podemos desear que cumpla lo siguiente:
+\begin{enumerate}
+	\item El grado de pertenencia debe verse de forma intuitiva.
+	\item Si nuestra función toma valores en $\IR^n$ y va $\mathcal{F}_\mathcal{H}(\IR^m)$, la gráfica debería de estar representada en $n+m+1$. Necesitamos una dimensión más debido a que los $\alpha$-corte son $m$-intervalos.
+\end{enumerate}
+
+\subsubsection{Gráfica de una función difusa}
+
+Siguiendo los puntos de la introducción, vamos a tratar de dar una solución a cada uno de los puntos:
+
+\begin{enumerate}
+	\item El grado de pertenencia podemos representarlo usando colores. Fijamos un color inicial, que definiremos como $0$ y fijamos otro color final que definiremos como $1$. Todos los colores que hay entre el color inicial y final, representarán los grados de pertenencia. Por ejemplo, si tomamos como $0$ el color blanco $(255, 255, 255)$ y tomamos el color negro $(0, 0, 0)$ como color final, si queremos representar un valor con grado de pertenencia $\alpha$, deberíamos tomar el color: $(255(1-\alpha), 255(1-\alpha), 255(1-\alpha))$
+	
+	\item Por cada $x$ representamos una recta que contenga todos los valores que puede recorrer $f(x)$ y estos valores los pintamos según el grado de pertenencia especificado en el apartado anterior.
+\end{enumerate}
