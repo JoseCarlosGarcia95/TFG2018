@@ -99,5 +99,127 @@ El concepto de derivada fuertemente generalizada viene a generalizar más aún l
 Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara es cuando pasa $(f^-_\alpha)'(x_0) \leq (f^+_\alpha)'(x_0)$ (Se puede ver en el Ejemplo \ref{ejemplo:hukuhara}). Esto es que cuando trabajamos con las derivadas de Hukuhara y Seikkala no podemos trabajar con funciones con grado de pertenencia decreciente. Para evitar estos problemas, se introdujo el concepto de derivada fuertemente generalizada:
 
 \begin{definicion}[Derivada fuertemente generalizada]
-	METER AQUÍ DEFINICIÓN
+	Sea $F: (a, b) \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$. Si alguno de los siguientes pares de límites:
+	
+	\begin{enumerate}
+		\item 	
+		\[
+		\begin{array}{c||c}
+		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
+		\end{array}
+		\]
+		\item 	
+		\[
+		\begin{array}{c||c}
+		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
+		\end{array}
+		\]
+		\item 	
+		\[
+		\begin{array}{c||c}
+		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
+		\end{array}
+		\]
+		\item 	
+		\[
+		\begin{array}{c||c}
+		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
+		\end{array}
+		\]
+	\end{enumerate}
+	Existen y son iguales a algún elemento $F'_G(x_0)$ de $\mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ es diferenciable fuertemente generalizado (o GH) en $x_0$, y $F'_G(x_0)$ es el valor de la derivada. Lo denotamos como GH-Diferenciable.
 \end{definicion}
+
+\subsubsection{Otras definiciones}
+De la definición es trivial demostrar que si H-Diferenciable entonces es diferenciable fuertemente generalizado, además, la primera condición nos da el concepto de derivada para funciones con diámetro no decreciente. \\
+Del mismo modo, la segunda condición nos da un concepto de derivada para funciones con un diámetro no creciente. \\
+Los otros casos, conceptualizan el comportamiento cuando varía respecto al diámetro. \\
+Por tanto, con la definición anterior la función del Ejemplo \ref{ejemplo:hukuhara} es GH Diferenciable. \\ \\
+Para cerrar esta sección, veremos dos conceptos más derivada:
+
+\begin{definicion}[Diferencial de Hukuhara generalizada]
+Meter definición
+%TODO
+\end{definicion}
+
+\begin{definicion}[Diferencial generalizada]
+	Meter definición
+	%TODO
+\end{definicion}
+
+En resumen,
+\begin{table}[h]
+	\centering
+	\begin{tabular}{lllllll}
+		H-Diferenciable & $\Rightarrow$ & GH-Diferenciable & $\Rightarrow$ & gH-Diferenciable & $\Rightarrow$ & g-Diferenciable
+	\end{tabular}
+\end{table}
+
+\subsection{Integral}
+La primera propuesta de integral difusa es basada en el concepto integral de Aumann para funciones multievaluadas. La definición original podemos verla en \cite{integral1} y \cite{integral2}. \\
+Por simplificar, vamos a denotar:
+\[
+	S(G) = \{g : I \rightarrow \IR^n : g ~ integrable, g(t) \in G(t), \forall t \in I \}
+\]
+Con $G : I \rightarrow \mathcal{P}(\IR^n)$
+
+\subsubsection{Integral de Aumann}
+\begin{definicion}[Integral de Aumann]
+	La integral de Aumann de una función sobre un conjunto difuso $F : [a, b] \rightarrow \mathcal{F}_H(\IR^n)$ sobre $[a, b]$ es definida como: 
+	\[
+		\left[
+		(A) \int_{a}^{b} F(x) dx
+		\right]_\alpha = \left\{
+			\int_{a}^{b} g(x) dx : g \in S([F(x)]_\alpha)
+		\right\}
+	\]
+	Para todo $\alpha \in [0, 1]$. La función $F$ se dirá que es integrable sobre $[a, b]$ si $(A) \int_{a}^{b} F(x) dx \in \mathcal{F}_\mathcal{H}(\IR^n)$
+\end{definicion}
+
+\subsubsection{Integral de Riemann}
+Se puede usar también el concepto clásico de integral para definir también una integral de Riemann en el ámbito difuso.
+
+\begin{definicion}[Integral de Riemann]
+Meter definición
+%TODO
+\end{definicion}
+
+\subsubsection{Integral de Henstock}
+Tenemos un concepto más fuerte que la integral de Riemann, que nos puede servir para ciertos contextos:
+\begin{definicion}[Integral de Henstock]
+	Meter definición
+	%TODO
+\end{definicion}
+
+\subsubsection{Algunos resultados importantes}
+En esta sección mostraremos una serie de teoremas de utilidad encontrados en \cite{integral2} que resumen en cierta manera algunas propiedades ya conocidas del cálculo infinitesimal clásico:
+
+\begin{teorema}
+	Si una función $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ es continua según (Definición \ref{def:funcioncontinua}) entonces es integrable. Más aún,
+	\[
+		\left[
+			\int F
+		\right]_\alpha = \left[
+			\int f_\alpha^-, \int f_\alpha^+
+		\right]
+	\] para todo $\alpha \in [0, 1]$
+\end{teorema}
+
+\begin{teorema}[Cambio de intervalos]
+	Sea $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ una función integrable, y supongamos $a \leq x_1 \leq x_2 \leq x_3 \leq b$, entonces:
+	\[
+		\int_{x_1}^{x_3} F = \int_{x_1}^{x_2} F + \int_{x_2}^{x_3} F
+	\]
+\end{teorema}
+
+\begin{teorema}
+	Sean $F, G :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ funciones integrables, entonces:
+	
+	\begin{enumerate}
+		\item $\int F + G = \int F + \int G$
+		\item $\int \lambda F = \lambda \int F$ para cualquier $\lambda \in \IR$.
+		\item $d_\infty(F, G)$ es integrable.
+		\item $d_\infty(\int F, \int G) \leq \int d_\infty(F, G)$
+	\end{enumerate}
+\end{teorema}
+\subsection{Teorema fundamental del cálculo}

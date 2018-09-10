@@ -156,6 +156,13 @@ A continuación, introducimos dos teoremas que nos permitirán caracterizar los 
 	$$
 	Con $a < b < c$. Decimos que \textbf{un número difuso definido de la forma anterior es triangular (a; b; c).} 
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{grafica_triangular}
+		\caption{Ejemplo de número triangular}
+		\label{fig:numero_difuso}
+	\end{figure}
+	
 \end{ejemplo}
 
 
@@ -437,6 +444,7 @@ En la literatura sobre funciones difusas existen dos definiciones para referirno
 Introduciremos en primer lugar dos conceptos de continuidad sobre funciones reales que toman valores en subconjuntos reales. Y luego, usaremos esta misma idea para definir la continuidad sobre conjuntos difusos
 
 \begin{definicion}[Función sobre conjuntos continua]
+	\label{def:funcioncontinua}
 	Sea $F : \Omega \rightarrow \mathcal{P}(\IR^n)$, $\Omega \subset \IR^m$ decimos que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
 	\[
 		\rho(F(t), F(t_0))<\varepsilon
@@ -464,6 +472,7 @@ Introduciremos en primer lugar dos conceptos de continuidad sobre funciones real
 	Si una función es semicontinua superiormente e inferiormente, decimos que es \textbf{continua.}
 \end{definicion}
 
+\iffalse
 \subsection{Representación gráfica de funciones difusas}
 En este sección se va a buscar una solución al problema de representar funciones difusas.
 
@@ -482,3 +491,4 @@ Siguiendo los puntos de la introducción, vamos a tratar de dar una solución a 
 	
 	\item Por cada $x$ representamos una recta que contenga todos los valores que puede recorrer $f(x)$ y estos valores los pintamos según el grado de pertenencia especificado en el apartado anterior.
 \end{enumerate}
+\fi
