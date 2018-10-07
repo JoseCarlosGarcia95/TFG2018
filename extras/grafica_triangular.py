@@ -29,4 +29,6 @@ plt.title("Numero difuso")
 
 plt.legend()
 
-plt.show()
+fig = plt.gcf()
+fig.set_size_inches(18.5, 10.5)
+plt.savefig('../graphics/grafica_triangular.pdf', transparent=True, dpi=1024)
