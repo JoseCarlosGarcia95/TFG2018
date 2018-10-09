@@ -23,8 +23,6 @@ with open(log, 'rb') as csvfile:
 
     plt.style.use('fivethirtyeight')
 
-    matplotlib.rc('font', family='Arial')
-
     plt.plot(x, graph1, label='Python')
     plt.plot(x, graph2, label='C')
 
@@ -37,4 +35,7 @@ with open(log, 'rb') as csvfile:
     ax.get_xaxis().get_major_formatter().set_scientific(False)
 
 
-    plt.show()
+    fig = plt.gcf()
+    fig.set_size_inches(18.5, 10.5)
+
+    plt.savefig('../graphics/grafica_c_vs_python.pdf', transparent=True, dpi=1024)

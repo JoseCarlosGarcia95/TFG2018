@@ -11,66 +11,66 @@ En primer lugar, vamos a definir los distintos conceptos de derivada difusa.
 La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad de Hukuhara} para funciones evaluadas en intervalos (\cite{derivatehukuhara})
 
 \begin{definicion}[Diferenciable según Hukuhara]
-	Sea $F$ una función definida en un conjunto difuso. Se supone que que los límites:
-	
-	\[
-		\begin{array}{c||c}
-			\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
-		\end{array}
-	\]
-	
-	Existen, y son iguales a cierto elemento $F'_H(x_0) \in \mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ \textbf{es diferenciable según Hukuhara (H-Diferenciable)} en $x_0$ y se dice que $F'_H(x_0)$ es su derivada en $x_0$ 
+  Sea $F$ una función definida en un conjunto difuso. Se supone que que los límites:
+  
+  \[
+  \begin{array}{c||c}
+    \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
+  \end{array}
+  \]
+  
+  Existen, y son iguales a cierto elemento $F'_H(x_0) \in \mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ \textbf{es diferenciable según Hukuhara (H-Diferenciable)} en $x_0$ y se dice que $F'_H(x_0)$ es su derivada en $x_0$ 
 \end{definicion}
 
 \begin{ejemplo}[Función constante]
-	Sea $F(x)=A$ con $A=(-1;0;1)$, se va a calcular su H-Derivada en un punto arbitrario $x_0 \in \IR$: 
-	\[
-		F(x_0 + h) \circleddash_H F(x_0) = A \circleddash_H A = 0
-	\]
-	\[
-		F(x_0) \circleddash_H F(x_0 - h) = A \circleddash_H A = 0
-	\]
-	Por tanto, $F_H'(x_0) = 0$
+  Sea $F(x)=A$ con $A=(-1;0;1)$, se va a calcular su H-Derivada en un punto arbitrario $x_0 \in \IR$: 
+  \[
+  F(x_0 + h) \circleddash_H F(x_0) = A \circleddash_H A = 0
+  \]
+  \[
+  F(x_0) \circleddash_H F(x_0 - h) = A \circleddash_H A = 0
+  \]
+  Por tanto, $F_H'(x_0) = 0$
 \end{ejemplo}
 
 \begin{ejemplo}[Función lineal]
-	\label{ejemplo:hukuhara}
-	Sea $F(x)=A x$ con $A=(-1; 0; 1)$, se supone en primer lugar que $x \geq 0$:
-	\[
-		F(x + h) \circleddash_H F(x) = A(x + h) \circleddash_H A = (-x - h; 0; x+h) \circleddash_H (-x; 0; x) = (-h; 0; h)
-	\]
-	Análogamente, 
-	\[
-		F(x) \circleddash_H F(x - h) = (-h; 0; h)
-	\]
-	De donde,
-	\[
-	\begin{array}{c||c}
-		\lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A & \lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A
-	\end{array}
-	\]
-	Por tanto, $F_H'(x) = A $, si $x > 0$. \\
-	Por otro lado, si $x<0$, se puede ver que $F(x+h) \circleddash_H F(x)$ no está definido, pues:
-	
-	\begin{itemize}
-		\item $(-x-h; 0; x+h)$ no sería un número triangular, pues $-x-h > x+h$
-	\end{itemize}
+  \label{ejemplo:hukuhara}
+  Sea $F(x)=A x$ con $A=(-1; 0; 1)$, se supone en primer lugar que $x \geq 0$:
+  \[
+  F(x + h) \circleddash_H F(x) = A(x + h) \circleddash_H A = (-x - h; 0; x+h) \circleddash_H (-x; 0; x) = (-h; 0; h)
+  \]
+  Análogamente, 
+  \[
+  F(x) \circleddash_H F(x - h) = (-h; 0; h)
+  \]
+  De donde,
+  \[
+  \begin{array}{c||c}
+    \lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A & \lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A
+  \end{array}
+  \]
+  Por tanto, $F_H'(x) = A $, si $x > 0$. \\
+  Por otro lado, si $x<0$, se puede ver que $F(x+h) \circleddash_H F(x)$ no está definido, pues:
+  
+  \begin{itemize}
+  \item $(-x-h; 0; x+h)$ no sería un número triangular, pues $-x-h > x+h$
+  \end{itemize}
 
-	Esto se puede ver más fácilmente en un resultado que se muestra a continuación.
+  Esto se puede ver más fácilmente en un resultado que se muestra a continuación.
 \end{ejemplo}
 
 \begin{proposicion}[Construcción de funciones H-Diferenciables \cite{spingerfuzzy}]
-	Sea $G$ una función definida en conjuntos difusos tal que $G(x)=B g(x)$ donde $g(x)>0, g'(x)>0$ y $B$ es un número difuso entonces, $G(x)$ es H-Diferenciable, más aún, 
-	\[
-		G'_H(x) = B g'(x)
-	\]
+  Sea $G$ una función definida en conjuntos difusos tal que $G(x)=B g(x)$ donde $g(x)>0, g'(x)>0$ y $B$ es un número difuso entonces, $G(x)$ es H-Diferenciable, más aún, 
+  \[
+  G'_H(x) = B g'(x)
+  \]
 \end{proposicion}
 
 \begin{teorema}[Continuidad de funciones H-Diferenciables \cite{seikkala}] Sea  $F: [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ una función H-Diferenciable, entonces $F$ es continua en el sentido visto en el Tema 1.
 \end{teorema}
 
 \begin{teorema}[Álgebra en derivadas \cite{seikkala}]
-	Sean $F, G : [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ funciones diferenciables y sea $\lambda \in \IR$. Entonces, $(F+G)_H' = F'_H + G_H'$ y $(\lambda F)_H' = \lambda F'_H$
+  Sean $F, G : [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ funciones diferenciables y sea $\lambda \in \IR$. Entonces, $(F+G)_H' = F'_H + G_H'$ y $(\lambda F)_H' = \lambda F'_H$
 \end{teorema}
 
 \textbf{Una función H-Diferenciable tiene $\alpha$-corte diferenciables}, sin embargo, \textbf{que todos los $\alpha$-corte sean diferenciables, no implica que la función sea $H$-diferenciable.}
@@ -79,178 +79,187 @@ La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad
 Ahora se introduce el concepto de derivada de Seikkala, que se usará después para \textbf{introducir un concepto de derivada más fuerte.}
 
 \begin{definicion}[Derivada de Seikkala]
-	Sea $F: [a, b] \rightarrow \mathcal{F}_H(\IR)$ si:
-	\[
-		[(f^-_\alpha)'(x_0), (f^+_\alpha)'(x_0)]
-	\]
-	existe para cada $\alpha \in [0, 1]$ y define $\alpha$-cortes de un número difuso $F'_S(x_0)$ entonces se dice que $F$ es Seikkala diferenciable en $x_0$ y definimos $F'_S(x_0)$ como la derivada de $F$ en $x_0$.
+  Sea $F: [a, b] \rightarrow \mathcal{F}_H(\IR)$ si:
+  \[
+    [(f^-_\alpha)'(x_0), (f^+_\alpha)'(x_0)]
+    \]
+    existe para cada $\alpha \in [0, 1]$ y define $\alpha$-cortes de un número difuso $F'_S(x_0)$ entonces se dice que $F$ es Seikkala diferenciable en $x_0$ y definimos $F'_S(x_0)$ como la derivada de $F$ en $x_0$.
 \end{definicion}
 
 A continuación, se introduce una condición necesaria que servirá de herramienta para relacionar el concepto anteriormente visto de derivada y la derivada de Seikkala.
 
 \begin{teorema}[Condición necesaria Seikkala \cite{seikkala}]
-	Si $F: [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ es H-Diferenciable entonces $f_\alpha^-(x)$ y $f_\alpha^+$ son diferenciables y:
-	\[
-		[F'(x_0)]_\alpha = [(f_\alpha^-)(x_0), (f_\alpha^+)(x_0)]
-	\]
-	Entonces, $F$ es diferenciable según Seikkala y la derivada de Seikkala y de Hukuhara coinciden.
+  Si $F: [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ es H-Diferenciable entonces $f_\alpha^-(x)$ y $f_\alpha^+$ son diferenciables y:
+  \[
+    [F'(x_0)]_\alpha = [(f_\alpha^-)(x_0), (f_\alpha^+)(x_0)]
+    \]
+    Entonces, $F$ es diferenciable según Seikkala y la derivada de Seikkala y de Hukuhara coinciden.
 \end{teorema}
 
 \subsubsection{La derivada fuertemente generalizada}
 El concepto de derivada fuertemente generalizada \textbf{viene a generalizar más aún los conceptos de derivadas ya introducidos por Hukuhara y Seikkala.} \\
-Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara es cuando pasa $(f^-_\alpha)'(x_0) \leq (f^+_\alpha)'(x_0)$ (Se puede ver en el Ejemplo \ref{ejemplo:hukuhara}). Esto es que cuando trabajamos con \textbf{las derivadas de Hukuhara y Seikkala no podemos trabajar con funciones con grado de pertenencia decreciente.} Para evitar estos problemas, se introdujo el concepto de derivada fuertemente generalizada:
+
+Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara es cuando pasa $(f^-_\alpha)'(x_0) \leq (f^+_\alpha)'(x_0)$ (Se puede ver en el Ejemplo \ref{ejemplo:hukuhara}). Para evitar estos problemas, se introdujo el concepto de derivada fuertemente generalizada:
 
 \begin{definicion}[Derivada fuertemente generalizada]
-	Sea $F: (a, b) \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$. Si alguno de los siguientes pares de límites:
-	
-	\begin{enumerate}
-		\item 	
-		\[
-		\begin{array}{c||c}
-		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
-		\end{array}
-		\]
-		\item 	
-		\[
-		\begin{array}{c||c}
-		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
-		\end{array}
-		\]
-		\item 	
-		\[
-		\begin{array}{c||c}
-		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
-		\end{array}
-		\]
-		\item 	
-		\[
-		\begin{array}{c||c}
-		\lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
-		\end{array}
-		\]
-	\end{enumerate}
-	Existen y son iguales a algún elemento $F'_G(x_0)$ de $\mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ es diferenciable fuertemente generalizado (o GH) en $x_0$, y $F'_G(x_0)$ es el valor de la derivada. Lo denotamos como GH-Diferenciable.
+  Sea $F: (a, b) \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$. Si alguno de los siguientes pares de límites:
+  
+  \begin{enumerate}
+  \item 	
+    \[
+    \begin{array}{c||c}
+      \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
+    \end{array}
+    \]
+  \item 	
+    \[
+    \begin{array}{c||c}
+      \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
+    \end{array}
+    \]
+  \item 	
+    \[
+    \begin{array}{c||c}
+      \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
+    \end{array}
+    \]
+  \item 	
+    \[
+    \begin{array}{c||c}
+      \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
+    \end{array}
+    \]
+  \end{enumerate}
+  Existen y son iguales a algún elemento $F'_G(x_0)$ de $\mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ es diferenciable fuertemente generalizado (o GH) en $x_0$, y $F'_G(x_0)$ es el valor de la derivada. Se denota como GH-Diferenciable.
 \end{definicion}
-De la definición \textbf{es trivial demostrar que si H-Diferenciable entonces es diferenciable fuertemente generalizado}, además, \textbf{la primera condición nos da el concepto de derivada para funciones con diámetro no decreciente.} \\
-Del mismo modo, \textbf{la segunda condición nos da un concepto de derivada para funciones con un diámetro no creciente.} \\
-Los otros casos, conceptualizan el comportamiento \textbf{cuando varía respecto al diámetro.} \\
-Por tanto, con la definición anterior la función del Ejemplo \ref{ejemplo:hukuhara} es GH Diferenciable. 
+De la definición \textbf{es trivial demostrar que si H-Diferenciable entonces es diferenciable fuertemente generalizado}.
+
+\begin{observacion}
+  De la definición anterior se pueden extraer las siguientes conclusiones, basadas en la naturaleza del diámetro de las funciones difusas:
+  \begin{enumerate}
+  \item Concepto de derivada para funciones con diámetro no decreciente.
+  \item Concepto de derivada para funciones con diámetro no creciente.
+  \item Concepto de derivada para funciones con diámetro con monotonía arbitraria.
+  \item Concepto de derivada para funciones con diámetro con monotonía arbitraria.
+  \end{enumerate}
+\end{observacion} 
+
 \subsubsection{Otras definiciones}
 
 Para cerrar esta sección, veremos dos conceptos más derivada:
 
 \begin{definicion}[Diferencial de Hukuhara generalizada]
-Meter definición
-%TODO
+  Meter definición
+  %TODO
 \end{definicion}
 
 \begin{definicion}[Diferencial generalizada]
-	Meter definición
-	%TODO
+  Meter definición
+  %TODO 
 \end{definicion}
 
 En resumen,
 \begin{table}[h]
-	\centering
-	\begin{tabular}{lllllll}
-		H-Diferenciable & $\Rightarrow$ & GH-Diferenciable & $\Rightarrow$ & gH-Diferenciable & $\Rightarrow$ & g-Diferenciable
-	\end{tabular}
+  \centering
+  \begin{tabular}{lllllll}
+    H-Diferenciable & $\Rightarrow$ & GH-Diferenciable & $\Rightarrow$ & gH-Diferenciable & $\Rightarrow$ & g-Diferenciable
+  \end{tabular}
 \end{table}
 
 \subsection{Integral}
 La primera propuesta de integral difusa es \textbf{basada en el concepto integral de Aumann \cite{aumannintegral}} para funciones multievaluadas. La definición original podemos verla en \cite{integral1} y \cite{integral2}. \\
 Por simplificar, vamos a denotar:
 \[
-	S(G) = \{g : I \rightarrow \IR^n : g ~ integrable, g(t) \in G(t), \forall t \in I \}
+S(G) = \{g : I \rightarrow \IR^n : g ~ integrable, g(t) \in G(t), \forall t \in I \}
 \]
 Con $G : I \rightarrow \mathcal{P}(\IR^n)$
 
 \subsubsection{Integral de Aumann}
 \begin{definicion}[Integral de Aumann]
-	La integral de Aumann de una función sobre un conjunto difuso $F : [a, b] \rightarrow \mathcal{F}_H(\IR^n)$ sobre $[a, b]$ es definida como: 
-	\[
-		\left[
-		(A) \int_{a}^{b} F(x) dx
-		\right]_\alpha = \left\{
-			\int_{a}^{b} g(x) dx : g \in S([F(x)]_\alpha)
-		\right\}
-	\]
-	Para todo $\alpha \in [0, 1]$. La función $F$ se dirá que es integrable sobre $[a, b]$ si $(A) \int_{a}^{b} F(x) dx \in \mathcal{F}_\mathcal{H}(\IR^n)$
+  La integral de Aumann de una función sobre un conjunto difuso $F : [a, b] \rightarrow \mathcal{F}_H(\IR^n)$ sobre $[a, b]$ es definida como: 
+  \[
+  \left[
+    (A) \int_{a}^{b} F(x) dx
+    \right]_\alpha = \left\{
+  \int_{a}^{b} g(x) dx : g \in S([F(x)]_\alpha)
+  \right\}
+  \]
+  Para todo $\alpha \in [0, 1]$. La función $F$ se dirá que es integrable sobre $[a, b]$ si $(A) \int_{a}^{b} F(x) dx \in \mathcal{F}_\mathcal{H}(\IR^n)$
 \end{definicion}
 
 \subsubsection{Integral de Riemann}
 Se puede usar también el concepto clásico de integral para definir también una \textbf{integral de Riemann en el ámbito difuso.}
 
 \begin{definicion}[Integral de Riemann]
-Meter definición
-%TODO
+  Meter definición
+  %TODO
 \end{definicion}
 
 \subsubsection{Integral de Henstock}
 Tenemos un \textbf{concepto más fuerte que la integral de Riemann}, que nos puede servir para ciertos contextos:
 \begin{definicion}[Integral de Henstock]
-	Meter definición
-	%TODO
+  Meter definición
+  %TODO
 \end{definicion}
 
 \subsubsection{Algunos resultados importantes}
 En esta sección mostraremos una serie de teoremas de utilidad encontrados en \cite{integral2} que resumen en cierta manera \textbf{algunas propiedades ya conocidas del cálculo infinitesimal clásico}:
 
 \begin{teorema}
-	Si una función $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ es continua según (Definición \ref{def:funcioncontinua}) entonces es integrable. Más aún,
-	\[
-		\left[
-			\int F
-		\right]_\alpha = \left[
-			\int f_\alpha^-, \int f_\alpha^+
-		\right]
-	\] para todo $\alpha \in [0, 1]$
+  Si una función $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ es continua según (Definición \ref{def:funcioncontinua}) entonces es integrable. Más aún,
+  \[
+  \left[
+    \int F
+    \right]_\alpha = \left[
+    \int f_\alpha^-, \int f_\alpha^+
+    \right]
+  \] para todo $\alpha \in [0, 1]$
 \end{teorema}
 
 \begin{teorema}[Cambio de intervalos]
-	Sea $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ una función integrable, y supongamos $a \leq x_1 \leq x_2 \leq x_3 \leq b$, entonces:
-	\[
-		\int_{x_1}^{x_3} F = \int_{x_1}^{x_2} F + \int_{x_2}^{x_3} F
-	\]
+  Sea $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ una función integrable, y supongamos $a \leq x_1 \leq x_2 \leq x_3 \leq b$, entonces:
+  \[
+  \int_{x_1}^{x_3} F = \int_{x_1}^{x_2} F + \int_{x_2}^{x_3} F
+  \]
 \end{teorema}
 
 \begin{teorema}
-	Sean $F, G :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ funciones integrables, entonces:
-	
-	\begin{enumerate}
-		\item $\int F + G = \int F + \int G$
-		\item $\int \lambda F = \lambda \int F$ para cualquier $\lambda \in \IR$.
-		\item $d_\infty(F, G)$ es integrable.
-		\item $d_\infty(\int F, \int G) \leq \int d_\infty(F, G)$
-	\end{enumerate}
+  Sean $F, G :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ funciones integrables, entonces:
+  
+  \begin{enumerate}
+  \item $\int F + G = \int F + \int G$
+  \item $\int \lambda F = \lambda \int F$ para cualquier $\lambda \in \IR$.
+  \item $d_\infty(F, G)$ es integrable.
+  \item $d_\infty(\int F, \int G) \leq \int d_\infty(F, G)$
+  \end{enumerate}
 \end{teorema}
 
 \subsection{Teorema fundamental del cálculo}
 En la teoría clásica del análisis, \textbf{el teorema fundamental del cálculo nos ofrece una visión bastante fuerte que relaciona las derivadas y las integrales}. En el cálculo difuso tenemos lo mismo, y los siguientes teoremas que vamos a introducir nos \textbf{generalizarán estos teoremas clásicos para casos difusos.}
 
 \begin{teorema}[Teorema fundamental del cálculo difuso\cite{integral2}]
-	Sea $F : [a, b] \rightarrow \mathcal{F}_\mathcal{H} (\IR^n)$ una función continua, entonces $G(x) = \int_{a}^{x} F(s) ds$ es H-Diferenciable y además,
-	\[
-		G'_H(x) = F(x)
-	\]
+  Sea $F : [a, b] \rightarrow \mathcal{F}_\mathcal{H} (\IR^n)$ una función continua, entonces $G(x) = \int_{a}^{x} F(s) ds$ es H-Diferenciable y además,
+  \[
+  G'_H(x) = F(x)
+  \]
 \end{teorema}
 
 \begin{teorema}[\cite{integral2}]
-	Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función H-Diferenciable y sea $F_H'$ su derivada integrable sobre $[a, b]$. Entonces,
-	\[
-		F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
-	\]
-	Para todo $x \in [a, b]$
+  Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función H-Diferenciable y sea $F_H'$ su derivada integrable sobre $[a, b]$. Entonces,
+  \[
+  F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
+  \]
+  Para todo $x \in [a, b]$
 \end{teorema}
 
 Hay un teorema parecido al anterior, pero esta vez exigiendo que la función es diferenciable fuertemente generalizada (2), que dice lo siguiente:
 
 \begin{teorema}[\cite{fundamental}]
-	Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función diferenciable fuertemente generalizada (2) y sea $F_H'$ su derivada integrable sobre $[a, b]$. Entonces,
-	\[
-	F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
-	\]
-	Para todo $x \in [a, b]$
+  Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función diferenciable fuertemente generalizada (2) y sea $F_H'$ su derivada integrable sobre $[a, b]$. Entonces,
+  \[
+  F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
+  \]
+  Para todo $x \in [a, b]$
 \end{teorema}
 
 \section{Ecuaciones diferenciales difusas}
@@ -260,7 +269,22 @@ Del mismo modo que \textbf{hay varios acercamientos al concepto de derivada}, no
 En esta sección vamos a empezar planteando un problema difuso de la misma manera que se introducen las ecuaciones diferenciales clásicas:
 
 \begin{equation}
-	\label{def:edf}
-	X'(t) = f(t, X(t)), ~ X(0) = X_0
+  \label{def:edf}
+  X'(t) = f(t, X(t)), ~ X(0) = X_0
 \end{equation}
-Donde $f : [O, T] \times \mathcal{F}_\mathcal{H}(\IU)$
+Donde $f : [O, T] \times \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}(\IR^n)$ se obtiene mediante el principio de extensión de Zadeh aplicada a una función continua $g : [0, T] \times U \rightarrow \IR^n$. Además, $f$  es continua por ser $g$ continua, además aplicando \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}} podemos concluir:
+\[
+	[f(t, X)]_\alpha = g(t, [X]_\alpha)
+\]
+Se puede asociar a esta ecuación diferencial difusa una ecuación diferencial ordinaria:
+\begin{equation}
+	\label{eq:edo}
+	x'(t) = g(t, x(t)), ~ x(0) = c
+\end{equation}
+
+A continuación, se introducirá un resultado que permitirá resolver el problema \ref{eq:edo} se puede obtener una solución del problema \ref{def:edf}
+
+\begin{teorema}[Equivalencia entre EDO y EDD \cite{fuzzyapproaches1}]
+	Sea $U$ un conjunto abierto sobre $\IR^n$ y sea $[X_0]_\alpha \subset U$ con $\alpha \in [0, 1]$. Sea $g$ una función continua, y suponga que para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema \ref{eq:edo} y también que $x(t, \cdot)$ es continúa para todo $t \in [0, T]$ fijado. Entonces, existe una única solución difusa $X(t) = \hat{x}(t, x_0)$ del problema \ref{def:edf}
+\end{teorema}
+El resultado anterior es muy potente, permitirá utilizar métodos numéricos ya conocidos para resolver ecuaciones diferenciales difusas fácilmente.
