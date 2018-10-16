@@ -154,6 +154,7 @@ Para cerrar esta sección, veremos dos conceptos más derivada:
 \end{definicion}
 
 \begin{definicion}[Diferencial generalizada]
+  \label{def:diferencial_generalizada}
   Meter definición
   %TODO 
 \end{definicion}
@@ -272,7 +273,7 @@ En esta sección vamos a empezar planteando un problema difuso de la misma maner
   \label{def:edf}
   X'(t) = f(t, X(t)), ~ X(0) = X_0
 \end{equation}
-Donde $f : [O, T] \times \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}(\IR^n)$ se obtiene mediante el principio de extensión de Zadeh aplicada a una función continua $g : [0, T] \times U \rightarrow \IR^n$. Además, $f$  es continua por ser $g$ continua, además aplicando \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}} podemos concluir:
+Donde $f : [O, T] \times \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}(\IR^n)$ se obtiene mediante el principio de extensión de Zadeh aplicada a una función continua $g : [0, T] \times U \rightarrow \IR^n$. Además, $f$  es continua por ser $g$ continua, aplicando \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}} se puede concluir:
 \[
 	[f(t, X)]_\alpha = g(t, [X]_\alpha)
 \]
@@ -282,9 +283,117 @@ Se puede asociar a esta ecuación diferencial difusa una ecuación diferencial o
 	x'(t) = g(t, x(t)), ~ x(0) = c
 \end{equation}
 
-A continuación, se introducirá un resultado que permitirá resolver el problema \ref{eq:edo} se puede obtener una solución del problema \ref{def:edf}
+
+\subsection{Teorema de equivalencia entre EDO y EDD}
+
+A continuación, se ofrece un teorema que dará una relación entre ecuaciones diferenciales difusas y ordinarias.
 
 \begin{teorema}[Equivalencia entre EDO y EDD \cite{fuzzyapproaches1}]
+	\label{teorema:equivalencia}
 	Sea $U$ un conjunto abierto sobre $\IR^n$ y sea $[X_0]_\alpha \subset U$ con $\alpha \in [0, 1]$. Sea $g$ una función continua, y suponga que para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema \ref{eq:edo} y también que $x(t, \cdot)$ es continúa para todo $t \in [0, T]$ fijado. Entonces, existe una única solución difusa $X(t) = \hat{x}(t, x_0)$ del problema \ref{def:edf}
 \end{teorema}
 El resultado anterior es muy potente, permitirá utilizar métodos numéricos ya conocidos para resolver ecuaciones diferenciales difusas fácilmente.
+
+Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplos:
+
+\begin{ejemplo}
+	Se plantea la siguiente ecuación diferencial difusa con valores iniciales:
+	\[
+		\left\{
+			\begin{array}{ccc}
+				X' & = & - X(t) \\
+				X(0) & =  & C
+			\end{array}
+		\right.
+	\]
+	
+	Donde $C$ representa un número difuso arbitrario. A continuación se construye el problema ordinario asociado al problema difuso de la misma manera que se hace al inicio de esta sección;
+	
+	\[
+		\left\{
+			\begin{array}{ccc}
+				x' & = & - x(t) \\
+				x(0) & =  & c
+			\end{array}
+		\right.
+	\]
+	
+	Es bien conocido que este problema de valores iniciales tiene la siguiente solución:
+	\[
+		x(t, c) = c e^{-t}
+	\]
+	
+	Por tanto, dado que $x(t, c)$ es continúa para cada $t, c \in \IR$ se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia} y tenemos que la solución del problema difuso es:
+	\[
+		X(t) = C \cdot e^{-t}
+	\]
+\end{ejemplo}
+
+\begin{ejemplo}
+	Se plantea ahora un problema un tanto más interesante:
+	\[
+		\left\{
+			\begin{array}{ccc}
+				X' & = & X^2(t) \\
+				X & =  & C
+			\end{array}
+		\right.
+	\]
+	
+	Donde esta vez $C$ es un número difuso triangular:
+	\[
+		C(y) = \left\{
+			\begin{array}{ccc}
+				3 - y & si & 2 \leq y \leq 3 \\
+				y - 1 & si & 1 \leq y \leq 2 \\
+				0 
+			\end{array}
+		\right.
+	\]
+	El problema ordinario (o determinístico asociado) viene dado por:
+	\[
+		x'(t) = x^2(t), ~ x(0) = c
+	\]
+	y la solución de este problema viene dado por:
+	\[
+		x(t, c) = \frac{c}{1-tc}
+	\]
+	Para cada $t \in [0, \frac{1}{3})$ fijado, la función $(x, t)$ es continua respecto a $c$, entonces se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia} y podemos concluir que existe una única solución difusa dada por $X(t) = \hat{x}(t, X_0)$. Se observa que es posible calcular la solución difusa aplicando directamente el principio de extensión de Zadeh y el \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}}. Por tanto, se pueden calcular los $\alpha$-cortes de la siguiente forma para cada $\alpha \in [0, 1]$
+	
+	\[
+		\begin{array}{ccc}
+			[X(t)]_\alpha & = & [\hat{x}(t, X_0)]_\alpha \\
+			& = & x(t, [X_0]_\alpha) \\
+			& = & x(t, [1+\alpha, 3-\alpha]) \\
+			& = & [x(t, 1+\alpha), x(t, 3-\alpha)] \\
+			& = & \left[
+				\frac{1+\alpha}{1-t-t\alpha}, \frac{3-\alpha}{1-3t + t\alpha}
+			\right]
+		\end{array}
+	\]
+\end{ejemplo}
+
+\subsection{Inclusiones diferenciales}
+Esta sección está basada en las observaciones que se pueden ver en los artículos \cite{inclusionesdif1}, \cite{inclusionesdif2} y \cite{inclusionesdif3}. \\
+
+En estos artículos Hüllermeier y Diamond interpretan las  \hyperref[def:edf]{Ecuaciones Diferenciales Difusas} como una familia inclusiones diferenciales:
+
+\begin{equation}
+	\label{def:familiainclusionesdif}
+	y'_\alpha(t) = g(t, y_\alpha(t)), ~ y_\alpha(0) \in [X_0]_\alpha, ~ 0 \leq \alpha \leq 1
+\end{equation}
+
+Bajo unas determinadas hipótesis, podemos afirmar:
+\[
+	\mathcal{A}_\alpha = \{y_\alpha | y_\alpha ~ \text{es una solución de la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}}\}
+\]
+Son los $\alpha$-corte de un determinado conjunto difuso y se le llaman soluciones del problema dado por la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}
+
+A continuación se ofrece un teorema análogo al teorema que se vio en la sección introductoria \hyperref[teorema:equivalencia]{Teorema de Equivalencia entre EDO y EDF}
+\begin{teorema}[\cite{fuzzyapproaches1}]
+	Sea $U$ un conjunto abierto en $\IR^n$ y sea $X_0 \in \mathcal{F}(U)$. Dada la función $g$ continua, para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema \ref{eq:edo} y que $x(t, \cdot)$ es continúa en $U$ para cada $t \in [0, T]$. Entonces, la solución difusa del problema \ref{def:edf} y las soluciones del problema de \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales} coinciden, es decir;
+	\[
+		X(t) = \mathcal{A}(t)
+	\]
+	Para todo $t \in [0, T]$
+\end{teorema}
