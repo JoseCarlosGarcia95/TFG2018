@@ -1,6 +1,12 @@
 % !TeX root = ../main.tex
 
 \chapter{Conjuntos difusos}
+El concepto de conjunto difuso \textbf{fue introducido en 1965 por Lofti A. Zadeh}. Desde la publicación, la teoría difusa ha sido estudiada profundamente y extendida. 
+
+Su desarrollo \textbf{fue motivado por la vagueza que se encuentra en el lenguaje coloquial}. Los intentos de usar tecnología computacional para \textbf{procesar modelos usando la forma probabilística de la incertidumbre, se ha demostrado que no es adecuada.}
+
+Se puede decir que \textbf{la probabilidad predice el desarrollo de un elemento bien definido} (Por ejemplo, las caras de una moneda), sin embargo, \textbf{la teoría difusa viene a analizar la incertidumbre que existe en elementos bien conocidos.} (¿Es este color violeta o es más bien azul? ¿Está la temperatura alta o baja? Este último tipo de modelos son esenciales para solucionar problemas técnicos (\textbf{teoría de control}), economía (\textbf{análisis de mercado}) y \textbf{otros problemas influenciados por la vagueza del lenguaje humano}. \cite{historiafuzzy}
+
 El contenido de este capítulo se basa en las definiciones que aparecen en la referencia \cite{fuzzyintro}
 
 \section{Subconjuntos difusos}
@@ -19,7 +25,7 @@ En primer lugar, se introduce el concepto de conjunto difusos que servirá para 
   Se denomina a $\mu_A$ \textbf{función de pertenencia.}
 \end{definicion}
 
-Esta función de pertenencia no define necesariamente una probabilidad, y no hace referencia a la probabilidad de que una persona sea alta o baja, si no que da una medida de cuan alta o baja es.\\
+Esta función de pertenencia no define necesariamente una probabilidad, y no hace referencia a la probabilidad de que una persona sea alta o baja, si no que da una medida de cuan alta o baja es.\\ 
 
 Por tanto, es natural definir la igualdad de conjuntos de la siguiente forma:
 
@@ -177,6 +183,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
   Estaría bien que dado un conjunto difuso, y una función clásica, fuese posible obtener una función difusa, para esto, se introduce el principio de extensión de Zadeh.
 
   \begin{definicion}[Principio de extensión de Zadeh]
+  	\label{def:zadeh}
     Sean $\mathbb{U}$ y $\mathbb{V}$ dos conjuntos de universos, y sea $f: \mathbb{U} \longrightarrow \mathbb{V}$ una función clásica. Sea define el principio de extensión de Zadeh para todo conjunto difuso $A$ en $\mathbb{U}$ con $\mu_A$ su función de pertenencia, de manera que $\hat{f}(A)$ en $\mathbb{V}$ y su función de pertenencia viene dada por:
     
     $$
@@ -325,7 +332,24 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
     $$
   \end{observacion}
   Con esta observación es fácil ver que la H-Diferencia cumple que $A-A=\{0\}$
+ 
+  Se pueden definir otras diferencias que mejoran el concepto anterior:
+  
+  \begin{definicion}[Diferencia de Hukuhara generalizada]
+  	Dado dos números difusos $A, B \in \mathcal{F}_\mathcal{C}\IR$ se define la diferencia generalizada de Hukuhara (gH-diferencia) $A\circleddash_{gH}B=C$ donde $C$ es un número difuso que existe y cumple una de las siguientes condiciones:
+  	
+  	\begin{enumerate}
+  		\item $A=B+C$ 
+  		\item $B=A-C$
+  	\end{enumerate}
+  \end{definicion}
 
+  \begin{definicion}[Diferencia generalizada]
+	Dado dos números difusos $A, B \in \mathcal{F}_\mathcal{C}\IR$ se define la diferencia generalizada (g-diferencia) $A\circleddash_{g}B=C$ donde $C$ es un número difuso que existe y tiene los siguientes $\alpha$-cortes:
+	\[
+		[A \circleddash_{g} B]_\alpha = cl \bigcup_{\beta \geq \alpha} ([A]_\beta \circleddash_{gH} [B]_\alpha), \forall \alpha \in [0, 1]
+	\]
+  \end{definicion}
 
   \section{Interactividad}
   El principio de extensión de Zadeh se puede aplicar a funciones de distinto número de argumentos. Los ejemplos más simples podrían ser la suma, la resta, la multiplicación y la división de números difusos. Esta situación es más compleja, debido a que hay que tener en cuenta las estructuras entre los distintos argumentos. Esta dependencia mutua entre los distintos conjuntos difusos, viene dada por una función de pertenencia común denominada \textbf{función de pertenencia conjunta}. En términos de conjuntos difusos, esta dependencia se llama interactividad.
