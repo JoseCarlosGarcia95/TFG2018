@@ -1,18 +1,70 @@
 % !TeX root = ../main.tex
 \chapter{Resolución numérica de ecuaciones diferenciales difusas}
+En esta sección se van a ver diferentes técnicas para resolver ecuaciones diferenciales difusas, abarcando desde las técnicas clásicas de la resolución númerica de ecuaciones diferenciales hasta las técnicas más sofisticadas a nivel computacional.
 
-\section{Ecuaciones diferenciales}
+En esta sección se va a hacer un análisis exhaustivo en las ventajas que nos ofrecen los distintos métodos con vistas a obtener el rendimiento más óptimo en cuánto a velocidad y en eficiencia enerǵetica.
 
-\subsection{Método de Euler}
-\subsection{Runge-Kutta}
+Para entender esta sección sería conveniente revisar algunas de las técnicas mostradas en la sección anterior, y repasar las tećnicas básicas de resolución numérica de ecuaciones diferenciales difusas.
 
-\section{Ecuaciones en derivadas parciales}
+\section{Métodos clásicos y técnicas computacionales avanzadas}
+En la siguiente sección se propondrá resolver mediantes métodos clásicos los problemas deterministas asociados a las ecuaciones diferenciales difusas. En esta sección construiremos ejemplos para mostrar como trabajar.
 
-\subsection{Elementos finitos}
-\subsection{Diferencias finitas}
+\subsection{El método de Euler}
+Dado un problema de valores iniciales difuso:
+\[
+	y' = 2x - 3y + 1
+\]
+\[
+	y(0) = (-1;0;1)
+\]
+Claramente cumple las hipótesis del \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, por tanto el problema determinista asociado es:
+\[
+	y' = 2x - 3y + 1
+\]
+\[
+	y(0) = a
+\]
 
-\section{Experimentos numéricos}
+Con $a \in [-1, 1]$. \\
+En primer lugar, hay que discretizar el intervalo $[-1, 1]$, para ello se considera una partición dada por 
+\[
+	a_i = -1 + \frac{2i}{m-1}
+\]
 
-\subsection{Gráficas iteraciones VS Tiempo}
-\subsection{Impacto económico}
-\subsection{Medioambiente \& Impacto energético}
+Teniendo en cuenta estas particiones, se puede aproximar la solución del problema difuso resolviendo las $m$ ecuaciones diferenciales que se deducen al tomar:
+
+\[
+	y' = 2x - 3y + 1
+\]
+\[
+	y(0) = a_i
+\]
+
+Se construye ahora el método de Euler para la ecuación asociada a $a_i$ con tamaño del paso $h$, sea $x_0=0$ y tomemos $y_0 = a_i$, siguiendo entonces con le definición del método nos queda:
+\[
+	y_{j+1} = y_j + h (2x_j - 3y_j + 1)
+\]
+\[
+	x_{j+1} = x_0 + hj
+\]
+
+Para comparar el error de nuestro método, tengamos en cuenta:
+\[
+	y_i(x) = \frac{e^{-3 x} (-1 + 9 a_i + e^{3 x}(1 + 6 x))}{9}
+\]
+A continuación, se ofrecerá varías implementaciones del método con información descriptiva acerca del rendimiento energético y en tiempo:
+\subsubsection{Implementación en Python}
+Para este problema, se va hacer una implementación en Python 2.7.13 y Python 3.5.3 de manera nativa, y usando la extensión de Python Cython, que permitirá compilar el código de Python para conseguir un rendimiento similar al que se tendría con C.
+\subsubsection{Implementación en C: Secuencial}
+\subsubsection{Implementación en C: Paralelo}
+\subsubsection{Implementación en CUDA}
+\subsubsection{Conclusiones}
+
+\subsection{Método de Runge-Kutta}
+\subsubsection{Implementación en Python}
+\subsubsection{Implementación en C: Secuencial}
+\subsubsection{Implementación en C: Paralelo}
+\subsubsection{Implementación en CUDA}
+\subsubsection{Conclusiones}
+
+\subsection{Comparativas}
