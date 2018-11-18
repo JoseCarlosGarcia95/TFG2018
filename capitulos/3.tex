@@ -182,6 +182,35 @@ A continuación, vamos a mostrar un ejemplo basado en el esquema de diferencias 
   Podemos observar que trabajar con GPU nos ofrece un mejor rendimiento, tanto en términos de tiempo como económicos. El consumo energético es mucho menor en GPU que en CPU a lo largo del tiempo.
 \end{ejemplo}
 
+\subsection{Optimizar compilación}
+Si se está trabajando con C, se puede escribir la flag -Ofast a la hora de compilar nuestro programa. Se puede encontrar una discusión sobre esta flag entre desarrolladores de GCC y el propio Linus Torvarlds, creador de Linux. \cite{linusfast} \\
+El flag anterior, incluye las optimizaciones que se hacen con -O3 y aparte, añade unas optimizaciones numéricas que son las que se van a explorar a continuación:
+
+\begin{itemize}
+	\item \textbf{\textit{-fno-trapping-math/-fno-signaling-nans: }} Esta opción hace que operaciones como dividir entre $0$ no genere excepciones.
+	
+	\item \textbf{\textit{-fno-rounding-math/-fno-signed-zeros/-funsafe-math-optimizations: }} Esta opción desactiva las propiedades aritméticas coma flotante, y las remplaza con las propiedades ordinarias en precisión infinita. Debido a esto, y a errores de redondeo con esta opción puede que $(x+y)+z \neq x + (y+z)$, y se diferenciarían en el error de redondeo.
+	
+	\item \textbf{\textit{-ffinite-math-only: }} Desactiva las cantidades $nan$ e $inf$, esto hace que internamente nuestro programa no tenga que buscar si aparecen $nan$ o $inf$ para controlar esas excepciones.
+	
+	\item \textbf{\textit{-fno-errno-math: }} Desactiva la variable que contiene los errores al usar la librería matemática.
+	
+	\item \textbf{\textit{-fcx-limited-range: }} Desactiva la reducción al hacer la división compleja.
+\end{itemize}
+
+En el último capítulo veremos una implementación de esto, aunque aquí se muestra un pequeño resumen de lo que supone la optimización en cuestión de tiempos:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Test}  & \textbf{Tiempo}        \\ \hline
+		Fastmath simple & 11.9 segundos \\ 
+		Simple     & 85 segundos    \\
+		Fastmath doble   & 12.15 segundos    \\
+		Doble   & 75.80 segundos \\ \hline
+	\end{tabular}%
+\end{table}
 %\section{Apéndice: Montando un entorno científico en AWS}
 
 \iffalse

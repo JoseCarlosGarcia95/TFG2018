@@ -9,7 +9,7 @@ Para entender esta sección sería conveniente revisar algunas de las técnicas 
 \section{Métodos clásicos y técnicas computacionales avanzadas}
 En la siguiente sección se propondrá resolver mediantes métodos clásicos los problemas deterministas asociados a las ecuaciones diferenciales difusas. En esta sección construiremos ejemplos para mostrar como trabajar.
 
-\subsection{El método de Euler}
+\section{El método de Euler}
 Dado un problema de valores iniciales difuso:
 \[
 	y' = 2x - 3y + 1
@@ -53,15 +53,74 @@ Para comparar el error de nuestro método, tengamos en cuenta:
 	y_i(x) = \frac{e^{-3 x} (-1 + 9 a_i + e^{3 x}(1 + 6 x))}{9}
 \]
 A continuación, se ofrecerá varías implementaciones del método con información descriptiva acerca del rendimiento energético y en tiempo:
-\subsubsection{Implementación en Python}
-Para este problema, se va hacer una implementación en Python 2.7.13 y Python 3.5.3 de manera nativa, y usando la extensión de Python Cython, que permitirá compilar el código de Python para conseguir un rendimiento similar al que se tendría con C.
-\subsubsection{Implementación en C: Secuencial}
-\subsubsection{Implementación en C: Paralelo}
-\subsubsection{Implementación en CUDA}
-\subsubsection{Conclusiones}
 
-\subsection{Método de Runge-Kutta}
+\subsection{Experimentos numéricos}
+Se va a tratar de resolver el problema anterior aplicando el método de Euler, con una implementación en C y otra en Python, donde se varía la cantidad de particiones del número difuso triangular y con 100 pasos en el método de Euler.
 \subsubsection{Implementación en Python}
+\begin{figure}[H]
+	\frame{\includegraphics[width=\textwidth]{grafica_python_euler_comparativa.pdf}}
+	\centering
+	\caption{Distintos resultados en Python}
+	\label{fig:eulerpython}
+\end{figure}
+
+Se pueden observar, varios patrones:
+
+\begin{itemize}
+	\item La forma menos eficiente de resolver el problema es usando una versión más reciente de Python.
+	\item Trabajar con Cython no nos asegura un rendimiento mejor.
+	\item El crecimiento del tiempo de ejecución en paralelo crece mucho más lento que en secuencial.
+	\item Si se quiere resolver un problema pequeño $(n < 2000)$ es conveniente hacerlo de manera secuencial.
+\end{itemize}
+
+A continuación, se muestra una tabla con los resultados obtenidos por cada test.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Test}  & \textbf{Tiempo}        \\ \hline
+		2.7 Secuencial & 85.22 minutos \\ 
+		2.7 Cython     & 85 minutos    \\
+		2.7 Paralelo   & 61 minutos    \\
+		3.5 Secuencial & 100 minutos   \\
+		3.5 Paralelo   & 61 minutos   \\ \hline
+	\end{tabular}%
+\end{table}
+\subsubsection{Implementación en C: Secuencial}
+\begin{figure}[H]
+	\frame{\includegraphics[width=\textwidth]{grafica_cseq_euler_comparativa.pdf}}
+	\centering
+	\caption{Distintos resultados en C}
+	\label{fig:eulercseq}
+\end{figure}
+En esta parte se va a probar una implementación en C, usando diferentes técnicas numéricas.
+\begin{itemize}
+	\item Se han obtenido resultados esperados en las compilaciones básicas de los programas.
+	\item Cuando se trabaja en doble precisión, el rendimiento se reduce, pero en C se siguen consiguiendo resultados bastantes rápidos independientemente de la precisión.
+	\item El consumo de RAM es bastante reducido.
+	\item El procesador al ser un procesador de 64 bits, trabaja mejor en doble precisión que en simple precisión.
+\end{itemize}
+
+A continuación, se muestra una tabla con los resultados obtenidos por cada test.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Test}  & \textbf{Tiempo}        \\ \hline
+		Fastmath simple & 11.9 segundos \\ 
+		Simple     & 85 segundos    \\
+		Fastmath doble   & 12.15 segundos    \\
+		Doble   & 75.80 segundos \\ \hline
+	\end{tabular}%
+\end{table}
+
+Ahora vamos a ver que sucede si también se aumenta el número de particiones para representar el número difuso, y para obtener resultados más interesantes, se van a empezar las iteraciones en 10000.
+
+\subsubsection{Conclusiones}
+En contra de lo que se pueda pensar comúnmente, trabajar con precisión doble es más eficiente en procesadores modernos de 64 bits que trabajar en precisión simple, así que no hay que tener miedo a trabajar con doble precisión. \\
+Los resultados obtenidos en C con la flag -OFast son sorprendentes, tan sorprendentes que no se ha planteado la necesidad  de implementar el método en paralelo por la eficiencia de aplicar esa flag.
+\subsection{Método de Runge-Kutta}
 \subsubsection{Implementación en C: Secuencial}
 \subsubsection{Implementación en C: Paralelo}
 \subsubsection{Implementación en CUDA}

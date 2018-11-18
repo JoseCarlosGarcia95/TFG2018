@@ -10,17 +10,18 @@ RUN='main.py'
 # Variables
 results = {}
 
-for folder in os.listdir('.'):
 
+for folder in os.listdir('.'):
     if os.path.isdir(folder):
         script  = folder + "/" + RUN 
         results[script] = []
+
 
         for i in range(0, 10000):
             print("[{}] Running test to: ".format(i) + script)
 
             start_time = time.time()
-            call([script, '100', str(i)])
+            call([script, str(i), '100'])
             results[script].append(time.time() - start_time)
 
 
