@@ -4,5 +4,6 @@ all:
 
 	gcc -o basic-double main.c -lm -D DOUBLE_PRECCISION
 	gcc -o fastmath-double main.c -lm -Ofast -D DOUBLE_PRECCISION
+	gcc -o o3-double main.c -lm -O3 -D DOUBLE_PRECCISION
 
 	

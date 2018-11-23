@@ -1,6 +1,9 @@
 % !TeX root = ../main.tex
 
 \chapter{Computación científica de alto rendimiento}
+\begin{chapquote}{Alan Turing}
+	``La idea detrás de los computadores digitales puede explicarse diciendo que estas máquinas están destinadas a llevar a cabo cualquier operación que pueda ser realizado por un equipo humano``
+\end{chapquote}
 En los anteriores capítulos se han dado definiciones y técnicas para generalizar los conceptos clásicos del cálculos en un contexto difuso, no obstante el objetivo final de este trabajo es encontrar y desarrollar métodos numéricos para resolver problemas en ecuaciones diferenciales difusas.
 
 En este capítulo, \textbf{se abordan distintas técnicas numéricas} que se van a aplicar en los capítulos posteriores para atacar estos problemas de la forma más eficiente posible. 
@@ -209,6 +212,19 @@ En el último capítulo veremos una implementación de esto, aunque aquí se mue
 		Simple     & 85 segundos    \\
 		Fastmath doble   & 12.15 segundos    \\
 		Doble   & 75.80 segundos \\ \hline
+	\end{tabular}%
+\end{table}
+Además, también se consigue mejor consumo energético como se puede observar en la siguiente tabla
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Test}  & \textbf{Consumo energético}        \\ \hline
+		Fastmath simple & $118.644028 \mu A/s$ \\ 
+		Fastmath doble   & $118.644058 \mu A/s$ \\
+		Simple & $ 152.542389 \mu A/s$ \\
+		Doble & $ 169.491638 \mu A/s$ \\
+		\hline
 	\end{tabular}%
 \end{table}
 %\section{Apéndice: Montando un entorno científico en AWS}
