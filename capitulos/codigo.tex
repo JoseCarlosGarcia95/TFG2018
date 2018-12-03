@@ -1,0 +1,110 @@
+\chapter{Apéndice: Código fuente}
+
+\section{Computación científica de alto rendimiento}
+
+\subsection{Prueba simple en Python}
+\label{prueba:simple_python}
+\lstinputlisting[language=Python]{codigo_capitulo3/prueba1.py}
+
+\newpage
+\subsection{Prueba simple en C}
+\label{prueba:simple_c}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba1.c}
+
+\newpage
+\subsection{Script de pruebas}
+\lstinputlisting[language=Bash]{codigo_capitulo3/prueba1.sh}
+
+\newpage
+\subsection{Generar gráficas pruebas}
+\lstinputlisting[language=C]{codigo_capitulo3/plot_log.py}
+
+\newpage
+\subsection{Segunda prueba simple en C}
+\label{prueba:simple_c2}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba2_simple.c}
+
+\newpage
+\subsection{Segunda prueba doble en C}
+\label{prueba:doble_c2}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba2_doble.c}
+
+\newpage
+\subsection{Segunda prueba mixta en C}
+\label{prueba:mixta_c2}
+\lstinputlisting[language=C]{codigo_capitulo3/prueba2_mixta.c}
+
+\newpage
+\subsection{Makefile}
+\lstinputlisting[language=C]{codigo_capitulo3/Makefile}
+
+\section{Resolución numérica de ecuaciones diferenciales difusas}
+\subsection{Método de Euler: Python}
+\label{prueba:euler_python}
+\subsubsection{2.7-basic}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/2.7-basic/main.py}
+\newpage
+
+\subsubsection{2.7-cython-basic}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/2.7-cython-basic/main.py}
+\newpage
+
+\subsubsection{2.7-cython-pool}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/2.7-cython-basic/main.py}
+\newpage
+
+\subsubsection{2.7-pool}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/2.7-pool/main.py}
+\newpage
+
+\subsubsection{3.5-basic}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/3.5-basic/main.py}
+\newpage
+
+\subsubsection{3.5-pool}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/3.5-pool/main.py}
+\newpage
+
+\subsubsection{Hacer test}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/run-tests.py}
+\newpage
+
+\subsubsection{Pintar test}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/python/draw-tests.py}
+\newpage
+
+\subsection{Método de Euler: C}
+\lstinputlisting[language=C]{codigo_capitulo5/metodo_euler/c-seq/main.c}
+\newpage
+
+\subsubsection{Makefile}
+\lstinputlisting[language=C]{codigo_capitulo5/metodo_euler/c-seq/Makefile}
+\newpage
+
+\subsubsection{Hacer tests}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/c-seq/run-tests.py}
+\newpage
+
+\subsubsection{Pintar tests}
+\lstinputlisting[language=Python]{codigo_capitulo5/metodo_euler/c-seq/draw-tests.py}
+\newpage
+
+\subsection{Método de Runge-Kutta: C}
+\lstinputlisting[language=C]{codigo_capitulo5/runge_kutta/c-seq/main.c}
+\newpage
+
+\subsubsection{Makefile}
+\lstinputlisting[language=C]{codigo_capitulo5/runge_kutta/c-seq/Makefile}
+\newpage
+
+\subsubsection{Hacer tests}
+\lstinputlisting[language=Python]{codigo_capitulo5/runge_kutta/c-seq/run-tests.py}
+\newpage
+
+\subsubsection{Pintar tests}
+\lstinputlisting[language=Python]{codigo_capitulo5/runge_kutta/c-seq/draw-tests.py}
+\newpage
+
+\subsection{Método de Runge-Kutta: CUDA}
+\label{prueba:cuda}
+\lstinputlisting[language=C]{codigo_capitulo5/cuda/src/edo_fuzzy_solver/solver.cu}

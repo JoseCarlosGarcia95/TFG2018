@@ -12,7 +12,7 @@ En esta sección se va a hacer un análisis exhaustivo en las ventajas que nos o
 Para entender esta sección sería conveniente revisar algunas de las técnicas mostradas en la sección anterior, y repasar las tećnicas básicas de resolución numérica de ecuaciones diferenciales difusas.
 
 \section{El método de Euler}
-En esta sección se va a desarrollar el método de Euler para problemas difusos, para ello se empieza recordando como funciona el método de Euler para ecuaciones diferenciales ordinales.
+En esta sección se va a desarrollar el método de Euler para problemas difusos, para ello se empieza recordando como funciona el método de Euler para ecuaciones diferenciales ordinales. Cabe recordar que este método numérico tiene orden $1$.
 
 \subsection{Método de Euler: Versión clásica}
 Se supone que se tiene un problema de valores iniciales bien definido, y lo suficiente regular para asegurar que tiene soluciones:
@@ -204,10 +204,100 @@ Los resultados obtenidos en C con la flag -OFast son sorprendentes, tan sorprend
 Y no sólo permite obtener una solución numérica más rápidamente, sino que permite consumir menos recursos energéticos, lo que se traduce en un ahorro económico a la hora de trabajar a una escala mayor, y un menor impacto medioambiental, por tanto utilizar la flag -Ofast al compilar es la mejor opción en todos los aspectos
 \end{ejemplo}
 
-\section{Método de Runge-Kutta}
-\subsubsection{Implementación en C: Secuencial}
-\subsubsection{Implementación en C: Paralelo}
-\subsubsection{Implementación en CUDA}
-\subsubsection{Conclusiones}
+\section{Método de Runge-Kutta de cuarto orden}
+Por otro lado, vamos a desarrollar el método de Runge Kutta, que como es bien sabido, el orden de convergencia de este método es mayor que el de Euler, por lo que se esperan mejores resultados a priori.
+
+\subsection{Método de Runge-Kutta de cuarto orden: Versión clásica}
+Se supone que se tiene un problema de valores iniciales bien definido, y lo suficiente regular para asegurar que tiene soluciones:
+\[
+\begin{array}{ccc}
+y' & = &f(x, y)  \\
+y(x_0) & = & y_0
+\end{array}
+\]
+Como en el método de Euler, lo que se busca primer lugar es una discretización del intervalo $[x_0, x_f]$, se supone que se quiere discretizar el intervalo en $n$ valores, sea entonces:
+\[
+	h = \frac{x_f - x_0}{n}
+\]
+Por tanto, podemos definir 
+\[
+	x_i = x_0 + i h
+\]
+Por otro lado, el paso iterativo sobre $y_{i+1}$ viene dado por:
+\[
+	y_{i+1} = y_i + \frac{h}{6} (k_1 + 2k_2 + 2k_3 + k_4)
+\]
+Donde se definen:
+\[
+\begin{array}{ccc}
+	k_1 & = & f(x_i, y_i) \\
+	k_2 & = & f\left(x_i + \frac{h}{2}, y_i + \frac{k_1 h}{2}\right) \\
+	k_3 & = & f\left(x_i + \frac{h}{2}, y_i + \frac{k_2 h}{2}\right) \\
+	k_4 & = & f(x_i + h, y_i + k_3 h)
+\end{array}
+\]
+
+\subsection{Método de Runge-Kutta de cuarto orden: Versión difusa}
+Se considera el siguiente problema difuso,
+\[
+\begin{array}{ccc}
+y' & = &f(x, y)  \\
+y(x_0) & = & A
+\end{array}
+\]
+Donde $A$ es un número difuso, se supone que el problema anterior cumple el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y se considera el problema determinista asociado:
+\[
+\begin{array}{ccc}
+y' & = &f(x, y)  \\
+y(x_0) & = & a
+\end{array}
+\]
+Donde $a \in A$, se toma entonces $A$ como una discretización de $n+1$ elementos de $A$, donde cada elemento se denota por $a_i$, por tanto se tienen ahora $n+1$ EDO diferentes, donde cada una de estas se pueden resolver aplicando el método de Método de Runge-Kutta de cuarto orden.
+
+\subsection{Método de Runge-Kutta de cuarto orden: Ejemplo}
+Para poder comparar correctamente, los distintos métodos vamos a tratar, se va a resolver el mismo problema anterior pero esta vez, aplicando Runge-Kutta.
+
+\subsection{Experimentos numéricos}
+Se va a tratar de resolver el problema anterior aplicando el método de Runge-Kutta, con una implementación en C donde se varía la cantidad de particiones del número difuso triangular y con 100 pasos en el método de Euler.
+
+\begin{figure}[H]
+	\frame{\includegraphics[width=\textwidth]{grafica_cseq_rk_comparativa.pdf}}
+	\centering
+	\caption{Distintos resultados en C}
+	\label{fig:rungekuttacseq}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Test}  & \textbf{Tiempo}        \\ \hline
+		Fastmath simple   & 10.1921305656 segundos    \\
+		Fastmath doble   & 10.1441464424 segundos   \\
+		Basic doble     &238.943392515 segundos    \\
+	    Basic simple & 270.01487565 segundos \\ 
+		\hline
+	\end{tabular}%
+\end{table}
 
 \section{Comparativas}
+Si se observa la tabla de tiempos del algoritmo de Euler respecto del algoritmo de Runge-Kutta se pueden encontrar una serie de información interesante:
+
+\begin{itemize}
+	\item Los modos básicos son más rápidos en el método de Euler, también tiene más sentido, pues en el método de Runge-Kutta necesita de más operaciones.
+	
+	\item Aunque Runge-Kutta precise de más operaciones, Runge Kutta tiene un mayor orden de convergencia.
+	
+	\item Al introducir la flag -Ofast el compilador optimiza Runge-Kutta lo suficiente como para poder afirmar que en este caso, Runge-Kutta es más rápido que el método de Euler, y además tiene un mayor orden de convergencia, por tanto, el mejor método en todos los aspectos es aparentemente el método de Runge-Kutta con la flag -ofast.
+\end{itemize}
+
+\section{Método difuso paralelizado}
+Los dos métodos estudiados anteriormente se pueden resumir, de la siguiente forma:
+\begin{itemize}
+	\item Se comprueban las hipótesis del \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}.
+	
+	\item Se considera una discretización del número difuso.
+	
+	\item Se resuelve numéricamente para cada uno de los valores que se encuentra en la discretización.
+\end{itemize}
+Se observa, que el último paso es independiente para cada valor discretizado del número difuso, por tanto, se podría paralelizar el algoritmo anterior de manera que cada ecuación diferencial se resuelve al mismo tiempo de forma paralela, esto es útil si se quiere hacer una discretización muy fina del número difuso, podemos ver una implementación en \ref{prueba:cuda}

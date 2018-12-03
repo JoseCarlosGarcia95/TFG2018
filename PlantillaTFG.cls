@@ -202,11 +202,11 @@
 % Dedicatoria
 \newenvironment{dedicatoria}
 {
-	\begin{flushright}\null\vspace{\stretch{1}}
+	\vspace{\stretch{1}}
 	\itshape
 }
 {
-	\vspace{\stretch{2}}\null\end{flushright}
+	\vspace{\stretch{2}}
 }
 
 % Capitulos
