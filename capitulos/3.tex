@@ -2,7 +2,7 @@
 
 \chapter{Computación científica de alto rendimiento}
 \begin{chapquote}{Alan Turing}
-	``La idea detrás de los computadores digitales puede explicarse diciendo que estas máquinas están destinadas a llevar a cabo cualquier operación que pueda ser realizado por un equipo humano``
+	``La idea detrás de los computadores digitales puede explicarse diciendo que estas máquinas están destinadas a llevar a cabo cualquier operación que pueda ser realizada por un equipo humano``
 \end{chapquote}
 En los anteriores capítulos se han dado definiciones y técnicas para generalizar los conceptos clásicos del cálculos en un contexto difuso, no obstante el objetivo final de este trabajo es encontrar y desarrollar métodos numéricos para resolver problemas en ecuaciones diferenciales difusas.
 
@@ -10,7 +10,7 @@ En este capítulo, \textbf{se abordan distintas técnicas numéricas} que se van
 
 Este capítulo trata más los problemas desde el punto de vista informático, que serán nuestras herramientas para desarrollar correctamente la resolución numérica de los problemas planteados.
 
-Este capítulo está basado en los puntos que se exponen en \cite{paralelo}
+Este capítulo está basado en los puntos que se exponen en \cite{paralelo}.
 
 \section{Conceptos básicos}
 Dentro de la computación científica, podemos distinguir \textbf{una serie de conceptos esenciales}, que tienen que ver en cierta medida con las partes que forman un ordenador. Todo el mundo que tiene un ordenador, seguro que conoce ciertas partes de su ordenador, pues todo el mundo ha hablado alguna vez de la \textbf{memoria RAM de su ordenador, el procesador, tarjeta gráfica, tarjeta de red...} pero, ¿Qué impacto tiene cada uno de estos elementos en el desarrollo de la computación científica?
@@ -18,7 +18,7 @@ Dentro de la computación científica, podemos distinguir \textbf{una serie de c
 \subsection{Memoria RAM}
 Los programas que se ejecutan en un ordenador se alojan en la memoria RAM, y una vez alojados en la memoria RAM, el procesador se encarga de procesar las instrucciones y ejecuta el código del programa procesando lo que se conoce como \textit{stack}. En resumen, \textbf{la memoria RAM es donde se almacenan las instrucciones que va a ejecutar el procesador, y todos los datos que generamos en nuestro sistema operativo.}
 \\ 
-La memoria RAM nos impone un límite de la cantidad de datos que puede estar en ejecución en un momento dado, y si se quiere obtener el máximo rendimiento posible, se tiene que \textbf{evitar escribir más memoria RAM de la disponible}, sino, el sistema operativo empezará a usar el disco duro para alojar información, esta tecnología se le conoce como \textbf{\textit{swap}}, y es \textbf{mucho más lenta que la memoria RAM.}
+La memoria RAM nos impone un límite de la cantidad de datos que puede estar en ejecución en un momento dado, y si se quiere obtener el máximo rendimiento posible, se tiene que \textbf{evitar escribir más memoria RAM de la disponible}, si no, el sistema operativo empezará a usar el disco duro para alojar información, esta tecnología se le conoce como \textbf{\textit{swap}}, y es \textbf{mucho más lenta que la memoria RAM.}
 \\ 
 Dentro de un ordenador, se puede \textbf{dividir la memoria RAM en dos grupos}; \textbf{la memoria RAM disponible para el procesador}, y  \textbf{la memoria RAM disponible para la tarjeta gráfica}. Esto es bastante importante, pues cuando se trabaja con la \textbf{tarjeta gráfica, no se puede acceder a punteros alojados en la memoria RAM del procesador}, por tanto, \textbf{antes de acceder a esta información se debe copiar a la memoria RAM de la tarjeta gráfica.} La operación de copiar datos desde la memoria de la tarjeta gráfica al procesador es bastante lenta, y es conocido que en este punto existe \textbf{un cuello de botella.}
 \\ 
@@ -26,29 +26,28 @@ Tener mucha memoria RAM en nuestra máquina también podría reducir el consumo 
 
 \subsection{Procesador (CPU)}
 El procesador es la parte del ordenador que se encarga de interpretar las instrucciones que hemos generado con nuestro programa, y es también \textbf{fundamental a la hora de conseguir un rendimiento óptimo de un programa}. \\
-Algunos de los aspectos a tener en cuenta para obtener un \textbf{mejor rendimiento sería los hilos del procesador, y los GHz}. Los \textbf{hilos del procesador permiten ejecutar tareas de manera simultanea}. Por ejemplo, si el procesador tiene $10$ hilos, y se quiere sumar un vector de $10$ elementos, se puede hacer que las 10 sumas que hacen falta para sumar el vector se hagan simultáneamente.
-
+Algunos de los aspectos a tener en cuenta para obtener un \textbf{mejor rendimiento serían los hilos del procesador, y los GHz}. Los \textbf{hilos del procesador permiten ejecutar tareas de manera simultanea}. Por ejemplo, si el procesador tiene $10$ hilos, y se quiere sumar un vector de $10$ elementos, se puede hacer que las 10 sumas que hacen falta para sumar el vector se hagan simultáneamente. En el caso de que se quieran hacer operaciones que dependan unas de otras podemos considerar un grafo árbol donde vamos procesando los nodos independientes de forma paralela y esperamos en los nodos dependientes hasta que todas las operaciones hayan sido realizadas.
 \subsection{Tarjeta gráfica (GPU)}
 Habitualmente, se piensa sólo en el mundo \textit{gaming} cuando se habla de tarjetas gráficas, y pensamos que su única utilidad es para jugar a videojuegos en alta resolución. Sin embargo, son más útiles de lo que puede parecer. \\ \\
 En este caso, las gráficas podemos tratarlas de forma parecida a las CPU, sin embargo, la gran ventaja que ofrecen las GPU es que \textbf{están construidas para procesar muchos datos simultáneamente}, debido a que las tarjetas gráficas tienen \textbf{muchos más hilos disponibles que la CPU}, pero por otro lado, \textbf{cada hilo es más lento.}
 
 \subsection{Tarjeta de Red (Internet/Intranet/Cluster)}
 Usar internet o intranet para trabajar con computación de alto rendimiento es una buena práctica también, cuando \textbf{conectamos varios ordenadores y los coordinamos para realizar una tarea, se les llaman \textit{cluster}}. \\ \\
-Es importante saber que la información a través de la tarjeta de red viaja \textbf{más lento que por las otras vías}, y hay otros factores a tener en cuenta, como la distancia física entre los ordenadores, sin embargo si queremos trabajar con \textbf{muchísimos hilos es la mejor opción que existe; conectar muchos ordenadores a realizar una misma operación.}
+Es importante saber que la información a través de la tarjeta de red viaja \textbf{más lento que por las otras vías}, y hay otros factores a tener en cuenta, como la distancia física entre los ordenadores. Sin embargo, si queremos trabajar con \textbf{muchísimos hilos es la mejor opción que existe, esto es, conectar muchos ordenadores para realizar simultáneamente las operaciones que se le manden.}
 
 \section{Técnicas de alto rendimiento}
 
 Una vez introducidos los conceptos básicos acerca de los distintos elementos de la computación científica, vamos a hablar de las distintas técnicas que podemos abordar para \textbf{obtener un rendimiento lo más óptimo posible.}
 
 \subsection{Programación de bajo nivel}
-El \textbf{lenguaje de programación que utilicemos va a decantar la balanza en temas de rendimiento}, si queremos exprimir al máximo nuestros ordenadores no nos quedará más remedio que decantarnos por lenguajes de más bajo nivel como C++ o C, al no ser un lenguaje interpretado, como pasa por ejemplo con Python, nuestro código se ejecuta directamente en nuestra máquina.
+El \textbf{lenguaje de programación que utilicemos va a decantar la balanza en temas de rendimiento}. Si queremos exprimir al máximo nuestros ordenadores no nos quedará más remedio que decantarnos por lenguajes de más bajo nivel como C++ o C, al no ser lenguajes interpretados, como pasa por ejemplo con Python, es decir, nuestro código se ejecuta directamente en nuestra máquina.
 
-En las siguientes pruebas, vamos a revisar como se comporta Python y C, con el mismo código, en términos de tiempo de ejecución, uso de RAM: (\hyperref[prueba:cvspython]{Código del ejemplo}):
+En las siguientes pruebas, vamos a revisar cómo se comporta Python y C, con el mismo código, en términos de tiempo de ejecución, uso de RAM: (\hyperref[prueba:cvspython]{Código del ejemplo}):
 
 \begin{itemize}
-\item \textbf{C es más eficiente a la hora de administrar la memoria RAM}, al probar 10000000000 iteraciones, \textbf{Python no puede alocar más memoria RAM, sin embargo, C es capaz de alocar la memoria sin ningún tipo de problema.}
+\item \textbf{C es más eficiente a la hora de administrar la memoria RAM}, al probar 10000000000 iteraciones, \textbf{Python no puede alocar más memoria RAM, sin embargo, C es capaz de reservar la memoria necesaria sin ningún tipo de problema.}
   
-\item Por otro lado, los tiempos de ejecución son más sorprendente aún. \textbf{Con tan sólo 10 iteraciones, C es 5 veces más rápido que $1000000$ C es 77 veces más rápido que Python, y finalmente con $1000000000$ iteraciones, C es 100 veces más rápido que Python.} Aquí se ve la notable diferencia entre uno y otro. Si queremos trabajar en computación científica, trabajar con C debe ser nuestra primera elección. (Ver figura \ref{fig:cvspython})
+\item Por otro lado, los tiempos de ejecución son más sorprendentes aún. \textbf{Con tan solo 10 iteraciones, C es 5 veces más rápido que Python, con $1000000$ C es 77 veces más rápido que Python y, finalmente, con $1000000000$ iteraciones, C es 100 veces más rápido que Python.} Aquí se ve la notable diferencia entre uno y otro. Si queremos trabajar en computación científica, trabajar con C debe ser nuestra primera elección. (Ver figura \ref{fig:cvspython})
 \end{itemize}
 
 \begin{figure}[h]

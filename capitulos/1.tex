@@ -4,24 +4,24 @@
 \begin{chapquote}{Lotfi A. Zadeh}
 	``A medida que aumenta la complejidad, las declaraciones precisas pierden significado y las declaraciones significativas pierden precisión``
 \end{chapquote}
-El concepto de conjunto difuso \textbf{fue introducido en 1965 por Lofti A. Zadeh}. Desde la publicación, la teoría difusa ha sido estudiada profundamente y extendida. 
+El concepto de conjunto difuso \textbf{fue introducido en 1965 por Lotfi A. Zadeh}, y desde su introducción se ha estudiado profundamente, y se ha considerado para extender otras teorías, permitiendo entre otras cosas el tratamiento de bases de datos con incertidumbre.
 
-Su desarrollo \textbf{fue motivado por la vagueza que se encuentra en el lenguaje coloquial}. Los intentos de usar tecnología computacional para \textbf{procesar modelos usando la forma probabilística de la incertidumbre, se ha demostrado que no es adecuada.}
+Su desarrollo \textbf{fue motivado por la naturaleza cualitativa que se encuentra en el lenguaje coloquial}. Los intentos de usar tecnología computacional para \textbf{procesar modelos usando la forma probabilística de la incertidumbre, se ha demostrado que no han sido del todo satisfactorios.}
 
-Se puede decir que \textbf{la probabilidad predice el desarrollo de un elemento bien definido} (Por ejemplo, las caras de una moneda), sin embargo, \textbf{la teoría difusa viene a analizar la incertidumbre que existe en elementos bien conocidos.} (¿Es este color violeta o es más bien azul? ¿Está la temperatura alta o baja? Este último tipo de modelos son esenciales para solucionar problemas técnicos (\textbf{teoría de control}), economía (\textbf{análisis de mercado}) y \textbf{otros problemas influenciados por la vagueza del lenguaje humano}. \cite{historiafuzzy}
+Se puede decir que \textbf{calcula de forma cuantitativa de que se verifique un proceso bien definido} (por ejemplo, las caras de una moneda), sin embargo, \textbf{la teoría difusa viene a analizar la incertidumbre que existe en elementos bien conocidos.} ¿Es este color violeta o es más bien azul? ¿Está la temperatura alta o baja? Este último tipo de modelos son esenciales para solucionar problemas técnicos (\textbf{teoría de control}), economía (\textbf{análisis de mercado}) y \textbf{otros problemas influenciados por la naturaleza cualitativa del lenguaje humano} \cite{historiafuzzy}.
 
-El contenido de este capítulo se basa en las definiciones que aparecen en la referencia \cite{fuzzyintro}
+El contenido de este capítulo se basa en las definiciones que aparecen en la referencia \cite{fuzzyintro}.
 
 \section{Subconjuntos difusos}
-La teoría clásica de conjuntos sólo abarca la posibilidad de que un elemento pertenezca o no, a un conjunto. Pero la realidad no es así, y pueden existir ciertos casos en lo que la \textbf{pertenencia} o no, a un conjunto haya que definirlo mediante un \textbf{grado de pertenencia.}
+La teoría clásica de conjuntos solo abarca la posibilidad de que un elemento pertenezca o no, a un conjunto. Pero la realidad no es así, y pueden existir ciertos casos en lo que la \textbf{pertenencia} o no, a un conjunto haya que definirla mediante un \textbf{grado de pertenencia.}
 
 \subsection{Subconjuntos difusos}
-En primer lugar, se introduce el concepto de conjunto difusos que servirá para formalizar el concepto de conjuntos con grados de pertenencia.
+En primer lugar, se introduce el concepto de conjunto difuso que servirá para formalizar el concepto de conjunto con grados de pertenencia.
 
 \begin{definicion}[Subconjunto difuso]
   \label{def:subconjunto_difuso}
   
-  Un \textbf{subconjunto difuso} $A$ es un par ordenado $(\mu_A, \mathbb{U})$ con:
+  Un \textbf{subconjunto difuso} $A$ es un par ordenado $(\mathbb{U}, \mu_A)$ con:
   \[
   \mu_A : \mathbb{U} \longrightarrow [0,1]
   \]
@@ -34,15 +34,15 @@ Por tanto, es natural definir la igualdad de conjuntos de la siguiente forma:
 
 \begin{definicion}[Igualdad de conjuntos difusos]
   \label{def:igualdad}
-  Se dice que dos conjuntos difusos $A$ y $B$ en $\mathbb{U}$ son iguales si para todo $x \in \mathbb{U}$, se cumple $\mu_A(x) = \mu_B(x)$
+  Se dice que dos conjuntos difusos $A$ y $B$ en $\mathbb{U}$ son iguales si para todo $x \in \mathbb{U}$, se cumple $\mu_A(x) = \mu_B(x)$.
 \end{definicion}
 
-Si se que cumpliese que $\mu_A(\mathbb{U})=\{0, 1\}$ \textbf{se tiene que $A$ es un conjunto clásico}, y sea $\mu_A$ la función característica de $A$. En este caso, si $x \in A$, entonces $\mu_A(x)=1$, y por el contrario si $x \notin A$ entonces, $\mu_A(x)=0$
+Si se cumpliese que $\mu_A(\mathbb{U})=\{0, 1\}$ \textbf{se obtiene que $A$ es un conjunto clásico}, y $\mu_A$ es la función característica de $A$. En este caso, si $x \in A$, entonces $\mu_A(x)=1$, y por el contrario si $x \notin A$ entonces $\mu_A(x)=0$.
 
-Por tanto, \textbf{la función $\mu_A$ representa una generalización del concepto de función característica clásica} dónde $\mu_A$ representa el grado de pertenencia a un conjunto.
+Por tanto, \textbf{la función $\mu_A$ representa una generalización del concepto de función característica clásica} donde $\mu_A$ representa el grado de pertenencia a un conjunto.
 
 \subsection{$\alpha$-corte}
-Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos, y es el concepto de $\alpha$-corte, que permitirá crear particiones de los conjuntos separados por los valores de la función de pertenencia.
+Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos es el concepto de $\alpha$-corte, que permitirá crear particiones de los conjuntos separados por los valores de la función de pertenencia.
 \begin{definicion}[$\alpha$-corte]
   \label{def:alpha_corte}
   Dado un conjunto difuso $A$, los $\alpha$-corte son los subconjuntos clásicos dados por:
@@ -50,27 +50,28 @@ Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos, y
     [A]_\alpha = \left\{
     \begin{array}{ccc}
       \{x \in \mathbb{U} : \mu_A(x) \geq \alpha \} & si & \alpha \in (0, 1] \\
-	cl\{x \in \mathbb{U} : \mu_A(x) > 0\} & si & \alpha=0
+      cl\{x \in \mathbb{U} : \mu_A(x) > 0\} & si & \alpha=0
     \end{array}
     \right.
     \]
-    Además, se define:
+    Donde, $cl$ define la clausura topológica del conjunto. Además, se define:
     \[
     soporte ~ A = \{x \in \mathbb{U} : \mu_A(x) > 0 \}
     \]
     \[
-    nucleo ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
+    núcleo ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
     \]
 \end{definicion}
-De esta definición, se puede extraer que un conjunto difuso también puede estar definido por sus $\alpha$-corte, de manera que \textbf{dos conjuntos difusos $A$ y $B$ son iguales, si todos sus $\alpha$-corte son iguales.} 
+De esta definición se puede extraer que un conjunto difuso también puede estar definido por sus $\alpha$-cortes, de manera que \textbf{dos conjuntos difusos $A$ y $B$ son iguales, si todos sus $\alpha$-cortes son iguales.} 
 
-Dado unos $\alpha$-corte se puede construir una función de pertenencia de la siguiente forma: \cite{apuntesfuzzy}
+A partir de los $\alpha$-cortes se puede construir una función de pertenencia de la siguiente forma \cite{apuntesfuzzy}
 
 \[
-\mu_A = \max{\{\alpha A_\alpha(x) : \alpha \in [0, 1]}\}
+\mu_A(x) = \max{\{\alpha A_\alpha(x) : \alpha \in [0, 1]}\}
 \]
+
 \[
-A_\alpha(x) = \left\{
+\text{donde }A_\alpha(x) = \left\{
 \begin{array}{ccc}
   1 & si & x \in [A]_\alpha \\
   0 & si & x \notin [A]_\alpha
@@ -78,15 +79,15 @@ A_\alpha(x) = \left\{
 \right.
 \]
 
-Desde aquí, este estudio se centrará en los $\alpha$-corte de los conjuntos difusos.
+Desde aquí, este estudio se centrará en los $\alpha$-cortes de los conjuntos difusos.
 
 \section{Números difusos}
-Para poder trabajar con sistemas de ecuaciones diferenciales difusos, es necesario introducir el concepto de números difusos. \\
+Para poder trabajar con sistemas de ecuaciones diferenciales difusos, es necesario introducir el concepto de número difuso. \\
 Se da en primer lugar dos definiciones necesarias para definir el concepto de número difuso.
 
 \begin{definicion}[Conjunto difuso normal]
   \label{def:difuso_normal}
-  Un conjunto difuso $A$ es normal si $nucleo ~ A \neq \emptyset$
+  Un conjunto difuso $A$ es normal si $nucleo ~ A \neq \emptyset$.
 \end{definicion}
 
 \begin{definicion}[Conjunto difuso convexo]
@@ -97,7 +98,7 @@ Se da en primer lugar dos definiciones necesarias para definir el concepto de n�
   \]
 \end{definicion}
 
-En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difuso convexo, entonces los $\alpha$-corte son intervalos. Y se denota de la siguiente forma:
+En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto difuso convexo, entonces los $\alpha$-cortes son intervalos. Se denota de la siguiente forma:
 \[
   [X_0]_\alpha = [(x_0)_\alpha^- , (x_0)_\alpha^+]
   \]
@@ -110,7 +111,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
   \end{definicion}
 
 
-  Se observa que si $x \in \mathbb{R}$ el conjunto $\{x\}$ es un número difuso, con la función de pertenencia.
+  Se observa que si $x \in \mathbb{R}$, el conjunto $\{x\}$ puede representar un número difuso, donde su función de pertenencia es su función característica.
 
   %\begin{figure}[h]
   %	\centering
@@ -120,22 +121,21 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
   %\end{figure}
 
   \subsection{Caracterización números difusos}
-  A continuación, se introducen dos teoremas que permitirán caracterizar los números difusos. Las demostraciones de estos dos resultados se pueden encontrar \cite{apuntesfuzzy}.
+  A continuación, se introducen dos teoremas que permitirán caracterizar los números difusos. Las demostraciones de estos dos resultados se pueden encontrar en \cite{fuzzyintro}.
 
   \begin{teorema}[Teorema de Stacking]
     Sea $A$ un número difuso, entonces:
     \begin{enumerate}
     \item Sus $\alpha$-cortes son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
     \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $[A]_{\alpha_1} \subset [A]_{\alpha_2}$
-    \item Para toda sucesión no decreciente de $\alpha_n \in [0, 1]$ tal que $a_n \longrightarrow \alpha$ se tiene que:
+    \item Para toda sucesión no decreciente de $\alpha_n \in [0, 1]$ tal que $a_n$ tiende a $\alpha$ se obtiene que:
       \[
       \bigcap^\infty_{n=1} [A]_{\alpha_n} = [A]_\alpha
       \]
-    \item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se tiene:
+    \item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se obtiene:
       \[
       cl\left(
-      \bigcup^\infty_{n=1} [A]_{\alpha_n} = [A]_0
-      \right)
+      \bigcup^\infty_{n=1} [A]_{\alpha_n} \right) = [A]_0
       \]
     \end{enumerate}
   \end{teorema}
@@ -146,11 +146,11 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
     \begin{enumerate}
     \item Sus $\alpha$-cortes son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
     \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $[A]_{\alpha_1} \subset [A]_{\alpha_2}$
-    \item Para toda sucesión no decreciente $\alpha_n \in [0, 1]$ tal que $\alpha_n \longrightarrow \alpha$ se tiene que
+    \item Para toda sucesión no decreciente $\alpha_n \in [0, 1]$ tal que $\alpha_n$ tiende a $\alpha$ se obtiene que
       $$
       \bigcap^\infty_{n=1} [A]_{\alpha_n}=[A]_\alpha
       $$
-    \item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se tiene:
+    \item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se obtiene:
       $$
       cl\left(\bigcup^\infty_{n=1} [A]_{\alpha_n}\right)=[A]_0
       $$
@@ -170,7 +170,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
     \end{array}
     \right.
     $$
-    Con $a < b < c$. Entonces, \textbf{un número difuso definido de la forma anterior es triangular (a; b; c).} 
+    Con $a < b < c$. Entonces, \textbf{un número difuso definido de la forma anterior es triangular (a; b; c), y se puede representar como} 
     
     \begin{figure}[h]
       \centering
@@ -183,14 +183,14 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
 
 
   \section{Principio de extensión de Zadeh}
-  Estaría bien que dado un conjunto difuso, y una función clásica, fuese posible obtener una función difusa, para esto, se introduce el principio de extensión de Zadeh.
+  Estaría bien que dado un conjunto difuso, y una función clásica entre dos universos, se pudiera calcular el conjunto difuso imagen del conjunto difuso a través de la función clásica, para esto se introduce el principio de extensión de Zadeh.
 
   \begin{definicion}[Principio de extensión de Zadeh]
   	\label{def:zadeh}
-    Sean $\mathbb{U}$ y $\mathbb{V}$ dos conjuntos de universos, y sea $f: \mathbb{U} \longrightarrow \mathbb{V}$ una función clásica. Sea define el principio de extensión de Zadeh para todo conjunto difuso $A$ en $\mathbb{U}$ con $\mu_A$ su función de pertenencia, de manera que $\hat{f}(A)$ en $\mathbb{V}$ y su función de pertenencia viene dada por:
+    Sean $\mathbb{U}$ y $\mathbb{V}$ dos conjuntos de universos, y sea $f: \mathbb{U} \longrightarrow \mathbb{V}$ una función clásica. Se define el principio de extensión de Zadeh, para todo conjunto difuso $(A, \mu_A)$ como el conjunto difuso $(\hat{f}(A), \mu_{\hat{f}(A)})$ donde
     
     $$
-    \mu_{\hat{f}(A)}=\left\{
+    \mu_{\hat{f}(A)}(y)=\left\{
     \begin{array}{ccc}
       \sup_{x\in f^{-1}(y)} \mu_A(x) & si & f^{-1}(y)\neq\emptyset\\
       0 & si & f^{-1}=\emptyset
@@ -200,9 +200,9 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
   \end{definicion}
 
 
-  Se puede observar, que si la función es inyectiva, la función de pertenencia se simplificaría:
+  Se puede observar, que si la función es inyectiva, la función de pertenencia se simplificaría de la siguiente forma
   $$
-  \mu_{\hat{f}(A)}=\left\{
+  \mu_{\hat{f}(A)}(y)=\left\{
   \begin{array}{ccc}
     \mu_A(f^{-1}(y)) & si & f^{-1}(y)\neq\emptyset\\
     0 & si & f^{-1}=\emptyset
@@ -211,14 +211,15 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
   $$
 
   \subsection{Teoremas de continuidad}
-  Sería ideal que no importase el orden con el que se obtienen los $\alpha$-corte de la imagen de una función mediante el principio de extensión de Zadeh, y esto lo asegura el siguiente teorema.
+  Sería ideal que no importase el orden con el que se obtienen los $\alpha$-cortes de la imagen de una función mediante el principio de extensión de Zadeh, y esto lo asegura el siguiente teorema.
 
+  Se introduce en primer lugar la notación $\mathcal{F}_\mathcal{H}(\IU)$, que indica la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes son no vacios, compactos y convexos en $\IU$
   \begin{teorema}
   	\label{teorema:contfuzzy}
     Sea $f : \mathbb{R}^n \longrightarrow \mathbb{R}^m$ una función.
     \begin{enumerate}
-    \item Si $f$ es sobreyectiva, entonces $[\hat{f}(A)]_\alpha = f([A]_\alpha)$ si y sólo si $\sup\{\mu_A(x) : x \in f^{-1}(y)\}$ para todo $y \in \mathbb{R}^m$
-    \item Si $f$ es continua, entonces $\hat{f} : \mathcal{F}_\mathcal{H}(\mathbb{R}^n) \longrightarrow \mathcal{F}_\mathcal{H}(\mathbb{R}^n)$ está bien definido, y además,  
+    \item Si $f$ es sobreyectiva, entonces $[\hat{f}(A)]_\alpha = f([A]_\alpha)$ si y solo si $\sup\{\mu_A(x) : x \in f^{-1}(y)\}$ es alcanzable para todo $y \in \mathbb{R}^m$
+    \item Si $f$ es continua, entonces $\hat{f} : \mathcal{F}_\mathcal{H}(\mathbb{R}^n) \longrightarrow \mathcal{F}_\mathcal{H}(\mathbb{R}^n)$ está bien definido y además,  
       $$[\hat{f}(A)]_\alpha = f([A]_\alpha)$$
       para todo $\alpha \in [0, 1]$
     \end{enumerate}
@@ -233,21 +234,21 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
   \end{teorema}
 
   \begin{proof}
-    Por la definición del principio de Zadeh, se tiene que $\hat{f}(A)$ es un subconjunto difuso de $\mathbb{V}$. \\
-    Para probar que $\hat{f} : \mathcal{F}_\mathcal{H}(\IR^n) \longrightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ hay que ver que todos los $\alpha-corte$ $[\hat{f}(A)]_\alpha$ son no vacíos, compactos en $\mathbb{V}$. \\
-    Dado que $f$ es continua por hipótesis, la imagen de compactos, son compactos, por tanto, sólo hay que probar $[\hat{f}(A)]_\alpha = f([A]_\alpha)$. \\
+    Por la definición del principio de Zadeh, se obtiene que $\hat{f}(A)$ es un subconjunto difuso de $\mathbb{V}$. \\
+    Para probar que $\hat{f} : \mathcal{F}_\mathcal{H}(\IR^n) \longrightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ hay que ver que todos los $\alpha$-cortes $[\hat{f}(A)]_\alpha$ son no vacíos y compactos en $\mathbb{V}$. \\
+    Sabemos que $f$ es continua por hipótesis, la imagen de compactos, son compactos, por tanto, solo hay que probar $[\hat{f}(A)]_\alpha = f([A]_\alpha)$. \\
     Se procede por doble inclusión.
     
     \begin{itemize}
-    \item $[\hat{f}(A)]_\alpha \subset f([A]_\alpha)$. Sea $\mathcal{A} \in \mathcal{F}_\mathcal{H}(\IU)$ y $y \in f([A]_\alpha)$. Por tanto, existe al menos un $x \in [A]_\alpha$ tal que $f(x)=y$. Por el principio de extensión de Zadeh, tenemos $\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha$. De donde, $y \in [\hat{f}(\mathcal{A})_\alpha]$
-    \item Por otro lado, hay que ver que $[\hat{f}(A)]_\alpha \supset f([A]_\alpha)$. Dado que $\mathbb{V}$ y $\mathbb{U}$ son espacios de Haussdorf, un punto $y \in \mathbb{V}$ es cerrado. Y además, dado que $f$ es continua, $f^{-1}(y)$ es cerrado. Dado que $[A]_0$ es compacto, ya que es la clausura, la intersección de compactos también es compactos, por tanto $f^{-1}(y) \cap [A]_0$ es compacto. Para $\alpha>0$, sea $y \in [\hat{f}(A)]_\alpha$. Entonces $\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha>0$, y además, existe un $x\in f^{-1}(y)$ tal que $f^{-1}(y) \cap [A]_0 \neq \emptyset$
-    \end{itemize}
-    Finalmente, debido a que $\mu_A(x)$ es continúa por la derecha, y $f^{-1}(y) \cap [A]_0$ es compacto, existe un $x \in f^{-1}(y) \cap [A]_0$ con $\mu_{\hat{f}(\mathcal{A})}(y)=\mu_{\mathcal{A}}(x) \geq \alpha$. Esto es porque $y=f(x)$ para algún $x \in [A]_\alpha$.
+    \item $[\hat{f}(A)]_\alpha \subseteq f([A]_\alpha)$. Sea $y \in f([A]_\alpha)$. Por tanto, existe al menos un $x \in [A]_\alpha$ tal que $f(x)=y$. Por el principio de extensión de Zadeh, obtenemos $$\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha$$. De donde, $y \in [\hat{f}(A)]_\alpha$
+    \item Por otro lado, hay que ver que $[\hat{f}(A)]_\alpha \supseteq f([A]_\alpha)$. Dado que $\mathbb{V}$ y $\mathbb{U}$ son espacios de Haussdorf, un punto $y \in \mathbb{V}$ es cerrado. Y además, dado que $f$ es continua, $f^{-1}(y)$ es cerrado. Dado que $[A]_0$ es compacto, ya que es la clausura, la intersección de compactos también es compactos, por tanto $f^{-1}(y) \cap [A]_0$ es compacto. Para $\alpha>0$, sea $y \in [\hat{f}(A)]_\alpha$. Entonces $\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha>0$, y además, existe un $x\in f^{-1}(y)$ tal que $f^{-1}(y) \cap [A]_0 \neq \emptyset$.
+    
+    Finalmente, debido a que $\mu_A(x)$ es continúa por la derecha, y $f^{-1}(y) \cap [A]_0$ es compacto, existe un $x \in f^{-1}(y) \cap [A]_0$ con $\mu_{\hat{f}(\mathcal{A})}(y)=\mu_{A}(x) \geq \alpha$. Esto es porque $y=f(x)$ para algún $x \in [A]_\alpha$.
     
     Para $\alpha=0$, se tiene:
     
     $$
-    \bigcup_{\alpha \in (0, 1]} [\hat{f}(\mathcal{A})]_\alpha = \bigcup_{\alpha \in (0, 1]} f([\mathcal{A}]_\alpha) \subset f([\mathcal{A}]_0).
+    \bigcup_{\alpha \in (0, 1]} [\hat{f}(A)]_\alpha = \bigcup_{\alpha \in (0, 1]} f([A]_\alpha) \subset f([A]_0).
 	$$
 	
 	Dado que $f([\mathcal{A}]_0)$ es cerrado:
@@ -255,16 +256,16 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
 	$$
 	[\hat{f}(\mathcal{A})]_0 = cl\left( \bigcup_{\alpha \in (0, 1]} [\hat{f}(\mathcal{A})]_\alpha  \right) = cl\left(\bigcup_{\alpha \in (0, 1]} f([\mathcal{A}]_\alpha) \right)	\subset f([\mathcal{A}]_0).
 	    $$
-	    
-	    Y por la doble inclusión anterior, se tiene que $[\hat{f}(\mathcal{A})]_\alpha \subset f([\mathcal{A}]_\alpha)$ para todo $\alpha \in [0, 1]$
+	     \end{itemize}
+	    Y por la doble inclusión anterior, se tiene que $[\hat{f}(\mathcal{A})]_\alpha = f([\mathcal{A}]_\alpha)$ para todo $\alpha \in [0, 1]$
   \end{proof}
 
 
   \section{Aritmética difusa}
   El siguiente paso \textbf{para poder construir métodos numéricos es necesario definir las operaciones aritméticas básicas} entre conjuntos difusos.\\
   La definiciones de \textbf{estas operaciones son bastante naturales}, pero pueden ocasionar algunos problemas en ciertos escenarios.\\
-  Debido a la equivalencia entre trabajar con conjuntos difusos, y sus $\alpha-corte$, se centrará en dar todas las operaciones en términos de $\alpha-cortes$.\\
-  En primer lugar, \textbf{se verá la definición habitual de aritmética en teoría de conjuntos clásicos.}
+  Debido a la equivalencia entre trabajar con conjuntos difusos, y sus $\alpha$-cortes, se centrará en dar todas las operaciones en términos de $\alpha-cortes$.\\
+  En primer lugar, \textbf{se recordarán las definiciones habituales de las operaciones aritmética en teoría de conjuntos clásicos.}
 
   \subsection{Aritmética en conjuntos clásicos}
   Sean $A, B$ dos conjuntos entonces:
@@ -275,7 +276,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se tiene que si $A$ es un conjunto difu
   \item $A / B =\{a/b : a \in A, b\in B\}$
   \end{itemize}
 
-  Una vez recordados los conceptos básicos de aritmética en conjuntos clásicos, se va a generalizar para conjuntos difusos.
+  Una vez recordadas las operaciones básicas de aritmética en conjuntos clásicos, se van a generalizar para conjuntos difusos.
 
   \subsection{Aritmética en conjuntos difusos}
   Sean $\mu_A, \mu_B$ dos funciones de pertenencia y sea $\odot \in \{+, -, \cdot, \div\}$ se define la función de pertenencia de la operación aritmética como:
