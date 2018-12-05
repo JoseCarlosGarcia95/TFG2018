@@ -27,6 +27,7 @@ En primer lugar, se introduce el concepto de conjunto difuso que servirá para f
   \]
   Se denomina a $\mu_A$ \textbf{función de pertenencia.}
 \end{definicion}
+Denotamos por $\mathcal{F}(\IU)$ al conjunto de todos los conjuntos difusos de $\IU$.
 
 Esta función de pertenencia no define necesariamente una probabilidad, y no hace referencia a la probabilidad de que una persona sea alta o baja, si no que da una medida de cuan alta o baja es.\\ 
 
@@ -62,6 +63,8 @@ Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos es
     núcleo ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
     \]
 \end{definicion}
+Denotamos por $\mathcal{F}_\mathcal{C}(\IU)$ a la familia de conjuntos de $\IU$ tales que sus $\alpha$-corte son no vacíos.
+
 De esta definición se puede extraer que un conjunto difuso también puede estar definido por sus $\alpha$-cortes, de manera que \textbf{dos conjuntos difusos $A$ y $B$ son iguales, si todos sus $\alpha$-cortes son iguales.} 
 
 A partir de los $\alpha$-cortes se puede construir una función de pertenencia de la siguiente forma \cite{apuntesfuzzy}
@@ -119,11 +122,11 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   %	\caption{Ejemplo de número difuso}
   %	\label{fig:numero_difuso}
   %\end{figure}
-
+  Denotamos por $\mathcal{F}_\mathcal{H}(\IU)$ la familia de conjuntos de $\IU$ tales que sus $\alpha$-corte son no vacíos, compactos y convexos en $\IU$.
   \subsection{Caracterización números difusos}
   A continuación, se introducen dos teoremas que permitirán caracterizar los números difusos. Las demostraciones de estos dos resultados se pueden encontrar en \cite{fuzzyintro}.
 
-  \begin{teorema}[Teorema de Stacking]
+  \begin{teorema}[Teorema de apilamiento]
     Sea $A$ un número difuso, entonces:
     \begin{enumerate}
     \item Sus $\alpha$-cortes son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
@@ -144,15 +147,15 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     Sea $A=\{A_\alpha : \alpha \in [0, 1]\}$ una familia de subconjuntos de $\mathbb{R}$ tal que:
     
     \begin{enumerate}
-    \item Sus $\alpha$-cortes son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
-    \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $[A]_{\alpha_1} \subset [A]_{\alpha_2}$
+    \item Sus $A_\alpha$ son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
+    \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $A_{\alpha_1} \subset A_{\alpha_2}$
     \item Para toda sucesión no decreciente $\alpha_n \in [0, 1]$ tal que $\alpha_n$ tiende a $\alpha$ se obtiene que
       $$
-      \bigcap^\infty_{n=1} [A]_{\alpha_n}=[A]_\alpha
+      \bigcap^\infty_{n=1} A_{\alpha_n}=A_\alpha
       $$
     \item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se obtiene:
       $$
-      cl\left(\bigcup^\infty_{n=1} [A]_{\alpha_n}\right)=[A]_0
+      cl\left(\bigcup^\infty_{n=1} A_{\alpha_n}\right)=A_0
       $$
     \end{enumerate}
     Entonces, $A$ es un número difuso.
@@ -187,7 +190,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
 
   \begin{definicion}[Principio de extensión de Zadeh]
   	\label{def:zadeh}
-    Sean $\mathbb{U}$ y $\mathbb{V}$ dos conjuntos de universos, y sea $f: \mathbb{U} \longrightarrow \mathbb{V}$ una función clásica. Se define el principio de extensión de Zadeh, para todo conjunto difuso $(A, \mu_A)$ como el conjunto difuso $(\hat{f}(A), \mu_{\hat{f}(A)})$ donde
+    Sean $\mathbb{U}$ y $\mathbb{V}$ dos universos, y sea $f: \mathbb{U} \longrightarrow \mathbb{V}$ una función clásica. Se define el principio de extensión de Zadeh, para todo conjunto difuso $(A, \mu_A)$ como el conjunto difuso $(\hat{f}(A), \mu_{\hat{f}(A)})$ donde
     
     $$
     \mu_{\hat{f}(A)}(y)=\left\{
@@ -264,8 +267,8 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \section{Aritmética difusa}
   El siguiente paso \textbf{para poder construir métodos numéricos es necesario definir las operaciones aritméticas básicas} entre conjuntos difusos.\\
   La definiciones de \textbf{estas operaciones son bastante naturales}, pero pueden ocasionar algunos problemas en ciertos escenarios.\\
-  Debido a la equivalencia entre trabajar con conjuntos difusos, y sus $\alpha$-cortes, se centrará en dar todas las operaciones en términos de $\alpha-cortes$.\\
-  En primer lugar, \textbf{se recordarán las definiciones habituales de las operaciones aritmética en teoría de conjuntos clásicos.}
+  Debido a la equivalencia entre trabajar con conjuntos difusos, y sus $\alpha$-cortes, nos centraremos en dar todas las operaciones en términos de $\alpha-$cortes.\\
+  En primer lugar, \textbf{se recordarán las definiciones habituales de las operaciones aritmética para la teoría de conjuntos clásicos.}
 
   \subsection{Aritmética en conjuntos clásicos}
   Sean $A, B$ dos conjuntos entonces:
@@ -281,7 +284,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \subsection{Aritmética en conjuntos difusos}
   Sean $\mu_A, \mu_B$ dos funciones de pertenencia y sea $\odot \in \{+, -, \cdot, \div\}$ se define la función de pertenencia de la operación aritmética como:
   $$
-  \mu_{A \odot B}(x) = \sup_{a \odot b = c} \min\{\mu_A(a), \mu_B(b)\}
+  \mu_{A \odot B}(c) = \sup_{a \odot b = c} \min\{\mu_A(a), \mu_B(b)\}
   $$
   Y dado que \textbf{las operaciones aritméticas son funciones continuas}, es equivalente trabajar con los $\alpha-corte$, \textbf{aplicando el principio de extensión de Zadeh tenemos:}
 
@@ -308,15 +311,20 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   $$
   \lim\limits_{h\rightarrow 0^+} \frac{f(x+h) - f(x)}{h}
   $$
-  Se considera ahora una función $f(x)=A\in \mathcal{F}_\mathcal{H}(\IU)$, donde $A$ es un número difuso constante. \\
+  Se considera ahora una función constante $f(x)=A\in \mathcal{F}_\mathcal{H}(\IU)$, donde $A$ es un número difuso dado. \\
   $$f(x+h) - f(x)=[A-A]$$
-  Sean $[A]_\alpha$ los $\alpha-cortes$ de $A$ entonces:
+  Sean $[A]_\alpha$ los $\alpha-cortes$ de $A$ entonces, para todo $h>0$:
   $$
-  [A-A]_\alpha = [a_\alpha^- - a_\alpha^+, a_\alpha^+ - a_\alpha^-]
+  \left[ f(x+h) - f(x)\right]_\alpha = [A-A]_\alpha = [a_\alpha^- - a_\alpha^+, a_\alpha^+ - a_\alpha^-]
   $$
-  Si $A\neq 0$ se tiene que $[A-A]_\alpha \neq 0$, por tanto al dividir por $h \rightarrow 0$, tenemos una indeterminación, de donde, tal y \textbf{como se ha definido las operaciones aritméticas para los conjuntos difusos no estarían definidas las derivadas de funciones constantes}, y esto, es un problema. \\
-  Necesitamos definir \textbf{un nuevo concepto de diferencia}, que para ello, \textbf{se introduce la diferencia de Hukuhara.}
-
+  y por tanto, cuando $h$ tiende a $0$, el soporte de \[
+	  \frac{f(x+h) - f(x)}{h}
+  \]
+  tiende a infinito, luego no es compacto, por tanto 
+  \[
+	\frac{f(x+h) - f(x)}{h} \notin \mathcal{F}_\mathcal{H}(\IU)
+  \]
+  Este problema nos motivará a tratar un nuevo concepto de diferencia, que para ello, se introduce la diferencia de Hukuhara.
   \subsection{Hukuhara y diferencia generalizada} \label{def:hukukara}
   Debido al problema especificado en la sección anterior, \textbf{se necesita definir una operación resta que cumpla que $A-A=\{0\}$}, Hukuhara dio una definición de resta que soluciona el problema expuesto en la sección anterior.
 
