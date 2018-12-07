@@ -7,7 +7,7 @@
 
 En esta sección se van a ver diferentes técnicas para resolver ecuaciones diferenciales difusas, abarcando desde las técnicas clásicas de la resolución númerica de ecuaciones diferenciales hasta las técnicas más sofisticadas a nivel computacional.
 
-En esta sección se va a hacer un análisis exhaustivo en las ventajas que nos ofrecen los distintos métodos con vistas a obtener el rendimiento más óptimo en cuánto a velocidad y en eficiencia enerǵetica.
+En esta sección se va a hacer un análisis exhaustivo de las ventajas en las ventajas que nos ofrecen los distintos métodos con vistas a obtener el rendimiento más óptimo en cuánto a velocidad y en eficiencia enerǵetica.
 
 Para entender esta sección sería conveniente revisar algunas de las técnicas mostradas en la sección anterior, y repasar las tećnicas básicas de resolución numérica de ecuaciones diferenciales difusas.
 
@@ -15,42 +15,43 @@ Para entender esta sección sería conveniente revisar algunas de las técnicas 
 En esta sección se va a desarrollar el método de Euler para problemas difusos, para ello se empieza recordando como funciona el método de Euler para ecuaciones diferenciales ordinales. Cabe recordar que este método numérico tiene orden $1$.
 
 \subsection{Método de Euler: Versión clásica}
-Se supone que se tiene un problema de valores iniciales bien definido, y lo suficiente regular para asegurar que tiene soluciones:
+Se supone que se tiene un problema de valores iniciales bien definido, y lo suficiente regular para asegurar que tiene una única solución:
 \[
 \begin{array}{ccc}
-	y' & = &f(x, y)  \\
+	y'(x) & = &f(x, y)  \\
 	y(x_0) & = & y_0
 \end{array}
 \]
-Se considera ahora una discretación de $x$ de manera que:
+Se considera ahora una discretación del intervalo $[a, b]$ definida como:
 \[
 	x_i = x_0 + i h
 \]
-Donde $h$ se llama paso del método de Euler, entonces se define la discretización de $y$ como:
+Donde $h>$, $x_0=a$ .
+
+El método de Euler define la siguiente solución aproximada: dada la condición inicial $y_0$
 \[
 	y_{i+1} = y_i + h f(x_i, y_i)
 \]
-La definición de $y_{i+1}$ se llama Método de Euler.
 
 \subsection{Método de Euler: Versión difusa}
-Se considera el siguiente problema difuso,
+Se considera el siguiente problema difuso, al que se puede dar sentido para una función f(x,y) determinista utilizando el principio de extensión de Zadeh:
 \[
 	\begin{array}{ccc}
-		y' & = &f(x, y)  \\
+		y'(x) & = &f(x, y)  \\
 		y(x_0) & = & A
 	\end{array}
 \]
-Donde $A$ es un número difuso, se supone que el problema anterior cumple el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y se considera el problema determinista asociado:
+donde $A$ es un número difuso. Se supone que el problema anterior cumple el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y se considera el problema determinista asociado:
 \[
 	\begin{array}{ccc}
 		y' & = &f(x, y)  \\
 		y(x_0) & = & a
 	\end{array}
 \]
-Donde $a \in A$, se toma entonces $A$ como una discretización de $n+1$ elementos de $A$, donde cada elemento se denota por $a_i$, por tanto se tienen ahora $n+1$ EDO diferentes, donde cada una de estas se pueden resolver aplicando el método de Euler.
+donde $a \in A$. Se toma entonces $A$ como una discretización de $n+1$ elementos de $A$, donde cada elemento se denota por $a_i$, por tanto se tienen ahora $n+1$ EDO diferentes, donde cada una de estas se pueden resolver aplicando el método de Euler.
 \subsection{Método de Euler: Ejemplo}
 \begin{ejemplo}
-Dado un problema de valores iniciales difuso:
+Sea un problema de valores iniciales difuso:
 \[
 y' = 2x - 3y + 1
 \]
@@ -66,7 +67,7 @@ y(0) = a
 \]
 
 Con $a \in [-1, 1]$. \\
-En primer lugar, hay que discretizar el intervalo $[-1, 1]$, para ello se considera una partición dada por 
+En primer lugar, hay que discretizar el intervalo $[-1, 1]$, para ello, fijamos m>0 y para cada $i=0...m-1$ se considera una partición dada por 
 \[
 a_i = -1 + \frac{2i}{m-1}
 \]
@@ -88,11 +89,11 @@ y_{j+1} = y_j + h (2x_j - 3y_j + 1)
 x_{j+1} = x_0 + hj
 \]
 
-Para comparar el error de nuestro método, tengamos en cuenta:
+Para comparar el error de nuestro método, tengamos en cuenta que la solución exacta de la ecuación diferencial con dato inical $a_i$ es:
 \[
 y_i(x) = \frac{e^{-3 x} (-1 + 9 a_i + e^{3 x}(1 + 6 x))}{9}
 \]
-A continuación, se ofrecerá varías implementaciones del método con información descriptiva acerca del rendimiento energético y en tiempo:
+A continuación, se ofrecerán varías implementaciones del método con información descriptiva acerca del rendimiento energético y en tiempo:
 
 \subsection{Experimentos numéricos}
 Se va a tratar de resolver el problema anterior aplicando el método de Euler, con una implementación en C y otra en Python, donde se varía la cantidad de particiones del número difuso triangular y con 100 pasos en el método de Euler.
@@ -109,7 +110,7 @@ Se pueden observar, varios patrones:
 \begin{itemize}
 	\item La forma menos eficiente de resolver el problema es usando una versión más reciente de Python.
 	\item Trabajar con Cython no nos asegura un rendimiento mejor.
-	\item El crecimiento del tiempo de ejecución en paralelo crece mucho más lento que en secuencial.
+	\item El crecimiento del tiempo de ejecución en paralelo crece mucho menor que en secuencial.
 	\item Si se quiere resolver un problema pequeño $(n < 2000)$ es conveniente hacerlo de manera secuencial.
 \end{itemize}
 
@@ -205,13 +206,13 @@ Y no sólo permite obtener una solución numérica más rápidamente, sino que p
 \end{ejemplo}
 
 \section{Método de Runge-Kutta de cuarto orden}
-Por otro lado, vamos a desarrollar el método de Runge Kutta, que como es bien sabido, el orden de convergencia de este método es mayor que el de Euler, por lo que se esperan mejores resultados a priori.
+Por otro lado, vamos a desarrollar el método de Runge Kutta. Como es sabido el orden de convergencia de este método es mayor que el de Euler, por lo que se esperan mejores resultados a priori.
 
 \subsection{Método de Runge-Kutta de cuarto orden: Versión clásica}
 Se supone que se tiene un problema de valores iniciales bien definido, y lo suficiente regular para asegurar que tiene soluciones:
 \[
 \begin{array}{ccc}
-y' & = &f(x, y)  \\
+y'(x) & = &f(x, y)  \\
 y(x_0) & = & y_0
 \end{array}
 \]
@@ -238,14 +239,14 @@ Donde se definen:
 \]
 
 \subsection{Método de Runge-Kutta de cuarto orden: Versión difusa}
-Se considera el siguiente problema difuso,
+Se considera el siguiente problema difuso, en el sentido del principio de extensión de Zadeh
 \[
 \begin{array}{ccc}
 y' & = &f(x, y)  \\
 y(x_0) & = & A
 \end{array}
 \]
-Donde $A$ es un número difuso, se supone que el problema anterior cumple el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y se considera el problema determinista asociado:
+donde $A$ es un número difuso. Se toma entonces que el problema anterior cumple el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y se considera el problema determinista asociado:
 \[
 \begin{array}{ccc}
 y' & = &f(x, y)  \\
@@ -255,10 +256,10 @@ y(x_0) & = & a
 Donde $a \in A$, se toma entonces $A$ como una discretización de $n+1$ elementos de $A$, donde cada elemento se denota por $a_i$, por tanto se tienen ahora $n+1$ EDO diferentes, donde cada una de estas se pueden resolver aplicando el método de Método de Runge-Kutta de cuarto orden.
 
 \subsection{Método de Runge-Kutta de cuarto orden: Ejemplo}
-Para poder comparar correctamente, los distintos métodos vamos a tratar, se va a resolver el mismo problema anterior pero esta vez, aplicando Runge-Kutta.
+Para poder comparar correctamente los distintos métodos vamos a implementar el mismo problema usando el método de Runge-Kutta.
 
 \subsection{Experimentos numéricos}
-Se va a tratar de resolver el problema anterior aplicando el método de Runge-Kutta, con una implementación en C donde se varía la cantidad de particiones del número difuso triangular y con 100 pasos en el método de Euler.
+Se va a tratar de resolver el problema anterior aplicando el método de Runge-Kutta, con una implementación en C, donde se varía la cantidad de particiones del número difuso triangular, y con 100 pasos en el método de Euler.
 
 \begin{figure}[H]
 	\frame{\includegraphics[width=\textwidth]{grafica_cseq_rk_comparativa.pdf}}
@@ -281,7 +282,7 @@ Se va a tratar de resolver el problema anterior aplicando el método de Runge-Ku
 \end{table}
 
 \section{Comparativas}
-Si se observa la tabla de tiempos del algoritmo de Euler respecto del algoritmo de Runge-Kutta se pueden encontrar una serie de información interesante:
+Si se observa la tabla de tiempos del algoritmo de Euler respecto del algoritmo de Runge-Kutta se pueden encontrar una serie de informaciones interesante:
 
 \begin{itemize}
 	\item Los modos básicos son más rápidos en el método de Euler, también tiene más sentido, pues en el método de Runge-Kutta necesita de más operaciones.
@@ -294,8 +295,8 @@ Si se observa la tabla de tiempos del algoritmo de Euler respecto del algoritmo 
 \section{Método difuso paralelizado}
 Los dos métodos estudiados anteriormente se pueden resumir, de la siguiente forma:
 \begin{itemize}
-	\item Se comprueban las hipótesis del \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}.
-	
+	\item Se parte de una función determinista y se considera la ecuación difusa asociada a ella mediante el principio de extensión
+		
 	\item Se considera una discretización del número difuso.
 	
 	\item Se resuelve numéricamente para cada uno de los valores que se encuentra en la discretización.

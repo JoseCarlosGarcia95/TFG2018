@@ -4,9 +4,10 @@
 \begin{chapquote}{Sofia Kovalévskaya}
 	``Es imposible ser matemático sin ser un poeta del alma``
 \end{chapquote}
-En este capítulo se van a explorar los diferentes puntos de vista a los \textbf{conceptos clásicos del cálculo mediante una perspectiva difusa}. Se va a recordar la definición de integral de Riemann, Aumann \& Henstock, y haremos una revisión de la definición de derivada de Hukuhara (\hyperref[def:hukukara]{Diferencia de Hukuhara}). Además, se tratará de la \textbf{versión difusa del teorema fundamental del cálculo} que nos ayudará a tener una mejor visión de lo que está pasando.
+En este capítulo se van a explorar los diferentes puntos de vista a los \textbf{conceptos clásicos del cálculo mediante una perspectiva difusa}. Se va a recordar la definición de integral de Riemann, Aumann \& Henstock, y haremos una revisión de la definición de derivada de Hukuhara (\hyperref[def:hukukara]{Diferencia de Hukuhara}). Además, se tratará de la \textbf{versión difusa del teorema fundamental del cálculo} que nos ayudará a tener una mejor visión de la teoría estudiada.
 
 \section{Cálculo difuso para funciones definidas en conjuntos difusos}
+Esta sección está basada en el contenido de \cite{fuzzyintro}.
 \subsection{Distintas definiciones de derivada}
 En primer lugar, vamos a definir los distintos conceptos de derivada difusa.
 
@@ -102,7 +103,7 @@ A continuación, se introduce una condición necesaria que servirá de herramien
 \subsubsection{La derivada fuertemente generalizada}
 El concepto de derivada fuertemente generalizada \textbf{viene a generalizar más aún los conceptos de derivadas ya introducidos por Hukuhara y Seikkala.} \\
 
-Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara es cuando pasa $(f^-_\alpha)'(x_0) \leq (f^+_\alpha)'(x_0)$ (Se puede ver en el Ejemplo \ref{ejemplo:hukuhara}). Para evitar estos problemas, se introdujo el concepto de derivada fuertemente generalizada:
+Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara es cuando pasa $(f^-_\alpha)'(x_0) \leq (f^+_\alpha)'(x_0)$ (Se puede ver en el Ejemplo \ref{ejemplo:hukuhara}). Si F es Seikkara diferenciable (en particular, si es Hukuhara diferenciable), entonces $(f_{\alpha}^-)'(x) \le (f_{\alpha}^+)'(x)$ y por tanto la diferencia $(f_{\alpha}^+)'(x) - (f_{\alpha}^-)'(x) \ge 0$. Es decir, para todo alfa corte, la función diámetro$  [F(x)]_{\alpha} = f_{\alpha}^+(x) - f_{\alpha}^-(x)$ es no decreciente. Pero esto es un serio inconveniente: significa que no pueden existir funciones Hukuhara diferenciables que presenten un grado de incertidumbre cada vez menor, o bien cuyo grado de incertidumbre oscile (crezca y decrezca). Para evitar estos problemas, se introdujo el concepto de derivada fuertemente generalizada:
 
 \begin{definicion}[Derivada fuertemente generalizada]
   Sea $F: (a, b) \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$. Si alguno de los siguientes pares de límites:
@@ -168,7 +169,7 @@ Para cerrar esta sección, veremos dos conceptos más derivada:
 existe y pertenece a $\mathcal{F}_\mathcal{C} (\IR)$, entonces $F$ es diferenciable de forma generalizada (g diferenciable) en $x_0$, además a $F'_{g}(x_0)$ se le llama el valor de la derivada de forma generalizada
 \end{definicion}
 
-En resumen,
+Para las definiciones anteriores se puede demostrar la siguiente jerarquía de implicaciones:
 \begin{table}[h]
   \centering
   \begin{tabular}{lllllll}
@@ -176,17 +177,19 @@ En resumen,
   \end{tabular}
 \end{table}
 
+La demostración de lo anterior, como el resto de afirmaciones del capítulo pueden encontrarse en \cite{fuzzyintro}
+
 \subsection{Integral}
-La primera propuesta de integral difusa es \textbf{basada en el concepto integral de Aumann \cite{aumannintegral}} para funciones multievaluadas. La definición original podemos verla en \cite{integral1} y \cite{integral2}. \\
+La primera propuesta de integral difusa se \textbf{basa en el concepto integral de Aumann \cite{aumannintegral}} para funciones multievaluadas. La definición original podemos verla en \cite{integral1} y \cite{integral2}. \\
 Por simplificar, vamos a denotar:
 \[
 S(G) = \{g : I \rightarrow \IR^n : g ~ integrable, g(t) \in G(t), \forall t \in I \}
 \]
-Con $G : I \rightarrow \mathcal{P}(\IR^n)$
+Vamos a denotar, para cada $G : I \rightarrow \mathcal{P}(\IR^n)$
 
 \subsubsection{Integral de Aumann}
 \begin{definicion}[Integral de Aumann]
-  La integral de Aumann de una función sobre un conjunto difuso $F : [a, b] \rightarrow \mathcal{F}_H(\IR^n)$ sobre $[a, b]$ es definida como: 
+  La integral de Aumann de una función sobre un conjunto difuso $F : [a, b] \rightarrow \mathcal{F}_C(\IR^n)$ sobre $[a, b]$ se define como: 
   \[
   \left[
     (A) \int_{a}^{b} F(x) dx
@@ -198,7 +201,7 @@ Con $G : I \rightarrow \mathcal{P}(\IR^n)$
 \end{definicion}
 
 \subsubsection{Integral de Riemann}
-Se puede usar también el concepto clásico de integral para definir también una \textbf{integral de Riemann en el ámbito difuso.}
+Se puede usar también el concepto clásico de integral para definir una \textbf{integral de Riemann en el ámbito difuso.}
 
 \begin{definicion}[Integral de Riemann]
   La integral de Riemman de una función difusa $F : [a, b] \rightarrow \mathcal{F}_\mathcal{C} (\IR)$ sobre $[a, b]$ es el número difuso $A$ tal que para todo $\varepsilon > 0$ existe un $\delta > 0$ tal que para cualquier partición $\mathcal{P}: = a=x_0 < x1 < ... < x_n = b$ con $x_i - x_{i-1} < \delta, i = 1, ..., n$ y $\xi_i \in [x_i - x_{i-1}]$
@@ -214,7 +217,7 @@ Se puede usar también el concepto clásico de integral para definir también un
 \end{definicion}
 
 \subsubsection{Algunos resultados importantes}
-En esta sección mostraremos una serie de teoremas de utilidad encontrados en \cite{integral2} que resumen en cierta manera \textbf{algunas propiedades ya conocidas del cálculo infinitesimal clásico}:
+En esta sección mostraremos una serie de teoremas de utilidad encontrados en \cite{integral2} que reproducen en cierta manera \textbf{algunas propiedades ya conocidas del cálculo infinitesimal clásico}:
 
 \begin{teorema}
   Si una función $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ es continua según (Definición \ref{def:funcioncontinua}) entonces es integrable. Más aún,
@@ -256,34 +259,34 @@ En la teoría clásica del análisis, \textbf{el teorema fundamental del cálcul
 \end{teorema}
 
 \begin{teorema}[\cite{integral2}]
-  Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función H-Diferenciable y sea $F_H'$ su derivada integrable sobre $[a, b]$. Entonces,
+  Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función H-Diferenciable y sea $F_H'$ su derivada. Supongamos que $F_H'$ es integrable sobre $[a, b]$. Entonces,
   \[
   F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
   \]
-  Para todo $x \in [a, b]$
+  para todo $x \in [a, b]$.
 \end{teorema}
 
-Hay un teorema parecido al anterior, pero esta vez exigiendo que la función es diferenciable fuertemente generalizada (2), que dice lo siguiente:
+También se puede enunciar un teorema un teorema parecido al anterior, pero esta vez exigiendo que la función es diferenciable fuertemente generalizada (2):
 
 \begin{teorema}[\cite{fundamental}]
-  Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función diferenciable fuertemente generalizada (2) y sea $F_H'$ su derivada integrable sobre $[a, b]$. Entonces,
+  Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función diferenciable fuertemente generalizada (2) y sea $F_H'$ su derivada. Supongamos que esta es integrable sobre $[a, b]$. Entonces,
   \[
   F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
   \]
-  Para todo $x \in [a, b]$
+  para todo $x \in [a, b]$.
 \end{teorema}
 
 \section{Ecuaciones diferenciales difusas}
 Del mismo modo que \textbf{hay varios acercamientos al concepto de derivada}, no podía ser menos el concepto de ecuación diferencial difusa. En esta sección \textbf{vamos a tratar los distintas formas de acercarse a los conceptos de ecuación diferencial difusa}. Esta sección toma como referencia \cite{fuzzyapproaches}
 
 \subsection{Introducción}
-En esta sección vamos a empezar planteando un problema difuso de la misma manera que se introducen las ecuaciones diferenciales clásicas:
+En esta sección vamos a empezar planteando un problema de valor inicial difuso de la misma manera que se introducen las ecuaciones diferenciales clásicas. Dado un número difuso $X_0$, se trata de hallar una función $X:[0,T] \rightarrow F_H(U)$ tal que:
 
 \begin{equation}
   \label{def:edf}
   X'(t) = f(t, X(t)), ~ X(0) = X_0
 \end{equation}
-Donde $f : [O, T] \times \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}(\IR^n)$ se obtiene mediante el \hyperref[def:zadeh]{principio de extensión de Zadeh} aplicada a una función continua $g : [0, T] \times U \rightarrow \IR^n$. Además, $f$  es continua por ser $g$ continua, aplicando \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}} se puede concluir:
+donde $f : [O, T] \times \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}(\IR^n)$ se obtiene mediante el \hyperref[def:zadeh]{principio de extensión de Zadeh} aplicada a una función continua $g : [0, T] \times U \rightarrow \IR^n$. Además, $f$  es continua por ser $g$ continua, aplicando \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}} se puede concluir:
 \[
 	[f(t, X)]_\alpha = g(t, [X]_\alpha)
 \]
@@ -293,13 +296,19 @@ Se puede \textbf{asociar a esta ecuación diferencial difusa una ecuación difer
 	x'(t) = g(t, x(t)), ~ x(0) = c
 \end{equation}
 
+Así, decimos que $X(t)$ es una solución difusa de (3.1) en (el sentido del principio de extensión) si existe una solución $x(t,c)$ de (3.2) y, para cada t fijo, se tiene que
+
+\[
+X(t) = \hat x (t, X_0),
+\]
+donde $\hat x(t, X_0)$ es el resultado de aplicar el principio de extensión de Zadeh respecto al parámetro c a la función x(t,c).
 \subsection{Teorema de equivalencia entre EDO y EDD}
 
 A continuación, se ofrece un teorema que dará una relación entre ecuaciones diferenciales difusas y ordinarias.
 
 \begin{teorema}[Equivalencia entre EDO y EDD \cite{fuzzyapproaches1}]
 	\label{teorema:equivalencia}
-	Sea $U$ un conjunto abierto sobre $\IR^n$ y sea $[X_0]_\alpha \subset U$ con $\alpha \in [0, 1]$. Sea $g$ una función continua, y suponga que para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema \ref{eq:edo} y también que $x(t, \cdot)$ es continúa para todo $t \in [0, T]$ fijado. Entonces, existe una única solución difusa $X(t) = \hat{x}(t, x_0)$ del problema \ref{def:edf}
+	Sea $U$ un conjunto abierto sobre $\IR^n$ y supongamos que $[X_0]_\alpha \subset U$ con $\alpha \in [0, 1]$. Sea $g$ una función continua, y suponga que para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema (\ref{eq:edo}) y también que $x(t, \cdot)$ es continúa para todo $t \in [0, T]$ fijado. Entonces, existe una única solución difusa $X(t) = \hat{x}(t, x_0)$ del problema (\ref{def:edf})
 \end{teorema}
 El resultado anterior es muy potente, \textbf{permitirá utilizar métodos numéricos ya conocidos para resolver ecuaciones diferenciales difusas fácilmente.}
 
@@ -367,7 +376,7 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 	\[
 		x(t, c) = \frac{c}{1-tc}
 	\]
-	Para cada $t \in [0, \frac{1}{3})$ fijado, la función $(x, t)$ es continua respecto a $c$, entonces se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia} y podemos concluir que existe una única solución difusa dada por $X(t) = \hat{x}(t, X_0)$. Se observa que es posible calcular la solución difusa aplicando directamente el principio de extensión de Zadeh y el \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}}. Por tanto, se pueden calcular los $\alpha$-cortes de la siguiente forma para cada $\alpha \in [0, 1]$
+	Para cada $t \in [0, \frac{1}{3})$ fijado, la función $(x, t)$ es continua respecto a $c$, entonces se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia} y podemos concluir que existe una única solución difusa dada por $X(t) = \hat{x}(t, X_0)$. Se observa que es posible calcular la solución difusa aplicando directamente el principio de extensión de Zadeh y el \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}}. Por tanto, se pueden calcular los $\alpha$-cortes de la siguiente forma para cada $\alpha \in [0, 1]$:
 	
 	\[
 		\begin{array}{ccc}
@@ -383,8 +392,7 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 \end{ejemplo}
 
 \subsection{Inclusiones diferenciales}
-Esta sección está basada en las observaciones que se pueden ver en los artículos \cite{inclusionesdif1}, \cite{inclusionesdif2} y \cite{inclusionesdif3}. \\
-
+Esta sección está basada en la teoría que se puede encontrar en [Gomes-Barros-Bede], que a su vez se fundamenta en los artículos  \cite{inclusionesdif1}, \cite{inclusionesdif2} y \cite{inclusionesdif3}.\\
 En estos artículos Hüllermeier y Diamond interpretan las  \hyperref[def:edf]{Ecuaciones Diferenciales Difusas} como una familia inclusiones diferenciales:
 
 \begin{equation}
@@ -396,13 +404,13 @@ Bajo unas determinadas hipótesis, podemos afirmar:
 \[
 	\mathcal{A}_\alpha = \{y_\alpha | y_\alpha ~ \text{es una solución de la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}}\}
 \]
-Son los $\alpha$-corte de un determinado conjunto difuso y se le llaman soluciones del problema dado por la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}
+son los $\alpha$-cortes de un determinado conjunto difuso y se le llaman soluciones del problema dado por la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}
 
 A continuación se ofrece un teorema análogo al teorema que se vio en la sección introductoria \hyperref[teorema:equivalencia]{Teorema de Equivalencia entre EDO y EDF}
 \begin{teorema}[\cite{fuzzyapproaches1}]
-	Sea $U$ un conjunto abierto en $\IR^n$ y sea $X_0 \in \mathcal{F}(U)$. Dada la función $g$ continua, para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema \ref{eq:edo} y que $x(t, \cdot)$ es continúa en $U$ para cada $t \in [0, T]$. Entonces, la solución difusa del problema \ref{def:edf} y las soluciones del problema de \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales} coinciden, es decir;
+	Sea $U$ un conjunto abierto en $\IR^n$ y sea $X_0 \in \mathcal{F}(U)$. Dada la función $g$ continua, para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema \ref{eq:edo} y que $x(t, \cdot)$ es continúa en $U$ para cada $t \in [0, T]$. Entonces, la solución difusa del problema (\ref{def:edf}) (en el sentido del principio de extensión de Zadeh) y las soluciones del del problema de \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales} coinciden, es decir;
 	\[
 		X(t) = \mathcal{A}(t)
 	\]
-	Para todo $t \in [0, T]$
+	para todo $t \in [0, T]$.
 \end{teorema}

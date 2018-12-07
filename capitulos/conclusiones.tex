@@ -1,13 +1,13 @@
 \chapter{Conclusiones}
-A lo largo de este trabajo se han ido generalizando los conceptos clásicos del análisis mediante definiciones difusas, y se ha encontrado que bajo ciertas condiciones se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, que consigue hacer que resolver una ecuación diferencial difusa sea equivalente a resolver una ecuación diferencial para cada uno de los valores que toman los valores difusos. 
+A lo largo de este trabajo se han ido generalizando los conceptos clásicos del análisis mediante definiciones difusas, y se ha encontrado que bajo ciertas condiciones se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, que consigue hacer que resolver numéricamente una ecuación diferencial difusa sea equivalente a resolver una ecuación diferencial determinista para cada uno de los valores que toman los valores difusos. 
 \\ \\
-Esto ofrece un amplio abanico de herramientas para resolver problemas de valores iniciales difusos, pues ahora la única complicación aquí será tener la habilidad de poder resolver varios problemas.
+Esto ofrece un amplio abanico de herramientas para resolver problemas de valores iniciales difusos, pues ahora la única complicación será tener la habilidad de poder resolver varios problemas.
 \\ \\
-Por tanto, las técnicas estudiadas aquí nacen de un problema en valores iniciales difuso que cumple las hipótesis del \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y por tanto se pueden resolver teniendo en cuenta todos los valores que toma el número difuso.
+Por tanto, las técnicas estudiadas aquí se aplican a todo problema en valores iniciales difuso que cumple las hipótesis del \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y por tanto se pueden resolver teniendo en cuenta todos los valores que toma el número difuso.
 \\ \\
 En resumidas cuentas, para resolver un problema de valores iniciales difusos se ha construido el siguiente procedimiento:
 \begin{itemize}
-	\item Se comprueban las hipótesis del \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}.
+	\item Se parte de una función determinista y se considera la ecuación difusa asociada a ella mediante el principio de extensión.
 	
 	\item Se considera una discretización del número difuso.
 	
@@ -16,7 +16,7 @@ En resumidas cuentas, para resolver un problema de valores iniciales difusos se 
 También se ha observado que, mediante una serie de configuraciones a la hora de compilar el código, se puede obtener un menor consumo energético y un mejor rendimiento en cuestión de tiempo.
 
 \section{Planes de futuro}
-Una vez estudiadas las ecuaciones diferenciales difusas seria interesante dar un salto hacía las ecuaciones en derivadas parciales difusa, y ver si alguno de los resultados estudiados aquí se pueden generalizar.
+Una vez estudiadas las ecuaciones diferenciales difusas sería interesante dar un salto hacia las ecuaciones en derivadas parciales difusas, y ver si alguno de los resultados estudiados aquí se pueden generalizar.
 \\ \\
 Por otro lado, se podría tratar de implementar todo esto en un entorno de producción para ver las mejorías ecológicas y económicas que se nos ofrecen las técnicas computacionales aquí expuestas, y ver si en la práctica la optimización a nivel paranoico tiene el resultado esperado. \\ \\
-Finalmente, se podría trabajar con otro tipo de ecuaciones diferenciales y trabajar con ecuaciones en derivadas parciales como podemos ver en \cite{difffuzzy2}
+Finalmente, se podría trabajar con otro tipo de ecuaciones diferenciales y trabajar con ecuaciones en derivadas parciales como podemos ver en \cite{difffuzzy2}. Sería muy interesante su aplicación a casos realistas, en modelos con aplicaciones en la ciencia o en la industria.

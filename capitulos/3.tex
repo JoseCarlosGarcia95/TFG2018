@@ -45,7 +45,7 @@ En las siguientes pruebas, vamos a revisar cómo se comportan Python y C, con el
 \begin{itemize}
 \item \textbf{C es más eficiente a la hora de administrar la memoria RAM}, al probar 10000000000 iteraciones, \textbf{Python no puede reservar más memoria RAM, sin embargo, C es capaz de reservar la memoria necesaria sin ningún tipo de problema.}
   
-\item Por otro lado, los tiempos de ejecución son más sorprendentes aún. \textbf{Con tan solo 10 iteraciones, C es 5 veces más rápido que Python, con $1000000$ iteraciones, C es 77 veces más rápido que Python y, finalmente, con $1000000000$ iteraciones, C es 100 veces más rápido que Python.} Aquí se ve la notable diferencia entre uno y otro. Si queremos trabajar en computación científica, trabajar con C debe ser nuestra primera elección. (Ver figura \ref{fig:cvspython})
+\item Por otro lado, los tiempos de ejecución son más sorprendentes aún. \textbf{Con tan solo 10 iteraciones, C es 5 veces más rápido que Python, con $1000000$ iteraciones, C es 77 veces más rápido que Python y, finalmente, con $1000000000$ iteraciones, C es 100 veces más rápido que Python.} Aquí se ve la notable diferencia entre uno y otro. Si queremos trabajar en computación científica, trabajar con lenguajes compilados como C debe ser nuestra primera elección siempre que la necesidad de rendimiento sea crítica. (Ver figura \ref{fig:cvspython})
 \end{itemize}
 
 \begin{figure}[h]
@@ -130,7 +130,7 @@ A continuación, vamos a mostrar un ejemplo basado en el esquema de diferencias 
 	  \frac{\delta u}{\delta t} (x, t) = \frac{\delta u}{\delta x} (x, t)
   $$
   junto a condiciones de contorno e iniciales adecuadas. \\
-  Sean $u_{i, j} \in \IR$ aproximaciones de $u(x_i, t_j)$ para particiones $\{x_i\}^n_{i=1}$ y $\{t_j\}_{j=1}^m$ en espacio y tiempo, entonces el esquema en diferencias finitas que vamos a tener en cuenta será:
+  Sean $u_{i, j} \in \IR$ aproximaciones de $u(x_i, t_j)$ para particiones $\{x_i\}^n_{i=1}$ y $\{t_j\}_{j=1}^m$ en espacio y tiempo. Entonces el esquema en diferencias finitas que vamos a tener en cuenta será:
   \[
   u_{i, j+1} = u_{i, j} + \mu (u_{i-1, j} - 2 u_{i, j} + u_{i+1, j})
   \]
@@ -144,22 +144,22 @@ A continuación, vamos a mostrar un ejemplo basado en el esquema de diferencias 
   \item Tener un código parecido al anterior pero que funciona en paralelo en la GPU en CUDA.
   \end{itemize}
 
-  En la siguiente tabla, mostramos el tiempo de ejecución en segundos de cada uno de los programas utilizando las distintas técnicas:
+  En la siguiente tabla, mostramos el tiempo de ejecución en segundos de cada uno de los programas utilizando las distintas técnicas: (Todas las pruebas son en simple precisión)
   
   \begin{table}[h]
     \centering
     \begin{tabular}{@{}llll@{}}
       \toprule
       Mallado     & C-No paralelo & CPU   & GPU   \\ \midrule
-      5X5         & 0,001         & 0,001 & 0,441 \\
-      25X25       & 0,001         & 0,001 & 0,441 \\
-      50X50       & 0,001         & 0,001 & 0,441 \\
-      70X70       & 0,001         & 0,001 & 0,441 \\
-      100X100     & 0,001         & 0,001 & 0,484 \\
-      1000X1000   & 0,005         & 0,005 & 0,472 \\
-      10000X10000 & 1,178         & 0,624 & 0,997 \\
-      20000X20000 & 8,961         & 7,754 & 2,594 \\
-      22760X22760 & 22,99         & 9,227 & 3,221 \\ \bottomrule
+      $5\times5$         & 0,001         & 0,001 & 0,441 \\
+      $25\times25$      & 0,001         & 0,001 & 0,441 \\
+      $50\times50$      & 0,001         & 0,001 & 0,441 \\
+      $70\times70$     & 0,001         & 0,001 & 0,441 \\
+      $100\times100$     & 0,001         & 0,001 & 0,484 \\
+      $1000\times1000$   & 0,005         & 0,005 & 0,472 \\
+      $10000\times10000$ & 1,178         & 0,624 & 0,997 \\
+      $20000\times20000$ & 8,961         & 7,754 & 2,594 \\
+      $22760\times22760$ & 22,99         & 9,227 & 3,221 \\ \bottomrule
     \end{tabular}
   \end{table}
 
@@ -170,16 +170,16 @@ A continuación, vamos a mostrar un ejemplo basado en el esquema de diferencias 
     \centering
     \begin{tabular}{@{}llll@{}}
       \toprule
-      Mallado     & C-No paralelo & CPU     & GPU    \\ \midrule
-      5X5         & 0,1           & 0,23    & 57,33  \\
-      25X25       & 0,1           & 0,23    & 57,33  \\
-      50X50       & 0,1           & 0,23    & 57,33  \\
-      70X70       & 0,1           & 0,23    & 57,33  \\
-      100X100     & 0,1           & 0,23    & 62,92  \\
-      1000X1000   & 0,5           & 1,15    & 61,36  \\
-      10000X10000 & 117,8         & 143,52  & 129,61 \\
-      20000X20000 & 896,1         & 1783,42 & 337,22 \\
-      22760X22760 & 2299          & 2122,21 & 418,73 \\ \bottomrule
+Mallado     & C-No paralelo & CPU     & GPU    \\ \midrule
+$5\times5$         & 0,1           & 0,23    & 57,33  \\
+$25\times25$       & 0,1           & 0,23    & 57,33  \\
+$50\times50$       & 0,1           & 0,23    & 57,33  \\
+$70\times70$       & 0,1           & 0,23    & 57,33  \\
+$100\times100$     & 0,1           & 0,23    & 62,92  \\
+$1000\times1000$   & 0,5           & 1,15    & 61,36  \\
+$10000\times10000$ & 117,8         & 143,52  & 129,61 \\
+$20000\times20000$ & 896,1         & 1783,42 & 337,22 \\
+$22760\times22760$ & 2299          & 2122,21 & 418,73 \\ \bottomrule
     \end{tabular}
     
     \caption{Medido con:  \href{https://github.com/JoseCarlosGarcia95/power_app_stats}{power\_app\_stats}}
