@@ -55,7 +55,7 @@ Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos es
     \end{array}
     \right.
     \]
-    Donde, $cl$ define la clausura topológica del conjunto. Además, se define:
+    donde $cl$ define la clausura topológica del conjunto en el intervalo unidad. Además, se define:
     \[
     soporte ~ A = \{x \in \mathbb{U} : \mu_A(x) > 0 \}
     \]
@@ -63,7 +63,7 @@ Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos es
     núcleo ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
     \]
 \end{definicion}
-Denotamos por $\mathcal{F}_\mathcal{C}(\IU)$ a la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes son no vacíos.
+Denotamos por $\mathcal{F}_\mathcal{H}(\IU)$ a la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes son no vacíos y compactos.
 
 De esta definición se puede extraer que un conjunto difuso también puede estar definido por sus $\alpha$-cortes, de manera que \textbf{dos conjuntos difusos $A$ y $B$ son iguales, si todos sus $\alpha$-cortes son iguales.} 
 
@@ -97,7 +97,7 @@ Se da en primer lugar dos definiciones necesarias para definir el concepto de n�
   \label{def:difuso_convexo}
   Un conjunto difuso $A$ es convexo si su función de pertenencia es cuasicóncava, esto es:
   \[
-  \mu_A(\lambda x + (1-\lambda)y) \geq \min{\{\mu_A(x), \mu_A(y)\}}, \lambda \in [0, 1], x, y \in \mathbb{U}
+  \mu_A(\lambda x + (1-\lambda)y) \geq \min{\{\mu_A(x), \mu_A(y)\}}, \text{para todo } \lambda \in [0, 1], x, y \in \mathbb{U}
   \]
 \end{definicion}
 
@@ -122,7 +122,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   %	\caption{Ejemplo de número difuso}
   %	\label{fig:numero_difuso}
   %\end{figure}
-  Denotamos por $\mathcal{F}_\mathcal{H}(\IU)$ la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes son no vacíos, compactos y convexos en $\IU$.
+  Denotamos por $\mathcal{F}_\mathcal{C}(\IU)$ la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes no vacíos, compactos y convexos en $\IU$.
   \subsection{Caracterización números difusos}
   A continuación, se introducen dos teoremas que permitirán caracterizar los números difusos. Las demostraciones de estos dos resultados se pueden encontrar en \cite{fuzzyintro}.
 
@@ -173,7 +173,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     \end{array}
     \right.
     $$
-    Con $a < b < c$. Entonces, \textbf{un número difuso definido de la forma anterior es triangular (a; b; c), y se puede representar como} 
+    Con $a < b < c$. Entonces, \textbf{un número difuso definido de la forma anterior es triangular se denota (a; b; c), y se puede representar como} en la figura \ref{fig:numero_difuso}
     
     \begin{figure}[h]
       \centering
@@ -216,7 +216,6 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \subsection{Teoremas de continuidad}
   Sería ideal que no importase el orden con el que se obtienen los $\alpha$-cortes de la imagen de una función mediante el principio de extensión de Zadeh, y esto lo asegura el siguiente teorema.
 
-  Se introduce en primer lugar la notación $\mathcal{F}_\mathcal{H}(\IU)$, que indica la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes son no vacios, compactos y convexos en $\IU$
   \begin{teorema}
   	\label{teorema:contfuzzy}
     Sea $f : \mathbb{R}^n \longrightarrow \mathbb{R}^m$ una función.
@@ -243,12 +242,12 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     Se procede por doble inclusión.
     
     \begin{itemize}
-    \item $[\hat{f}(A)]_\alpha \subseteq f([A]_\alpha)$. Sea $y \in f([A]_\alpha)$. Por tanto, existe al menos un $x \in [A]_\alpha$ tal que $f(x)=y$. Por el principio de extensión de Zadeh, obtenemos $$\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha$$. De donde, $y \in [\hat{f}(A)]_\alpha$
-    \item Por otro lado, hay que ver que $[\hat{f}(A)]_\alpha \supseteq f([A]_\alpha)$. Dado que $\mathbb{V}$ y $\mathbb{U}$ son espacios de Haussdorf, un punto $y \in \mathbb{V}$ es cerrado. Y además, dado que $f$ es continua, $f^{-1}(y)$ es cerrado. Dado que $[A]_0$ es compacto, ya que es la clausura, la intersección de compactos también es compacto, por tanto $f^{-1}(y) \cap [A]_0$ es compacto. Para $\alpha>0$, sea $y \in [\hat{f}(A)]_\alpha$. Entonces $\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha>0$, por tanto, existe un $x\in f^{-1}(y)$ y en consecuencia $f^{-1}(y) \cap [A]_0 \neq \emptyset$.
+    \item $[\hat{f}(A)]_\alpha \supseteq f([A]_\alpha)$. Sea $y \in f([A]_\alpha)$. Por tanto, existe al menos un $x \in [A]_\alpha$ tal que $f(x)=y$. Por el principio de extensión de Zadeh, obtenemos $$\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha$$. De donde, $y \in [\hat{f}(A)]_\alpha$
+    \item Por otro lado, hay que ver que $[\hat{f}(A)]_\alpha \subseteq f([A]_\alpha)$. Dado que $\mathbb{V}$ y $\mathbb{U}$ son espacios de Haussdorf, un punto $y \in \mathbb{V}$ es cerrado. Y además, dado que $f$ es continua, $f^{-1}(y)$ es cerrado. Dado que $[A]_0$ es compacto, ya que es la clausura, la intersección de compactos también es compacto, por tanto $f^{-1}(y) \cap [A]_0$ es compacto. Para $\alpha>0$, sea $y \in [\hat{f}(A)]_\alpha$. Entonces $\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha>0$, por tanto, existe un $x\in f^{-1}(y)$ y en consecuencia $f^{-1}(y) \cap [A]_0 \neq \emptyset$.
     
     Finalmente, debido a que $\mu_A(x)$ es continúa por la derecha, y $f^{-1}(y) \cap [A]_0$ es compacto, existe un $x \in f^{-1}(y) \cap [A]_0$ con $\mu_{\hat{f}(\mathcal{A})}(y)=\mu_{A}(x) \geq \alpha$. Esto es porque $y=f(x)$ para algún $x \in [A]_\alpha$.
     
-    Para $\alpha=0$, se tiene:
+    Para $\alpha=0$ se obtiene:
     
     $$
     \bigcup_{\alpha \in (0, 1]} [\hat{f}(A)]_\alpha = \bigcup_{\alpha \in (0, 1]} f([A]_\alpha) \subset f([A]_0).
@@ -265,9 +264,9 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
 
 
   \section{Aritmética difusa}
-  El siguiente paso \textbf{para poder construir métodos numéricos es necesario definir las operaciones aritméticas básicas} entre conjuntos difusos.\\
+  El siguiente paso \textbf{para poder construir métodos numéricos es definir las operaciones aritméticas básicas} entre conjuntos difusos.\\
   La definiciones de \textbf{estas operaciones son bastante naturales}, pero pueden ocasionar algunos problemas en ciertos escenarios.\\
-  Debido a la equivalencia entre trabajar con conjuntos difusos, y sus $\alpha$-cortes, nos centraremos en dar todas las operaciones en términos de $\alpha-$cortes.\\
+  Debido a la equivalencia entre trabajar con conjuntos difusos, y sus $\alpha$-cortes, nos centraremos en dar todas las operaciones en términos de $\alpha$-cortes.\\
   En primer lugar, \textbf{se recordarán las definiciones habituales de las operaciones aritmética para la teoría de conjuntos clásicos.}
 
   \subsection{Aritmética en conjuntos clásicos}
@@ -279,7 +278,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \item $A / B =\{a/b : a \in A, b\in B\}$
   \end{itemize}
 
-  Una vez recordadas las operaciones básicas de aritmética en conjuntos clásicos, se van a generalizar para conjuntos difusos.
+  Una vez recordadas las operaciones aritmética en conjuntos clásicos, se van a generalizar para conjuntos difusos.
 
   \subsection{Aritmética en conjuntos difusos}
   Sean $\mu_A, \mu_B$ dos funciones de pertenencia y sea $\odot \in \{+, -, \cdot, \div\}$ se define la función de pertenencia de la operación aritmética como:
@@ -288,14 +287,14 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   $$
   Y dado que \textbf{las operaciones aritméticas son funciones continuas}, es equivalente trabajar con los $\alpha-corte$, \textbf{aplicando el principio de extensión de Zadeh tenemos:}
 
-  Sean $A$ y $B$ dos números difusos con $\alpha-$cortes dados por $[A]_\alpha=[a_\alpha^-, a_\alpha^+]$ y $[B]_\alpha=[b_\alpha^-, b_\alpha^+]$, se puede definir entonces las operaciones aritméticas como:
+  Sean $A$ y $B$ dos números difusos no interactivos (Ver definición \ref{nointeractivos}) con $\alpha-$cortes dados por $[A]_\alpha=[a_\alpha^-, a_\alpha^+]$ y $[B]_\alpha=[b_\alpha^-, b_\alpha^+]$, se puede definir entonces las operaciones aritméticas como \cite{fuzzyintro}:
 
   $$
   [A+B]_\alpha = [a_\alpha^- + b_\alpha^-, a_\alpha^+ + b_\alpha^+]
   $$
 
   $$
-  [A-B]_\alpha = [a_\alpha^- - a_\alpha^+, a_\alpha^+ - b_\alpha^-]
+  [A-B]_\alpha = [a_\alpha^- - b_\alpha^+, a_\alpha^+ - b_\alpha^-]
   $$
 
   $$
@@ -307,24 +306,24 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   $$
 
   \subsubsection{Problemas al definir estas operaciones aritméticas}
-  El objetivo final es \textbf{definir la diferencial de una función}, para funciones escalares de una sola variable se define la diferencial como:
+  El objetivo final es \textbf{definir la diferencial de una función}. Para funciones escalares de una sola variable se define la diferencial como:
   $$
   \lim\limits_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h}
   $$
-  Se considera ahora una función constante $f(x)=A\in \mathcal{F}_\mathcal{H}(\IU)$, donde $A$ es un número difuso dado. \\
-  $$f(x+h) - f(x)=[A-A]$$
-  Sean $[A]_\alpha$ los $\alpha-cortes$ de $A$ entonces, para todo $h>0$:
+  Se considera ahora una función $f : \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}_\mathcal{H}(\IU)$ constante $f(x)=A\in \mathcal{F}_\mathcal{H}(\IU)$, donde $A$ es un número difuso dado, en este caso la diferencia se podría definir como:\\
+  $$[f(x+h) - f(x)]=[A-A]$$
+  Sean $[A]_\alpha$ los $\alpha$-cortes de $A$ entonces, para todo $h>0$:
   $$
   \left[ f(x+h) - f(x)\right]_\alpha = [A-A]_\alpha = [a_\alpha^- - a_\alpha^+, a_\alpha^+ - a_\alpha^-]
   $$
   y por tanto, cuando $h$ tiende a $0$, el soporte de \[
-	  \frac{f(x+h) - f(x)}{h}
+	  \frac{\left[ f(x+h) - f(x)\right]_\alpha}{h}
   \]
   tiende a infinito, luego no es compacto, por tanto 
   \[
-	\lim\limits_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h} \notin \mathcal{F}_\mathcal{H}(\IU)
+	\lim\limits_{h\rightarrow 0} \frac{\left[ f(x+h) - f(x)\right]_\alpha}{h} \notin \mathcal{F}_\mathcal{H}(\IU)
   \]
-  Este problema nos motivará a tratar un nuevo concepto de diferencia, que para ello, se introduce la diferencia de Hukuhara.
+  Este problema nos motivará a tratar un nuevo concepto de diferencia, la diferencia de Hukuhara.
   \subsection{Hukuhara y diferencia generalizada} \label{def:hukukara}
   Debido al problema especificado en la sección anterior, \textbf{se necesita definir una operación resta que cumpla que $A-A=\{0\}$}, Hukuhara dio una definición de resta que soluciona el problema expuesto en la sección anterior.
 
@@ -333,7 +332,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \end{definicion}
 
   \begin{observacion}
-    Sean $A, B, C \in \mathcal{F}_\mathcal{C}\IR$ se consideran sus $\alpha - cortes$, $[A]_\alpha = [a^-_\alpha, a^+_\alpha]$, $[B]_\alpha = [b^-_\alpha, b^+_\alpha]$ y $[C]_\alpha = [c^-_\alpha, c^+_\alpha]$. \\
+    Sean $A, B, C \in \mathcal{F}_\mathcal{C}\IR$ se consideran sus $\alpha$-cortes, $[A]_\alpha = [a^-_\alpha, a^+_\alpha]$, $[B]_\alpha = [b^-_\alpha, b^+_\alpha]$ y $[C]_\alpha = [c^-_\alpha, c^+_\alpha]$. \\
     De donde,
     $$
     [a^-_\alpha, a^+_\alpha] = [b^-_\alpha + c^-_\alpha, b^+_\alpha + c^+_\alpha]
@@ -359,7 +358,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \begin{definicion}[Diferencia generalizada]
 	Dados dos números difusos $A, B \in \mathcal{F}_\mathcal{C}(\IR)$ se define la diferencia generalizada (g-diferencia) $A\circleddash_{g}B=C$ donde $C$ es un número difuso caracterizado por los siguientes $\alpha-$cortes que existe y tiene los siguientes $\alpha$-cortes:
 	\[
-		[A \circleddash_{g} B]_\alpha = cl \bigcup_{\beta \geq \alpha} ([A]_\beta \circleddash_{gH} [B]_\alpha), \forall \alpha \in [0, 1]
+		[A \circleddash_{g} B]_\alpha = cl \bigcup_{\beta \geq \alpha} ([A]_\beta \circleddash_{gH} [B]_\alpha), \text{para todo } \alpha \in [0, 1]
 	\]
   \end{definicion}
 
@@ -372,7 +371,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   Para calcular las funciones de pertenencia marginales, simplemente hay que aplicar el principio de extensión de Zadeh:
 
   \begin{definicion}[Función marginal de una función de pertencia conjunta]
-    Se define la función de pertenencia marginal respecto $a$ como:
+    Se define la función de pertenencia marginal respecto a como:
     \[
     \mu_a(a) = \sup\limits_{b \in W} \mu_{\hat{a}, \hat{b}} (a, b)
     \]
@@ -381,47 +380,28 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   Se suele suponer no interactividad al trabajar con varios conjuntos difusos, esto es;
 
   \begin{definicion}[No interactivos o independientes]
-    Dos conjuntos difusos $\hat{a} \in \mathcal{F}(V)$ y $\hat{b} \in \mathcal{F}(W)$ se dicen que son no interactivos, o independientes si $\mu_{\hat{a}, \hat{b}} = \min(\mu_{\hat{a}}(a), \mu_{\hat{b}}(b))$
+  	\label{nointeractivos}
+    Dos conjuntos difusos $\hat{a} \in \mathcal{F}(V)$ y $\hat{b} \in \mathcal{F}(W)$ se dicen que son no interactivos, o independientes si $\mu_{\hat{a}, \hat{b}} (a, b) = \min(\mu_{\hat{a}}(a), \mu_{\hat{b}}(b))$
   \end{definicion}
 
-  \begin{ejemplo}
-    En el caso de conjuntos no interactivos, se escriben las operaciones aritméticas de los conjuntos difusos de la siguiente manera:
-
-    \[
-      [\hat{a} + \hat{b}]_\alpha = [[\hat{a}^-_\alpha + [\hat{b}]_\alpha^-, [\hat{a}]^+_\alpha + [\hat{b}]_\alpha^+]
-        \]
-
-        \[
-          [\hat{a} - \hat{b}]_\alpha = [[\hat{a}^-_\alpha - [\hat{b}]_\alpha^-, [\hat{a}]^+_\alpha - [\hat{b}]_\alpha^+]
-            \]
-
-            \[
-              [\hat{a} * \hat{b}]_\alpha = \max\{ [\hat{a}]_\alpha^i [\hat{b}]^j_\alpha \}, i, j \in \{+, -\}
-              \]
-
-              \[
-                [\hat{a} / \hat{b}]_\alpha = \max\{ [\hat{a}]_\alpha^i / [\hat{b}]^j_\alpha \}, i, j \in \{+, -\}
-                \]
-  \end{ejemplo}
-
-  \section{Métrica en conjuntos difusos}
+  \section{Métrica en conjuntos difusos \cite{fuzzyintro}}
   En esta sección se va a generalizar la definición de espacio métrico a conjuntos difusos, y vamos a dar algunos resultados importantes. Todas las demostraciones de esta sección pueden encontrarse en \cite{apuntesfuzzy}. Se va a ver en primer lugar el concepto de métrica:
 
   \begin{definicion}[Pseudométrica]
-    Sean $A$ y $B$ dos subconjuntos de un espacio métrico $\IU$ compacto. Entonces se define la pseudométrica como:
+    Sean $A$ y $B$ dos subconjuntos compactos de un espacio métrico $\IU$. Entonces se define la pseudométrica como:
     \[
     \rho(A, B) = \sup\limits_{a \in A} d(a, B)
     \]
-    Donde:
+    donde:
     \[
     d(a, B) = \inf\limits_{b \in B} ||a-b||
     \]
-    es la separación de Haussdorf
+    es la separación de Haussdorf.
   \end{definicion}
 
   \begin{definicion}[Métrica de Pompeiu-Hausdorff]
     \label{def:metricadifusa}
-    Sean $A$ y $B$ dos conjuntos difusos en $\IU$, un espacio métrico. La métrica de Pompeiu-Hausdorff, denotada por $d_\infty$ se define:
+    Sean $A$ y $B$ dos conjuntos difusos, un espacio métrico $\IU$. La métrica de Pompeiu-Hausdorff, denotada por $d_\infty$, se define como:
     \[
     d_\infty(A, B) = \sup\limits_{\alpha \in [0, 1]} \max\{\rho([A]_\alpha, [B]_\alpha), \rho([B]_\alpha,  [A]_\alpha)\}
     \]
@@ -438,10 +418,8 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \end{teorema}
 
   \section{Funciones difusas}
-  En la literatura sobre funciones difusas existen dos definiciones para referirnos a funciones difusas, originalmente Dubois y Prade (1980) definieron los siguientes conceptos:
-
   \begin{definicion}[Función con valores en conjuntos difusos]
-    \label{def:fizzusetvaluedfunc} Se dice que una función \textbf{$F$ es una función definida en un conjunto difuso} si:
+    \label{def:fizzusetvaluedfunc} Se dice que una función \textbf{$F$ es una función con valores en conjuntos difusos} si:
     \begin{enumerate}
     \item $dom ~ F \subset \IR$
     \item $Im ~ F \subset \mathcal{F}_\mathcal{H}(\IR^n)$
@@ -449,11 +427,11 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \end{definicion}
 
   \begin{ejemplo}
-    La función $f(x) = A x$ donde $A=[a, b]$ con $a, b \in \IR$, es una función definida en conjuntos difusos. Sus imágenes son intervalos.
+    La función $f(x) = A x$ donde $A=[a, b]$ con $a, b \in \IR$, función con valores en conjuntos difusos. Sus imágenes son intervalos.
   \end{ejemplo}
 
   \begin{ejemplo}
-    La función $f(x) = A x$ donde $A=(a;b;c)$ con $a<b<c$, es una función definida en conjuntos difusos. Además, su imágenes son conjuntos números triangulares.
+    La función $f(x) = A x$ donde $A=(a;b;c)$ con $a<b<c$, es una función con valores en conjuntos difusos. Además, su imágenes son conjuntos números triangulares.
   \end{ejemplo}
 
   \iffalse
@@ -485,7 +463,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \subsection{Continuidad de funciones difusas}
   Se introduce en primer lugar dos conceptos de continuidad sobre funciones reales que toman valores en subconjuntos reales. Y luego, usaremos esta misma idea para definir la continuidad sobre conjuntos difusos
 
-  \begin{definicion}[Función sobre conjuntos continua]
+  \begin{definicion}[Función con valores en conjuntos difusos continua]
     \label{def:funcioncontinua}
     Sea $F : \Omega \rightarrow \mathcal{P}(\IR^n)$, $\Omega \subset \IR^m$ se dice que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
     \[
