@@ -103,7 +103,7 @@ A continuación, se introduce una condición necesaria que servirá de herramien
 \subsubsection{La derivada fuertemente generalizada}
 El concepto de derivada fuertemente generalizada \textbf{viene a generalizar más aún los conceptos de derivadas ya introducidos por Hukuhara y Seikkala.} \\
 
-Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara es cuando pasa $(f^-_\alpha)'(x_0) \leq (f^+_\alpha)'(x_0)$ (Se puede ver en el Ejemplo \ref{ejemplo:hukuhara}). Si F es Seikkara diferenciable (en particular, si es Hukuhara diferenciable), entonces $(f_{\alpha}^-)'(x) \le (f_{\alpha}^+)'(x)$ y por tanto la diferencia $(f_{\alpha}^+)'(x) - (f_{\alpha}^-)'(x) \ge 0$. Es decir, para todo alfa corte, la función diámetro$  [F(x)]_{\alpha} = f_{\alpha}^+(x) - f_{\alpha}^-(x)$ es no decreciente. Pero esto es un serio inconveniente: significa que no pueden existir funciones Hukuhara diferenciables que presenten un grado de incertidumbre cada vez menor, o bien cuyo grado de incertidumbre oscile (crezca y decrezca). Para evitar estos problemas, se introdujo el concepto de derivada fuertemente generalizada:
+Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara es cuando pasa $(f^-_\alpha)'(x_0) \leq (f^+_\alpha)'(x_0)$ (Se puede ver en el Ejemplo \ref{ejemplo:hukuhara}). Si F es Seikkara diferenciable (en particular, si es Hukuhara diferenciable), entonces $(f_{\alpha}^-)'(x) \le (f_{\alpha}^+)'(x)$ y por tanto la diferencia $(f_{\alpha}^+)'(x) - (f_{\alpha}^-)'(x) \ge 0$. Es decir, para todo $\alpha$-corte, la función diámetro$  [F(x)]_{\alpha} = f_{\alpha}^+(x) - f_{\alpha}^-(x)$ es no decreciente. Pero esto es un serio inconveniente: significa que no pueden existir funciones Hukuhara diferenciables que presenten un grado de incertidumbre cada vez menor, o bien cuyo grado de incertidumbre oscile (crezca y decrezca). Para evitar estos problemas, se introdujo el concepto de derivada fuertemente generalizada:
 
 \begin{definicion}[Derivada fuertemente generalizada]
   Sea $F: (a, b) \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$. Si alguno de los siguientes pares de límites:
@@ -183,7 +183,7 @@ La demostración de lo anterior, como el resto de afirmaciones del capítulo pue
 La primera propuesta de integral difusa se \textbf{basa en el concepto integral de Aumann \cite{aumannintegral}} para funciones multievaluadas. La definición original podemos verla en \cite{integral1} y \cite{integral2}. \\
 Por simplificar, vamos a denotar:
 \[
-S(G) = \{g : I \rightarrow \IR^n : g ~ integrable, g(t) \in G(t), \forall t \in I \}
+S(G) = \{g : I \rightarrow \IR^n : \text{g integrable}, g(t) \in G(t), \forall t \in I \}
 \]
 Vamos a denotar, para cada $G : I \rightarrow \mathcal{P}(\IR^n)$
 
@@ -204,7 +204,7 @@ Vamos a denotar, para cada $G : I \rightarrow \mathcal{P}(\IR^n)$
 Se puede usar también el concepto clásico de integral para definir una \textbf{integral de Riemann en el ámbito difuso.}
 
 \begin{definicion}[Integral de Riemann]
-  La integral de Riemman de una función difusa $F : [a, b] \rightarrow \mathcal{F}_\mathcal{C} (\IR)$ sobre $[a, b]$ es el número difuso $A$ tal que para todo $\varepsilon > 0$ existe un $\delta > 0$ tal que para cualquier partición $\mathcal{P}: = a=x_0 < x1 < ... < x_n = b$ con $x_i - x_{i-1} < \delta, i = 1, ..., n$ y $\xi_i \in [x_i - x_{i-1}]$
+  La integral de Riemman de una función difusa $F : [a, b] \rightarrow \mathcal{F}_\mathcal{C} (\IR)$ sobre $[a, b]$ es el número difuso $A$ tal que para todo $\varepsilon > 0$ existe un $\delta > 0$ tal que para cualquier partición $\mathcal{P}: = a=x_0 < x_1 < ... < x_n = b$ con $x_i - x_{i-1} < \delta, i = 1, ..., n$ y $\xi_i \in [x_i - x_{i-1}]$
   \[
   	d_\infty \left(
   		\sum_{i=1}^{n-1} F(\xi_i)(x_i - x_{i-1}, A
@@ -392,7 +392,7 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 \end{ejemplo}
 
 \subsection{Inclusiones diferenciales}
-Esta sección está basada en la teoría que se puede encontrar en [Gomes-Barros-Bede], que a su vez se fundamenta en los artículos  \cite{inclusionesdif1}, \cite{inclusionesdif2} y \cite{inclusionesdif3}.\\
+Esta sección está basada en la teoría que se puede encontrar en \cite{fuzzyintro}, que a su vez se fundamenta en los artículos  \cite{inclusionesdif1}, \cite{inclusionesdif2} y \cite{inclusionesdif3}.\\
 En estos artículos Hüllermeier y Diamond interpretan las  \hyperref[def:edf]{Ecuaciones Diferenciales Difusas} como una familia inclusiones diferenciales:
 
 \begin{equation}

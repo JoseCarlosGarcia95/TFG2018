@@ -8,7 +8,7 @@ El concepto de conjunto difuso \textbf{fue introducido en 1965 por Lotfi A. Zade
 
 Su desarrollo \textbf{fue motivado por la naturaleza cualitativa que se encuentra en el lenguaje coloquial}. Los intentos de usar tecnología computacional para \textbf{procesar modelos usando la forma probabilística de la incertidumbre, se ha demostrado que no han sido del todo satisfactorios.}
 
-Se puede decir que \textbf{calcula de forma cuantitativa de que se verifique un proceso bien definido} (por ejemplo, las caras de una moneda), sin embargo, \textbf{la teoría difusa viene a analizar la incertidumbre que existe en elementos bien conocidos.} ¿Es este color violeta o es más bien azul? ¿Está la temperatura alta o baja? Este último tipo de modelos son esenciales para solucionar problemas técnicos (\textbf{teoría de control}), economía (\textbf{análisis de mercado}) y \textbf{otros problemas influenciados por la naturaleza cualitativa del lenguaje humano} \cite{historiafuzzy}.
+Se puede decir que la probabilidad \textbf{calcula de forma cuantitativa de que se verifique un proceso bien definido} (por ejemplo, las caras de una moneda), sin embargo, \textbf{la teoría difusa viene a analizar la incertidumbre que existe en elementos bien conocidos.} ¿Es este color violeta o es más bien azul? ¿Está la temperatura alta o baja? Este último tipo de modelos son esenciales para solucionar problemas técnicos (\textbf{teoría de control}), economía (\textbf{análisis de mercado}) y \textbf{otros problemas influenciados por la naturaleza cualitativa del lenguaje humano} \cite{historiafuzzy}.
 
 El contenido de este capítulo se basa en las definiciones que aparecen en la referencia \cite{fuzzyintro}.
 
@@ -57,10 +57,10 @@ Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos es
     \]
     donde $cl$ define la clausura topológica del conjunto en el intervalo unidad. Además, se define:
     \[
-    soporte ~ A = \{x \in \mathbb{U} : \mu_A(x) > 0 \}
+    \text{soporte} ~ A = \{x \in \mathbb{U} : \mu_A(x) > 0 \}
     \]
     \[
-    núcleo ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
+    \text{núcleo} ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
     \]
 \end{definicion}
 Denotamos por $\mathcal{F}_\mathcal{H}(\IU)$ a la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes son no vacíos y compactos.
@@ -90,7 +90,7 @@ Se da en primer lugar dos definiciones necesarias para definir el concepto de n�
 
 \begin{definicion}[Conjunto difuso normal]
   \label{def:difuso_normal}
-  Un conjunto difuso $A$ es normal si $nucleo ~ A \neq \emptyset$.
+  Un conjunto difuso $A$ es normal si $\text{núcleo} ~ A \neq \emptyset$.
 \end{definicion}
 
 \begin{definicion}[Conjunto difuso convexo]
@@ -215,7 +215,8 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
 
   \subsection{Teoremas de continuidad}
   Sería ideal que no importase el orden con el que se obtienen los $\alpha$-cortes de la imagen de una función mediante el principio de extensión de Zadeh, y esto lo asegura el siguiente teorema.
-
+ 
+\newpage
   \begin{teorema}
   	\label{teorema:contfuzzy}
     Sea $f : \mathbb{R}^n \longrightarrow \mathbb{R}^m$ una función.
@@ -264,8 +265,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
 
 
   \section{Aritmética difusa}
-  El siguiente paso \textbf{para poder construir métodos numéricos es definir las operaciones aritméticas básicas} entre conjuntos difusos.\\
-  La definiciones de \textbf{estas operaciones son bastante naturales}, pero pueden ocasionar algunos problemas en ciertos escenarios.\\
+  El siguiente paso \textbf{para poder construir métodos numéricos es definir las operaciones aritméticas básicas} entre conjuntos difusos. La definiciones de \textbf{estas operaciones son bastante naturales}, pero pueden ocasionar algunos problemas en ciertos escenarios.\\
   Debido a la equivalencia entre trabajar con conjuntos difusos, y sus $\alpha$-cortes, nos centraremos en dar todas las operaciones en términos de $\alpha$-cortes.\\
   En primer lugar, \textbf{se recordarán las definiciones habituales de las operaciones aritmética para la teoría de conjuntos clásicos.}
 
@@ -285,7 +285,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   $$
   \mu_{A \odot B}(c) = \sup_{a \odot b = c} \min\{\mu_A(a), \mu_B(b)\}
   $$
-  Y dado que \textbf{las operaciones aritméticas son funciones continuas}, es equivalente trabajar con los $\alpha-corte$, \textbf{aplicando el principio de extensión de Zadeh tenemos:}
+  Y dado que \textbf{las operaciones aritméticas son funciones continuas}, es equivalente trabajar con los $\alpha$-cortes, \textbf{aplicando el principio de extensión de Zadeh tenemos:}
 
   Sean $A$ y $B$ dos números difusos no interactivos (Ver definición \ref{nointeractivos}) con $\alpha-$cortes dados por $[A]_\alpha=[a_\alpha^-, a_\alpha^+]$ y $[B]_\alpha=[b_\alpha^-, b_\alpha^+]$, se puede definir entonces las operaciones aritméticas como \cite{fuzzyintro}:
 
