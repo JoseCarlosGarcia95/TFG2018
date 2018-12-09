@@ -20,7 +20,7 @@ La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad
   \[
   \begin{array}{c||c}
     \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
-  \end{array}
+  \end{array}.
   \]
   
   Existen, y son iguales a cierto elemento $F'_H(x_0) \in \mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ \textbf{es diferenciable según Hukuhara (H-Diferenciable)} en $x_0$ y se dice que $F'_H(x_0)$ es su derivada en $x_0$ 
@@ -29,10 +29,10 @@ La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad
 \begin{ejemplo}[Función constante]
   Sea $F(x)=A$ con $A=(-1;0;1)$, se va a calcular su H-Derivada en un punto arbitrario $x_0 \in \IR$: 
   \[
-  F(x_0 + h) \circleddash_H F(x_0) = A \circleddash_H A = 0
+  F(x_0 + h) \circleddash_H F(x_0) = A \circleddash_H A = 0.
   \]
   \[
-  F(x_0) \circleddash_H F(x_0 - h) = A \circleddash_H A = 0
+  F(x_0) \circleddash_H F(x_0 - h) = A \circleddash_H A = 0.
   \]
   Por tanto, $F_H'(x_0) = 0$
 \end{ejemplo}
@@ -41,17 +41,17 @@ La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad
   \label{ejemplo:hukuhara}
   Sea $F(x)=A x$ con $A=(-1; 0; 1)$, se supone en primer lugar que $x \geq 0$:
   \[
-  F(x + h) \circleddash_H F(x) = A(x + h) \circleddash_H A = (-x - h; 0; x+h) \circleddash_H (-x; 0; x) = (-h; 0; h)
+  F(x + h) \circleddash_H F(x) = A(x + h) \circleddash_H A = (-x - h; 0; x+h) \circleddash_H (-x; 0; x) = (-h; 0; h).
   \]
   Análogamente, 
   \[
-  F(x) \circleddash_H F(x - h) = (-h; 0; h)
+  F(x) \circleddash_H F(x - h) = (-h; 0; h),
   \]
-  De donde,
+  de donde,
   \[
   \begin{array}{c||c}
     \lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A & \lim\limits_{h \rightarrow 0^+} \frac{(-h; 0; h)}{h}=A
-  \end{array}
+  \end{array}.
   \]
   Por tanto, $F_H'(x) = A $, si $x > 0$. \\
   Por otro lado, si $x<0$, se puede ver que $F(x+h) \circleddash_H F(x)$ no está definido, pues:
@@ -66,7 +66,7 @@ La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad
 \begin{proposicion}[Construcción de funciones H-Diferenciables \cite{spingerfuzzy}]
   Sea $G$ una función definida en conjuntos difusos tal que $G(x)=B g(x)$ donde $g(x)>0, g'(x)>0$ y $B$ es un número difuso entonces, $G(x)$ es H-Diferenciable, más aún, 
   \[
-  G'_H(x) = B g'(x)
+  G'_H(x) = B g'(x).
   \]
 \end{proposicion}
 
@@ -74,7 +74,7 @@ La derivada de Hukuhara está basada en el concepto de \textbf{diferenciabilidad
 \end{teorema}
 
 \begin{teorema}[Álgebra en derivadas \cite{seikkala}]
-  Sean $F, G : [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ funciones diferenciables y sea $\lambda \in \IR$. Entonces, $(F+G)_H' = F'_H + G_H'$ y $(\lambda F)_H' = \lambda F'_H$
+  Sean $F, G : [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ funciones diferenciables y sea $\lambda \in \IR$. Entonces, $(F+G)_H' = F'_H + G_H'$ y $(\lambda F)_H' = \lambda F'_H$.
 \end{teorema}
 
 \textbf{Una función H-Diferenciable tiene $\alpha$-corte diferenciables}, sin embargo, \textbf{que todos los $\alpha$-corte sean diferenciables, no implica que la función sea $H$-diferenciable.}
@@ -85,7 +85,7 @@ Ahora se introduce el concepto de derivada de Seikkala, que se usará después p
 \begin{definicion}[Derivada de Seikkala]
   Sea $F: [a, b] \rightarrow \mathcal{F}_H(\IR)$ si:
   \[
-    [(f^-_\alpha)'(x_0), (f^+_\alpha)'(x_0)]
+    [(f^-_\alpha)'(x_0), (f^+_\alpha)'(x_0)].
     \]
     existe para cada $\alpha \in [0, 1]$ y define $\alpha$-cortes de un número difuso $F'_S(x_0)$ entonces se dice que $F$ es Seikkala diferenciable en $x_0$ y definimos $F'_S(x_0)$ como la derivada de $F$ en $x_0$.
 \end{definicion}
@@ -95,7 +95,7 @@ A continuación, se introduce una condición necesaria que servirá de herramien
 \begin{teorema}[Condición necesaria Seikkala \cite{seikkala}]
   Si $F: [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ es H-Diferenciable entonces $f_\alpha^-(x)$ y $f_\alpha^+$ son diferenciables y:
   \[
-    [F'(x_0)]_\alpha = [(f_\alpha^-)(x_0), (f_\alpha^+)(x_0)]
+    [F'(x_0)]_\alpha = [(f_\alpha^-)(x_0), (f_\alpha^+)(x_0)].
     \]
     Entonces, $F$ es diferenciable según Seikkala y la derivada de Seikkala y de Hukuhara coinciden.
 \end{teorema}
@@ -113,25 +113,25 @@ Uno de los problemas que nos encontramos con las derivada de Seikkala y Hukuhara
     \[
     \begin{array}{c||c}
       \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
-    \end{array}
+    \end{array}.
     \]
   \item 	
     \[
     \begin{array}{c||c}
       \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
-    \end{array}
+    \end{array}.
     \]
   \item 	
     \[
     \begin{array}{c||c}
       \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{-h}
-    \end{array}
+    \end{array}.
     \]
   \item 	
     \[
     \begin{array}{c||c}
       \lim\limits_{h \rightarrow 0^+} \frac{F(x_0 + h) \circleddash_H F(x_0)}{-h} & \lim\limits_{h \rightarrow 0^+} \frac{F(x_0) \circleddash_H F(x_0 - h)}{h}
-    \end{array}
+    \end{array}.
     \]
   \end{enumerate}
   Existen y son iguales a algún elemento $F'_G(x_0)$ de $\mathcal{F}_\mathcal{H}(\IR^n)$, entonces $F$ es diferenciable fuertemente generalizado (o GH) en $x_0$, y $F'_G(x_0)$ es el valor de la derivada. Se denota como GH-Diferenciable.
@@ -155,7 +155,7 @@ Para cerrar esta sección, veremos dos conceptos más derivada:
 \begin{definicion}[Diferencial de Hukuhara generalizada]
   Sea $F: (a, b) \longrightarrow \mathcal{F}_\mathcal{C}(\IR)$. Si el límite:
   \[
-  	\lim\limits_{h \rightarrow 0} \frac{F(x_0 + h) \circleddash_{gH} F(x_0)}{h}
+  	\lim\limits_{h \rightarrow 0} \frac{F(x_0 + h) \circleddash_{gH} F(x_0)}{h},
   \]
   existe y pertenece a $\mathcal{F}_\mathcal{C} (\IR)$, entonces $F$ es diferenciable de forma generalizada según Hukuhara (gH diferenciable) en $x_0$, además a $F'_{gH}(x_0)$ se le llama el valor de la derivada de forma generalizada según Hukukahara
 \end{definicion}
@@ -164,7 +164,7 @@ Para cerrar esta sección, veremos dos conceptos más derivada:
   \label{def:diferencial_generalizada}
   Sea $F: (a, b) \longrightarrow \mathcal{F}_\mathcal{C}(\IR)$. Si el límite:
 \[
-\lim\limits_{h \rightarrow 0} \frac{F(x_0 + h) \circleddash_{g} F(x_0)}{h}
+\lim\limits_{h \rightarrow 0} \frac{F(x_0 + h) \circleddash_{g} F(x_0)}{h},
 \]
 existe y pertenece a $\mathcal{F}_\mathcal{C} (\IR)$, entonces $F$ es diferenciable de forma generalizada (g diferenciable) en $x_0$, además a $F'_{g}(x_0)$ se le llama el valor de la derivada de forma generalizada
 \end{definicion}
@@ -183,7 +183,7 @@ La demostración de lo anterior, como el resto de afirmaciones del capítulo pue
 La primera propuesta de integral difusa se \textbf{basa en el concepto integral de Aumann \cite{aumannintegral}} para funciones multievaluadas. La definición original podemos verla en \cite{integral1} y \cite{integral2}. \\
 Por simplificar, vamos a denotar:
 \[
-S(G) = \{g : I \rightarrow \IR^n : \text{g integrable}, g(t) \in G(t), \forall t \in I \}
+S(G) = \{g : I \rightarrow \IR^n : \text{g integrable}, g(t) \in G(t), \forall t \in I \}.
 \]
 Vamos a denotar, para cada $G : I \rightarrow \mathcal{P}(\IR^n)$
 
@@ -195,7 +195,7 @@ Vamos a denotar, para cada $G : I \rightarrow \mathcal{P}(\IR^n)$
     (A) \int_{a}^{b} F(x) dx
     \right]_\alpha = \left\{
   \int_{a}^{b} g(x) dx : g \in S([F(x)]_\alpha)
-  \right\}
+  \right\}.
   \]
   Para todo $\alpha \in [0, 1]$. La función $F$ se dirá que es integrable sobre $[a, b]$ si $(A) \int_{a}^{b} F(x) dx \in \mathcal{F}_\mathcal{H}(\IR^n)$
 \end{definicion}
@@ -208,11 +208,11 @@ Se puede usar también el concepto clásico de integral para definir una \textbf
   \[
   	d_\infty \left(
   		\sum_{i=1}^{n-1} F(\xi_i)(x_i - x_{i-1}, A
-  	\right) < \varepsilon
+  	\right) < \varepsilon.
   \]
   La función $F$ se dice que es integrable según Riemann sobre $[a, b]$ y se denota:
   \[
-  	(R) \int_{a}^{b} F(x) dx = A
+  	(R) \int_{a}^{b} F(x) dx = A.
   \]
 \end{definicion}
 
@@ -226,14 +226,14 @@ En esta sección mostraremos una serie de teoremas de utilidad encontrados en \c
     \int F
     \right]_\alpha = \left[
     \int f_\alpha^-, \int f_\alpha^+
-    \right]
+    \right],
   \] para todo $\alpha \in [0, 1]$
 \end{teorema}
 
 \begin{teorema}[Cambio de intervalos]
   Sea $F :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ una función integrable, y supongamos $a \leq x_1 \leq x_2 \leq x_3 \leq b$, entonces:
   \[
-  \int_{x_1}^{x_3} F = \int_{x_1}^{x_2} F + \int_{x_2}^{x_3} F
+  \int_{x_1}^{x_3} F = \int_{x_1}^{x_2} F + \int_{x_2}^{x_3} F.
   \]
 \end{teorema}
 
@@ -241,10 +241,10 @@ En esta sección mostraremos una serie de teoremas de utilidad encontrados en \c
   Sean $F, G :  [a, b] \rightarrow \mathcal{F}_\mathcal{H}(\IR)$ funciones integrables, entonces:
   
   \begin{enumerate}
-  \item $\int F + G = \int F + \int G$
+  \item $\int F + G = \int F + \int G$.
   \item $\int \lambda F = \lambda \int F$ para cualquier $\lambda \in \IR$.
   \item $d_\infty(F, G)$ es integrable.
-  \item $d_\infty(\int F, \int G) \leq \int d_\infty(F, G)$
+  \item $d_\infty(\int F, \int G) \leq \int d_\infty(F, G)$.
   \end{enumerate}
 \end{teorema}
 
@@ -254,14 +254,14 @@ En la teoría clásica del análisis, \textbf{el teorema fundamental del cálcul
 \begin{teorema}[Teorema fundamental del cálculo difuso\cite{integral2}]
   Sea $F : [a, b] \rightarrow \mathcal{F}_\mathcal{H} (\IR^n)$ una función continua, entonces $G(x) = \int_{a}^{x} F(s) ds$ es H-Diferenciable y además,
   \[
-  G'_H(x) = F(x)
+  G'_H(x) = F(x).
   \]
 \end{teorema}
 
 \begin{teorema}[\cite{integral2}]
   Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función H-Diferenciable y sea $F_H'$ su derivada. Supongamos que $F_H'$ es integrable sobre $[a, b]$. Entonces,
   \[
-  F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
+  F(x) = F(a) + \int_{a}^{x}F_H'(s) ds,
   \]
   para todo $x \in [a, b]$.
 \end{teorema}
@@ -271,7 +271,7 @@ También se puede enunciar un teorema un teorema parecido al anterior, pero esta
 \begin{teorema}[\cite{fundamental}]
   Sea $F : [a, b] \rightarrow  \mathcal{F}_\mathcal{H} (\IR^n)$ una función diferenciable fuertemente generalizada (2) y sea $F_H'$ su derivada. Supongamos que esta es integrable sobre $[a, b]$. Entonces,
   \[
-  F(x) = F(a) + \int_{a}^{x}F_H'(s) ds
+  F(x) = F(a) + \int_{a}^{x}F_H'(s) ds,
   \]
   para todo $x \in [a, b]$.
 \end{teorema}
@@ -284,16 +284,16 @@ En esta sección vamos a empezar planteando un problema de valor inicial difuso 
 
 \begin{equation}
   \label{def:edf}
-  X'(t) = f(t, X(t)), ~ X(0) = X_0
+  X'(t) = f(t, X(t)), ~ X(0) = X_0,
 \end{equation}
 donde $f : [O, T] \times \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}(\IR^n)$ se obtiene mediante el \hyperref[def:zadeh]{principio de extensión de Zadeh} aplicada a una función continua $g : [0, T] \times U \rightarrow \IR^n$. Además, $f$  es continua por ser $g$ continua, aplicando \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}} se puede concluir:
 \[
-	[f(t, X)]_\alpha = g(t, [X]_\alpha)
+	[f(t, X)]_\alpha = g(t, [X]_\alpha).
 \]
 Se puede \textbf{asociar a esta ecuación diferencial difusa una ecuación diferencial ordinaria:}
 \begin{equation}
 	\label{eq:edo}
-	x'(t) = g(t, x(t)), ~ x(0) = c
+	x'(t) = g(t, x(t)), ~ x(0) = c.
 \end{equation}
 
 Así, decimos que $X(t)$ es una solución difusa de (3.1) en (el sentido del principio de extensión) si existe una solución $x(t,c)$ de (3.2) y, para cada t fijo, se tiene que
@@ -322,10 +322,10 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 				X' & = & - X(t) \\
 				X(0) & =  & C
 			\end{array}
-		\right.
+		\right.,
 	\]
 	
-	Donde $C$ representa un número difuso arbitrario. A continuación se construye el problema ordinario asociado al problema difuso de la misma manera que se hace al inicio de esta sección;
+	donde $C$ representa un número difuso arbitrario. A continuación se construye el problema ordinario asociado al problema difuso de la misma manera que se hace al inicio de esta sección;
 	
 	\[
 		\left\{
@@ -333,17 +333,17 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 				x' & = & - x(t) \\
 				x(0) & =  & c
 			\end{array}
-		\right.
+		\right..
 	\]
 	
 	Es bien conocido que este problema de valores iniciales tiene la siguiente solución:
 	\[
-		x(t, c) = c e^{-t}
+		x(t, c) = c e^{-t}.
 	\]
 	
 	Por tanto, dado que $x(t, c)$ es continúa para cada $t, c \in \IR$ se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia} y tenemos que la solución del problema difuso es:
 	\[
-		X(t) = C \cdot e^{-t}
+		X(t) = C \cdot e^{-t}.
 	\]
 \end{ejemplo}
 
@@ -355,10 +355,10 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 				X' & = & X^2(t) \\
 				X & =  & C
 			\end{array}
-		\right.
+		\right.,
 	\]
 	
-	Donde esta vez $C$ es un número difuso triangular:
+	donde esta vez $C$ es un número difuso triangular:
 	\[
 		C(y) = \left\{
 			\begin{array}{ccc}
@@ -366,7 +366,7 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 				y - 1 & si & 1 \leq y \leq 2 \\
 				0 
 			\end{array}
-		\right.
+		\right. .
 	\]
 	El problema ordinario (o determinístico asociado) viene dado por:
 	\[
@@ -374,9 +374,9 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 	\]
 	y la solución de este problema viene dado por:
 	\[
-		x(t, c) = \frac{c}{1-tc}
+		x(t, c) = \frac{c}{1-tc},
 	\]
-	Para cada $t \in [0, \frac{1}{3})$ fijado, la función $(x, t)$ es continua respecto a $c$, entonces se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia} y podemos concluir que existe una única solución difusa dada por $X(t) = \hat{x}(t, X_0)$. Se observa que es posible calcular la solución difusa aplicando directamente el principio de extensión de Zadeh y el \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}}. Por tanto, se pueden calcular los $\alpha$-cortes de la siguiente forma para cada $\alpha \in [0, 1]$:
+	para cada $t \in [0, \frac{1}{3})$ fijado, la función $(x, t)$ es continua respecto a $c$, entonces se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia} y podemos concluir que existe una única solución difusa dada por $X(t) = \hat{x}(t, X_0)$. Se observa que es posible calcular la solución difusa aplicando directamente el principio de extensión de Zadeh y el \hyperref[teorema:contfuzzy]{Teorema \ref*{teorema:contfuzzy}}. Por tanto, se pueden calcular los $\alpha$-cortes de la siguiente forma para cada $\alpha \in [0, 1]$:
 	
 	\[
 		\begin{array}{ccc}
@@ -387,7 +387,7 @@ Para ver la potencia del Teorema anterior, se introducirán una serie de ejemplo
 			& = & \left[
 				\frac{1+\alpha}{1-t-t\alpha}, \frac{3-\alpha}{1-3t + t\alpha}
 			\right]
-		\end{array}
+		\end{array}.
 	\]
 \end{ejemplo}
 
@@ -397,12 +397,12 @@ En estos artículos Hüllermeier y Diamond interpretan las  \hyperref[def:edf]{E
 
 \begin{equation}
 	\label{def:familiainclusionesdif}
-	y'_\alpha(t) = g(t, y_\alpha(t)), ~ y_\alpha(0) \in [X_0]_\alpha, ~ 0 \leq \alpha \leq 1
+	y'_\alpha(t) = g(t, y_\alpha(t)), ~ y_\alpha(0) \in [X_0]_\alpha, ~ 0 \leq \alpha \leq 1.
 \end{equation}
 
 Bajo unas determinadas hipótesis, podemos afirmar:
 \[
-	\mathcal{A}_\alpha = \{y_\alpha | y_\alpha ~ \text{es una solución de la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}}\}
+	\mathcal{A}_\alpha = \{y_\alpha | y_\alpha ~ \text{es una solución de la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}}\},
 \]
 son los $\alpha$-cortes de un determinado conjunto difuso y se le llaman soluciones del problema dado por la \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales}
 
@@ -410,7 +410,7 @@ A continuación se ofrece un teorema análogo al teorema que se vio en la secci�
 \begin{teorema}[\cite{fuzzyapproaches1}]
 	Sea $U$ un conjunto abierto en $\IR^n$ y sea $X_0 \in \mathcal{F}(U)$. Dada la función $g$ continua, para cada $c \in U$ existe una única solución $x(\cdot, c)$ del problema \ref{eq:edo} y que $x(t, \cdot)$ es continúa en $U$ para cada $t \in [0, T]$. Entonces, la solución difusa del problema (\ref{def:edf}) (en el sentido del principio de extensión de Zadeh) y las soluciones del del problema de \hyperref[def:familiainclusionesdif]{Familia de inclusiones diferenciales} coinciden, es decir;
 	\[
-		X(t) = \mathcal{A}(t)
+		X(t) = \mathcal{A}(t),
 	\]
 	para todo $t \in [0, T]$.
 \end{teorema}

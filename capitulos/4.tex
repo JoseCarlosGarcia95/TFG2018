@@ -17,9 +17,9 @@ Por otro lado, se va a plantear es la órbita de un planeta de manera clásica t
 \begin{ejemplo}
 	Se trata de encontrar la posición respecto al sol de un planeta en un tiempo $t$, para resolver este problema se usará \textit{Ley de la Gravitación Universal} que dice:
 	\[
-	F_G = \frac{GM m}{r^2}
+	F_G = \frac{GM m}{r^2},
 	\]
-	Donde $G=6.67424 \times 10^{-11} \pm 6.7 \times 10^{-15} m^3 kg^{-1} s^{-2}$ y $M$ es la masa del sol, que en este caso, $M=1.9884\times 10^{30} \pm 2 \times 10^{26} kg$, debido a la naturaleza de estas constantes podemos expresarlas como números triangulares, y de esta forma se convierte el problema clásico en un problema difuso.
+	donde $G=6.67424 \times 10^{-11} \pm 6.7 \times 10^{-15} m^3 kg^{-1} s^{-2}$ y $M$ es la masa del sol, que en este caso, $M=1.9884\times 10^{30} \pm 2 \times 10^{26} kg$, debido a la naturaleza de estas constantes podemos expresarlas como números triangulares, y de esta forma se convierte el problema clásico en un problema difuso.
 	
 	Por otro lado, se puede expresar $r$ como la distancia al sol, y dado que el sol se ha tomado como punto de referencia, $r=\sqrt{x^2+y^2}$ donde $x, y$ son las posiciones respecto a los eje $x, y$ respectivamente.
 	
@@ -62,7 +62,7 @@ Por otro lado, se va a plantear es la órbita de un planeta de manera clásica t
 		\end{subfigure}
 	\end{figure}
 	
-	Se puede observar también que tanto $a_x, a_y$ son funciones de clase $C^\infty$ en el abierto $\IR^2 - (0, 0)$, por tanto existe unicidad de soluciones (Teorema de Picard) y además, se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, por tanto, se puede resolver este problema usando el método de Runge Kutta (Se verá en el último capítulo la resolución numérica de este problema)
+	Se puede observar también que tanto $a_x, a_y$ son funciones de clase $C^\infty$ en el abierto $\IR^2 - (0, 0)$, por tanto existe unicidad de soluciones (Teorema de Picard) y además, se puede aplicar el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, por tanto, se puede resolver este problema usando el método de Runge Kutta.
 	
 \end{ejemplo}
 
@@ -71,3 +71,18 @@ Por otro lado, se va a plantear es la órbita de un planeta de manera clásica t
 En mecánica cuántica, el principio de incertidumbre de Heisenberg son una serie de inecuaciones que nos dicen que no podemos medir la cantidad de partículas que hay en una cierta región con precisión. Esta incertidumbre puede ser representada como condiciones de frontera difusa. 
 
 Este ejemplo se puede encontrar en \cite{schrondingerfuzzy}
+
+\subsection{Aplicación en modelos químicos}
+Esta sección está basada en el ejemplo que podemos encontrar en \cite{radiactive}
+
+\subsubsection{Desintegración radiactiva}
+\begin{ejemplo}
+	Consideremos la ecuación de desintegración radiactiva dada por:
+	\[
+		x'(t) = - \lambda \cdot x(t), ~ x(t_0) = x_0,
+	\]
+	donde $x(t)$ es el radioisótopo presente en un material radiactivo, $\lambda$ es la constante de desintegración y $x_0$ es el número inicial de radioisótopo. En este modelo, la incertidumbre aparece en el número inicial de radioisótopos teniendo en cuenta que el fenómeno de desintegración nuclear se considera como un proceso estocástico. Por tanto, si consideramos $x_0$ un número difuso, tendremos planteada nuestra ecuación diferencial difusa.
+\end{ejemplo}
+
+\subsection{Aplicación en la medicina}
+También se ha aplicado la teoría difusa para modelar el crecimiento tumoral. Estos modelos podemos encontrarlos en la referencia dada en \cite{Majumdar2004FuzzyDI}.

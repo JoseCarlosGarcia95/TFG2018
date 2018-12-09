@@ -75,33 +75,33 @@ A continuación, mostramos un ejemplo ilustrativo aplicando el método de Newton
 \begin{ejemplo}[Método de Newton precisión mixta, comparativa y desarrollo]
   Supongamos que queremos encontrar las raices de la siguiente función:
   \[
-  f(x) = (x-1)^8
+  f(x) = (x-1)^8.
   \]
   \[
-  f'(x) = 8 (x-1)^7
+  f'(x) = 8 (x-1)^7.
   \]
   Nuestro objetivo es intentar conseguir una precisión que sea el cero de la máquina, en el sentido de que la diferencia entre dos iteraciones sea cero. En primer lugar resolveremos el problema en simple precisión, aplicando el método de Newton habitual:
   \begin{itemize}
-  \item \textbf{Tiempo de ejecución: } 0m0,001s
-  \item \textbf{Iteraciones en simple precisión: } 99
-  \item \textbf{Iteraciones en doble precisión: } 0
-  \item \textbf{Resultado: } 0.999998152256011962890625000000
+  \item \textbf{Tiempo de ejecución: } 0m0,001s.
+  \item \textbf{Iteraciones en simple precisión: } 99.
+  \item \textbf{Iteraciones en doble precisión: } 0.
+  \item \textbf{Resultado: } 0.999998152256011962890625000000.
   \end{itemize}
 
   Lo resolvemos ahora para doble precisión:
   \begin{itemize}
-  \item \textbf{Tiempo de ejecución: } 0m0,001s
-  \item \textbf{Iteraciones en simple precisión: } 0
-  \item \textbf{Iteraciones en doble precisión: } 265
-  \item \textbf{Resultado: } 0.999999999999999555910790149937
+  \item \textbf{Tiempo de ejecución: } 0m0,001s.
+  \item \textbf{Iteraciones en simple precisión: } 0.
+  \item \textbf{Iteraciones en doble precisión: } 265.
+  \item \textbf{Resultado: } 0.999999999999999555910790149937.
   \end{itemize}
 
   Si ahora resolvemos el problema aplicando los principios de la precisión mixta:
   \begin{itemize}
-  \item \textbf{Tiempo de ejecución: } 0m0,001s
-  \item \textbf{Iteraciones en simple precisión: } 99
-  \item \textbf{Iteraciones en doble precisión: } 166
-  \item \textbf{Resultado: } 0.999999999999999555910790149937
+  \item \textbf{Tiempo de ejecución: } 0m0,001s.
+  \item \textbf{Iteraciones en simple precisión: } 99.
+  \item \textbf{Iteraciones en doble precisión: } 166.
+  \item \textbf{Resultado: } 0.999999999999999555910790149937.
   \end{itemize}
 
   Podemos observar, que al resolver nuestro problema con precisión mixta hemos reducido en 100 las operaciones que tenemos que realizar en doble precisión, obteniendo una mejora de rendimiento. El código se puede encontrar en \ref{prueba:simple_c2}, \ref{prueba:doble_c2} y \ref{prueba:mixta_c2}
@@ -125,9 +125,9 @@ A continuación, vamos a mostrar un ejemplo basado en el esquema de diferencias 
 
 \begin{ejemplo}[Diferencias finitas: Secuencial VS. Paralelo VS. GPU \cite{experimentonumerico}]
   Planteamos el siguiente problema (ecuación del calor de 1-D): 
-  Dado un intervalo $(a, b) \in \IR$ hallar $$u : (a, b) \times \IR \rightarrow \IR$$ tal que:
+  Dado un intervalo $(a, b) \in \IR$ hallar $$u : (a, b) \times \IR \rightarrow \IR,$$ tal que:
   $$
-	  \frac{\delta u}{\delta t} (x, t) = \frac{\delta u}{\delta x} (x, t)
+	  \frac{\delta u}{\delta t} (x, t) = \frac{\delta u}{\delta x} (x, t),
   $$
   junto a condiciones de contorno e iniciales adecuadas. \\
   Sean $u_{i, j} \in \IR$ aproximaciones de $u(x_i, t_j)$ para particiones $\{x_i\}^n_{i=1}$ y $\{t_j\}_{j=1}^m$ en espacio y tiempo. Entonces el esquema en diferencias finitas que vamos a tener en cuenta será:

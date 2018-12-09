@@ -20,17 +20,17 @@ Se supone que se tiene un problema de valores iniciales bien definido, y lo sufi
 \begin{array}{ccc}
 	y'(x) & = &f(x, y)  \\
 	y(x_0) & = & y_0
-\end{array}
+\end{array}.
 \]
 Se considera ahora una discretación del intervalo $[a, b]$ definida como:
 \[
-	x_i = x_0 + i h
+	x_i = x_0 + i h,
 \]
-Donde $h>$, $x_0=a$ .
+donde $h>0$, $x_0=a$ .
 
 El método de Euler define la siguiente solución aproximada: dada la condición inicial $y_0$
 \[
-	y_{i+1} = y_i + h f(x_i, y_i)
+	y_{i+1} = y_i + h f(x_i, y_i).
 \]
 
 \subsection{Método de Euler: Versión difusa}
@@ -39,7 +39,7 @@ Se considera el siguiente problema difuso, al que se puede dar sentido para una 
 	\begin{array}{ccc}
 		y'(x) & = &f(x, y)  \\
 		y(x_0) & = & A
-	\end{array}
+	\end{array},
 \]
 donde $A$ es un número difuso. Se supone que el problema anterior cumple el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y se considera el problema determinista asociado:
 \[
@@ -56,37 +56,33 @@ Sea un problema de valores iniciales difuso:
 y' = 2x - 3y + 1
 \]
 \[
-y(0) = (-1;0;1)
+y(0) = (-1;0;1).
 \]
 Claramente cumple las hipótesis del \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, por tanto el problema determinista asociado es:
 \[
 y' = 2x - 3y + 1
 \]
 \[
-y(0) = a
+y(0) = a,
 \]
-
-Con $a \in [-1, 1]$. \\
-En primer lugar, hay que discretizar el intervalo $[-1, 1]$, para ello, fijamos m>0 y para cada $i=0...m-1$ se considera una partición dada por 
+con $a \in [-1, 1]$. \\
+En primer lugar, hay que discretizar el intervalo $[-1, 1]$, para ello, fijamos m>0 y para cada $i=0...m-1$ se considera una partición dada por:
 \[
-a_i = -1 + \frac{2i}{m-1}
+a_i = -1 + \frac{2i}{m-1}.
 \]
-
 Teniendo en cuenta estas particiones, se puede aproximar la solución del problema difuso resolviendo las $m$ ecuaciones diferenciales que se deducen al tomar:
-
 \[
 y' = 2x - 3y + 1
 \]
 \[
-y(0) = a_i
+y(0) = a_i.
 \]
-
 Se construye ahora el método de Euler para la ecuación asociada a $a_i$ con tamaño del paso $h$, sea $x_0=0$ y tomemos $y_0 = a_i$, siguiendo entonces con le definición del método nos queda:
 \[
 y_{j+1} = y_j + h (2x_j - 3y_j + 1)
 \]
 \[
-x_{j+1} = x_0 + hj
+x_{j+1} = x_0 + hj.
 \]
 
 Para comparar el error de nuestro método, tengamos en cuenta que la solución exacta de la ecuación diferencial con dato inical $a_i$ es:
@@ -214,21 +210,21 @@ Se supone que se tiene un problema de valores iniciales bien definido, y lo sufi
 \begin{array}{ccc}
 y'(x) & = &f(x, y)  \\
 y(x_0) & = & y_0
-\end{array}
+\end{array}.
 \]
 Como en el método de Euler, lo que se busca primer lugar es una discretización del intervalo $[x_0, x_f]$, se supone que se quiere discretizar el intervalo en $n$ valores, sea entonces:
 \[
-	h = \frac{x_f - x_0}{n}
+	h = \frac{x_f - x_0}{n}.
 \]
 Por tanto, podemos definir 
 \[
-	x_i = x_0 + i h
+	x_i = x_0 + i h.
 \]
 Por otro lado, el paso iterativo sobre $y_{i+1}$ viene dado por:
 \[
-	y_{i+1} = y_i + \frac{h}{6} (k_1 + 2k_2 + 2k_3 + k_4)
+	y_{i+1} = y_i + \frac{h}{6} (k_1 + 2k_2 + 2k_3 + k_4),
 \]
-Donde se definen:
+donde se definen:
 \[
 \begin{array}{ccc}
 	k_1 & = & f(x_i, y_i) \\
@@ -244,16 +240,16 @@ Se considera el siguiente problema difuso, en el sentido del principio de extens
 \begin{array}{ccc}
 y' & = &f(x, y)  \\
 y(x_0) & = & A
-\end{array}
+\end{array},
 \]
 donde $A$ es un número difuso. Se toma entonces que el problema anterior cumple el \hyperref[teorema:equivalencia]{Teorema de equivalencia entre EDO y EDD}, y se considera el problema determinista asociado:
 \[
 \begin{array}{ccc}
 y' & = &f(x, y)  \\
 y(x_0) & = & a
-\end{array}
+\end{array},
 \]
-Donde $a \in A$, se toma entonces $A$ como una discretización de $n+1$ elementos de $A$, donde cada elemento se denota por $a_i$, por tanto se tienen ahora $n+1$ EDO diferentes, donde cada una de estas se pueden resolver aplicando el método de Método de Runge-Kutta de cuarto orden.
+donde $a \in A$, se toma entonces $A$ como una discretización de $n+1$ elementos de $A$, donde cada elemento se denota por $a_i$, por tanto se tienen ahora $n+1$ EDO diferentes, donde cada una de estas se pueden resolver aplicando el método de Método de Runge-Kutta de cuarto orden.
 
 \subsection{Método de Runge-Kutta de cuarto orden: Ejemplo}
 Para poder comparar correctamente los distintos métodos vamos a implementar el mismo problema usando el método de Runge-Kutta.

@@ -23,7 +23,7 @@ En primer lugar, se introduce el concepto de conjunto difuso que servirá para f
   
   Un \textbf{subconjunto difuso} $A$ es un par ordenado $(\mathbb{U}, \mu_A)$ con:
   \[
-  \mu_A : \mathbb{U} \longrightarrow [0,1]
+  \mu_A : \mathbb{U} \longrightarrow [0,1].
   \]
   Se denomina a $\mu_A$ \textbf{función de pertenencia.}
 \end{definicion}
@@ -53,14 +53,14 @@ Ahora se introduce un concepto fundamental en la teoría de conjuntos difusos es
       \{x \in \mathbb{U} : \mu_A(x) \geq \alpha \} & si & \alpha \in (0, 1] \\
       cl\{x \in \mathbb{U} : \mu_A(x) > 0\} & si & \alpha=0
     \end{array}
-    \right.
+    \right.,
     \]
     donde $cl$ define la clausura topológica del conjunto en el intervalo unidad. Además, se define:
     \[
-    \text{soporte} ~ A = \{x \in \mathbb{U} : \mu_A(x) > 0 \}
+    \text{soporte} ~ A = \{x \in \mathbb{U} : \mu_A(x) > 0 \},
     \]
     \[
-    \text{núcleo} ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}
+    \text{núcleo} ~ A = \{x \in \mathbb{U} : \mu_A(x) = 1 \}.
     \]
 \end{definicion}
 Denotamos por $\mathcal{F}_\mathcal{H}(\IU)$ a la familia de conjuntos de $\IU$ tales que sus $\alpha$-cortes son no vacíos y compactos.
@@ -70,7 +70,7 @@ De esta definición se puede extraer que un conjunto difuso también puede estar
 A partir de los $\alpha$-cortes se puede construir una función de pertenencia de la siguiente forma \cite{apuntesfuzzy}
 
 \[
-\mu_A(x) = \max{\{\alpha A_\alpha(x) : \alpha \in [0, 1]}\}
+\mu_A(x) = \max{\{\alpha A_\alpha(x) : \alpha \in [0, 1]}\},
 \]
 
 \[
@@ -79,7 +79,7 @@ A partir de los $\alpha$-cortes se puede construir una función de pertenencia d
   1 & si & x \in [A]_\alpha \\
   0 & si & x \notin [A]_\alpha
 \end{array}
-\right.
+\right. .
 \]
 
 Desde aquí, este estudio se centrará en los $\alpha$-cortes de los conjuntos difusos.
@@ -97,13 +97,13 @@ Se da en primer lugar dos definiciones necesarias para definir el concepto de n�
   \label{def:difuso_convexo}
   Un conjunto difuso $A$ es convexo si su función de pertenencia es cuasicóncava, esto es:
   \[
-  \mu_A(\lambda x + (1-\lambda)y) \geq \min{\{\mu_A(x), \mu_A(y)\}}, \text{para todo } \lambda \in [0, 1], x, y \in \mathbb{U}
+  \mu_A(\lambda x + (1-\lambda)y) \geq \min{\{\mu_A(x), \mu_A(y)\}}, \text{para todo } \lambda \in [0, 1], x, y \in \mathbb{U}.
   \]
 \end{definicion}
 
 En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto difuso convexo, entonces los $\alpha$-cortes son intervalos. Se denota de la siguiente forma:
 \[
-  [X_0]_\alpha = [(x_0)_\alpha^- , (x_0)_\alpha^+]
+  [X_0]_\alpha = [(x_0)_\alpha^- , (x_0)_\alpha^+].
   \]
 
   Finalmente, se define el concepto de número difuso:
@@ -129,16 +129,16 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \begin{teorema}[Teorema de apilamiento]
     Sea $A$ un número difuso, entonces:
     \begin{enumerate}
-    \item Sus $\alpha$-cortes son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
-    \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $[A]_{\alpha_1} \subset [A]_{\alpha_2}$
+    \item Sus $\alpha$-cortes son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$.
+    \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $[A]_{\alpha_1}. \subset [A]_{\alpha_2}$
     \item Para toda sucesión no decreciente de $\alpha_n \in [0, 1]$ tal que $a_n$ tiende a $\alpha$ se obtiene que:
       \[
-      \bigcap^\infty_{n=1} [A]_{\alpha_n} = [A]_\alpha
+      \bigcap^\infty_{n=1} [A]_{\alpha_n} = [A]_\alpha.
       \]
     \item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se obtiene:
       \[
       cl\left(
-      \bigcup^\infty_{n=1} [A]_{\alpha_n} \right) = [A]_0
+      \bigcup^\infty_{n=1} [A]_{\alpha_n} \right) = [A]_0.
       \]
     \end{enumerate}
   \end{teorema}
@@ -147,15 +147,15 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     Sea $A=\{A_\alpha : \alpha \in [0, 1]\}$ una familia de subconjuntos de $\mathbb{R}$ tal que:
     
     \begin{enumerate}
-    \item Sus $A_\alpha$ son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$
-    \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $A_{\alpha_1} \subset A_{\alpha_2}$
+    \item Sus $A_\alpha$ son intervalos cerrados no vacíos para todo $\alpha \in [0, 1]$.
+    \item Si $0 \leq \alpha_1 \leq \alpha_2 \leq 1$ entonces $A_{\alpha_1} \subset A_{\alpha_2}$.
     \item Para toda sucesión no decreciente $\alpha_n \in [0, 1]$ tal que $\alpha_n$ tiende a $\alpha$ se obtiene que
       $$
-      \bigcap^\infty_{n=1} A_{\alpha_n}=A_\alpha
+      \bigcap^\infty_{n=1} A_{\alpha_n}=A_\alpha.
       $$
     \item Para toda sucesión no creciente $\alpha_n \in [0, 1]$ convergente a $0$ se obtiene:
       $$
-      cl\left(\bigcup^\infty_{n=1} A_{\alpha_n}\right)=A_0
+      cl\left(\bigcup^\infty_{n=1} A_{\alpha_n}\right)=A_0.
       $$
     \end{enumerate}
     Entonces, $A$ es un número difuso.
@@ -171,7 +171,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
       \frac{c-x}{c-b} & si & x \in (b, c] \\
 	0, & si & x \notin [a, c]
     \end{array}
-    \right.
+    \right. .
     $$
     Con $a < b < c$. Entonces, \textbf{un número difuso definido de la forma anterior es triangular se denota (a; b; c), y se puede representar como} en la figura \ref{fig:numero_difuso}
     
@@ -198,7 +198,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
       \sup_{x\in f^{-1}(y)} \mu_A(x) & si & f^{-1}(y)\neq\emptyset\\
       0 & si & f^{-1}=\emptyset
     \end{array}
-    \right.
+    \right. .
     $$
   \end{definicion}
 
@@ -210,7 +210,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     \mu_A(f^{-1}(y)) & si & f^{-1}(y)\neq\emptyset\\
     0 & si & f^{-1}=\emptyset
   \end{array}
-  \right.
+  \right. .
   $$
 
   \subsection{Teoremas de continuidad}
@@ -223,7 +223,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     \begin{enumerate}
     \item Si $f$ es sobreyectiva, entonces $[\hat{f}(A)]_\alpha = f([A]_\alpha)$ si y solo si $\sup\{\mu_A(x) : x \in f^{-1}(y)\}$ es alcanzable para todo $y \in \mathbb{R}^m$
     \item Si $f$ es continua, entonces $\hat{f} : \mathcal{F}_\mathcal{H}(\mathbb{R}^n) \longrightarrow \mathcal{F}_\mathcal{H}(\mathbb{R}^n)$ está bien definido y además,  
-      $$[\hat{f}(A)]_\alpha = f([A]_\alpha)$$
+      $$[\hat{f}(A)]_\alpha = f([A]_\alpha),$$
       para todo $\alpha \in [0, 1]$
     \end{enumerate}
   \end{teorema}
@@ -232,8 +232,8 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
 
 
   \begin{teorema}
-    Sean $\mathbb{U}$ y $\mathbb{V}$ unos espacios de Haussdorf, y sea $f: \mathbb{U} \longrightarrow \mathbb{V}$ una función. Si $f$ es continua, entonces  $\hat{f} : \mathcal{F}_\mathcal{H}(\IR^n) \longrightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ está bien definida y $$[\hat{f}(A)]_\alpha = f([A]_\alpha)$$
-    para todo $\alpha \in [0, 1]$
+    Sean $\mathbb{U}$ y $\mathbb{V}$ unos espacios de Haussdorf, y sea $f: \mathbb{U} \longrightarrow \mathbb{V}$ una función. Si $f$ es continua, entonces  $\hat{f} : \mathcal{F}_\mathcal{H}(\IR^n) \longrightarrow \mathcal{F}_\mathcal{H}(\IR^n)$ está bien definida y $$[\hat{f}(A)]_\alpha = f([A]_\alpha),$$
+    para todo $\alpha \in [0, 1]$.
   \end{teorema}
 
   \begin{proof}
@@ -243,7 +243,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     Se procede por doble inclusión.
     
     \begin{itemize}
-    \item $[\hat{f}(A)]_\alpha \supseteq f([A]_\alpha)$. Sea $y \in f([A]_\alpha)$. Por tanto, existe al menos un $x \in [A]_\alpha$ tal que $f(x)=y$. Por el principio de extensión de Zadeh, obtenemos $$\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha$$. De donde, $y \in [\hat{f}(A)]_\alpha$
+    \item $[\hat{f}(A)]_\alpha \supseteq f([A]_\alpha)$. Sea $y \in f([A]_\alpha)$. Por tanto, existe al menos un $x \in [A]_\alpha$ tal que $f(x)=y$. Por el principio de extensión de Zadeh, obtenemos $$\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha.$$ De donde, $y \in [\hat{f}(A)]_\alpha$
     \item Por otro lado, hay que ver que $[\hat{f}(A)]_\alpha \subseteq f([A]_\alpha)$. Dado que $\mathbb{V}$ y $\mathbb{U}$ son espacios de Haussdorf, un punto $y \in \mathbb{V}$ es cerrado. Y además, dado que $f$ es continua, $f^{-1}(y)$ es cerrado. Dado que $[A]_0$ es compacto, ya que es la clausura, la intersección de compactos también es compacto, por tanto $f^{-1}(y) \cap [A]_0$ es compacto. Para $\alpha>0$, sea $y \in [\hat{f}(A)]_\alpha$. Entonces $\mu_{\hat{f}(A)}(y)=\sup_{x\in f^{-1}(y)} \mu_A(x) \geq \alpha>0$, por tanto, existe un $x\in f^{-1}(y)$ y en consecuencia $f^{-1}(y) \cap [A]_0 \neq \emptyset$.
     
     Finalmente, debido a que $\mu_A(x)$ es continúa por la derecha, y $f^{-1}(y) \cap [A]_0$ es compacto, existe un $x \in f^{-1}(y) \cap [A]_0$ con $\mu_{\hat{f}(\mathcal{A})}(y)=\mu_{A}(x) \geq \alpha$. Esto es porque $y=f(x)$ para algún $x \in [A]_\alpha$.
@@ -272,10 +272,10 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \subsection{Aritmética en conjuntos clásicos}
   Sean $A, B$ dos conjuntos entonces:
   \begin{itemize}
-  \item $A+B=\{a+b : a \in A, b\in B\}$
-  \item $A - B =\{a - b : a \in A, b\in B\}$
-  \item $A * B =\{ab : a \in A, b\in B\}$
-  \item $A / B =\{a/b : a \in A, b\in B\}$
+  \item $A+B=\{a+b : a \in A, b\in B\}.$
+  \item $A - B =\{a - b : a \in A, b\in B\}.$
+  \item $A * B =\{ab : a \in A, b\in B\}.$
+  \item $A / B =\{a/b : a \in A, b\in B\}.$
   \end{itemize}
 
   Una vez recordadas las operaciones aritmética en conjuntos clásicos, se van a generalizar para conjuntos difusos.
@@ -283,45 +283,45 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \subsection{Aritmética en conjuntos difusos}
   Sean $\mu_A, \mu_B$ dos funciones de pertenencia y sea $\odot \in \{+, -, \cdot, \div\}$ se define la función de pertenencia de la operación aritmética como:
   $$
-  \mu_{A \odot B}(c) = \sup_{a \odot b = c} \min\{\mu_A(a), \mu_B(b)\}
+  \mu_{A \odot B}(c) = \sup_{a \odot b = c} \min\{\mu_A(a), \mu_B(b)\}.
   $$
   Y dado que \textbf{las operaciones aritméticas son funciones continuas}, es equivalente trabajar con los $\alpha$-cortes, \textbf{aplicando el principio de extensión de Zadeh tenemos:}
 
   Sean $A$ y $B$ dos números difusos no interactivos (Ver definición \ref{nointeractivos}) con $\alpha-$cortes dados por $[A]_\alpha=[a_\alpha^-, a_\alpha^+]$ y $[B]_\alpha=[b_\alpha^-, b_\alpha^+]$, se puede definir entonces las operaciones aritméticas como \cite{fuzzyintro}:
 
   $$
-  [A+B]_\alpha = [a_\alpha^- + b_\alpha^-, a_\alpha^+ + b_\alpha^+]
+  [A+B]_\alpha = [a_\alpha^- + b_\alpha^-, a_\alpha^+ + b_\alpha^+].
   $$
 
   $$
-  [A-B]_\alpha = [a_\alpha^- - b_\alpha^+, a_\alpha^+ - b_\alpha^-]
+  [A-B]_\alpha = [a_\alpha^- - b_\alpha^+, a_\alpha^+ - b_\alpha^-].
   $$
 
   $$
-  [A \cdot B]_\alpha = \left[ \min_{s, r \in \{-, +\}} a_\alpha^s \cdot b_\alpha^r, \max_{s, r \in \{-, +\}} a_\alpha^s \cdot b_\alpha^r\right]
+  [A \cdot B]_\alpha = \left[ \min_{s, r \in \{-, +\}} a_\alpha^s \cdot b_\alpha^r, \max_{s, r \in \{-, +\}} a_\alpha^s \cdot b_\alpha^r\right].
   $$
 
   $$
-  [A \div B]_\alpha = \left[ \min_{s, r \in \{-, +\}} \frac{a_\alpha^s}{b_\alpha^r}, \max_{s, r \in \{-, +\}} \frac{a_\alpha^s}{b_\alpha^r}\right]
+  [A \div B]_\alpha = \left[ \min_{s, r \in \{-, +\}} \frac{a_\alpha^s}{b_\alpha^r}, \max_{s, r \in \{-, +\}} \frac{a_\alpha^s}{b_\alpha^r}\right].
   $$
 
   \subsubsection{Problemas al definir estas operaciones aritméticas}
   El objetivo final es \textbf{definir la diferencial de una función}. Para funciones escalares de una sola variable se define la diferencial como:
   $$
-  \lim\limits_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h}
+  \lim\limits_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h}.
   $$
   Se considera ahora una función $f : \mathcal{F}_\mathcal{H}(\IU) \rightarrow \mathcal{F}_\mathcal{H}(\IU)$ constante $f(x)=A\in \mathcal{F}_\mathcal{H}(\IU)$, donde $A$ es un número difuso dado, en este caso la diferencia se podría definir como:\\
-  $$[f(x+h) - f(x)]=[A-A]$$
+  $$[f(x+h) - f(x)]=[A-A].$$
   Sean $[A]_\alpha$ los $\alpha$-cortes de $A$ entonces, para todo $h>0$:
   $$
-  \left[ f(x+h) - f(x)\right]_\alpha = [A-A]_\alpha = [a_\alpha^- - a_\alpha^+, a_\alpha^+ - a_\alpha^-]
+  \left[ f(x+h) - f(x)\right]_\alpha = [A-A]_\alpha = [a_\alpha^- - a_\alpha^+, a_\alpha^+ - a_\alpha^-],
   $$
   y por tanto, cuando $h$ tiende a $0$, el soporte de \[
-	  \frac{\left[ f(x+h) - f(x)\right]_\alpha}{h}
+	  \frac{\left[ f(x+h) - f(x)\right]_\alpha}{h},
   \]
   tiende a infinito, luego no es compacto, por tanto 
   \[
-	\lim\limits_{h\rightarrow 0} \frac{\left[ f(x+h) - f(x)\right]_\alpha}{h} \notin \mathcal{F}_\mathcal{H}(\IU)
+	\lim\limits_{h\rightarrow 0} \frac{\left[ f(x+h) - f(x)\right]_\alpha}{h} \notin \mathcal{F}_\mathcal{H}(\IU).
   \]
   Este problema nos motivará a tratar un nuevo concepto de diferencia, la diferencia de Hukuhara.
   \subsection{Hukuhara y diferencia generalizada} \label{def:hukukara}
@@ -335,11 +335,11 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     Sean $A, B, C \in \mathcal{F}_\mathcal{C}\IR$ se consideran sus $\alpha$-cortes, $[A]_\alpha = [a^-_\alpha, a^+_\alpha]$, $[B]_\alpha = [b^-_\alpha, b^+_\alpha]$ y $[C]_\alpha = [c^-_\alpha, c^+_\alpha]$. \\
     De donde,
     $$
-    [a^-_\alpha, a^+_\alpha] = [b^-_\alpha + c^-_\alpha, b^+_\alpha + c^+_\alpha]
+    [a^-_\alpha, a^+_\alpha] = [b^-_\alpha + c^-_\alpha, b^+_\alpha + c^+_\alpha].
     $$
     Por tanto, 
     $$
-    [A \circleddash_H B]_\alpha = [a_\alpha^- - b_\alpha^-, a_\alpha^+ - b_\alpha^+]
+    [A \circleddash_H B]_\alpha = [a_\alpha^- - b_\alpha^-, a_\alpha^+ - b_\alpha^+].
     $$
   \end{observacion}
   Con esta observación es fácil ver que la H-Diferencia cumple que $A-A=\{0\}$
@@ -350,8 +350,8 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   	Dados dos números difusos $A, B \in \mathcal{F}_\mathcal{C}(\IR$ se define la diferencia generalizada de Hukuhara (gH-diferencia) $A\circleddash_{gH}B=C$ donde $C$ es un número difuso que existe y cumple una de las siguientes condiciones:
   	
   	\begin{enumerate}
-  		\item $A=B+C$ 
-  		\item $B=A-C$
+  		\item $A=B+C$.
+  		\item $B=A-C$.
   	\end{enumerate}
   \end{definicion}
 
@@ -359,7 +359,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
 	Dados dos números difusos $A, B \in \mathcal{F}_\mathcal{C}(\IR)$ se define la diferencia generalizada (g-diferencia) $A\circleddash_{g}B=C$ donde $C$ es un número difuso caracterizado por los siguientes $\alpha-$cortes que existe y tiene los siguientes $\alpha$-cortes:
 	\[
 		[A \circleddash_{g} B]_\alpha = cl \bigcup_{\beta \geq \alpha} ([A]_\beta \circleddash_{gH} [B]_\alpha), \text{para todo } \alpha \in [0, 1]
-	\]
+	.\]
   \end{definicion}
 
   \section{Interactividad}
@@ -373,7 +373,7 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \begin{definicion}[Función marginal de una función de pertencia conjunta]
     Se define la función de pertenencia marginal respecto a como:
     \[
-    \mu_a(a) = \sup\limits_{b \in W} \mu_{\hat{a}, \hat{b}} (a, b)
+    \mu_a(a) = \sup\limits_{b \in W} \mu_{\hat{a}, \hat{b}} (a, b).
     \]
   \end{definicion}
 
@@ -390,11 +390,11 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \begin{definicion}[Pseudométrica]
     Sean $A$ y $B$ dos subconjuntos compactos de un espacio métrico $\IU$. Entonces se define la pseudométrica como:
     \[
-    \rho(A, B) = \sup\limits_{a \in A} d(a, B)
+    \rho(A, B) = \sup\limits_{a \in A} d(a, B),
     \]
     donde:
     \[
-    d(a, B) = \inf\limits_{b \in B} ||a-b||
+    d(a, B) = \inf\limits_{b \in B} ||a-b||,
     \]
     es la separación de Haussdorf.
   \end{definicion}
@@ -403,12 +403,12 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     \label{def:metricadifusa}
     Sean $A$ y $B$ dos conjuntos difusos, un espacio métrico $\IU$. La métrica de Pompeiu-Hausdorff, denotada por $d_\infty$, se define como:
     \[
-    d_\infty(A, B) = \sup\limits_{\alpha \in [0, 1]} \max\{\rho([A]_\alpha, [B]_\alpha), \rho([B]_\alpha,  [A]_\alpha)\}
+    d_\infty(A, B) = \sup\limits_{\alpha \in [0, 1]} \max\{\rho([A]_\alpha, [B]_\alpha), \rho([B]_\alpha,  [A]_\alpha)\}.
     \]
     
     Si $A$ y $B$ fueran números difusos, tendríamos:
     \[
-    d_\infty(A, B) = \sup\limits_{\alpha \in [0, 1]} \max\{|a_\alpha^- - b_\alpha^-|, |a_\alpha^+ - b_\alpha^+|\}
+    d_\infty(A, B) = \sup\limits_{\alpha \in [0, 1]} \max\{|a_\alpha^- - b_\alpha^-|, |a_\alpha^+ - b_\alpha^+|\}.
     \]
   \end{definicion}
 
@@ -421,8 +421,8 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
   \begin{definicion}[Función con valores en conjuntos difusos]
     \label{def:fizzusetvaluedfunc} Se dice que una función \textbf{$F$ es una función con valores en conjuntos difusos} si:
     \begin{enumerate}
-    \item $dom ~ F \subset \IR$
-    \item $Im ~ F \subset \mathcal{F}_\mathcal{H}(\IR^n)$
+    \item $dom ~ F \subset \IR.$
+    \item $Im ~ F \subset \mathcal{F}_\mathcal{H}(\IR^n).$
     \end{enumerate}
   \end{definicion}
 
@@ -467,12 +467,12 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     \label{def:funcioncontinua}
     Sea $F : \Omega \rightarrow \mathcal{P}(\IR^n)$, $\Omega \subset \IR^m$ se dice que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
     \[
-    \rho(F(t), F(t_0))<\varepsilon
+    \rho(F(t), F(t_0))<\varepsilon.
     \]
     Si $||t-t_0||<\delta$ para $t \in \Omega$. \\
     Por otro lado, se dice que $F$  es \textbf{semicontinua inferiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
     \[
-    \rho(F(t_0), F(t))<\varepsilon
+    \rho(F(t_0), F(t))<\varepsilon.
     \]
     Si $||t-t_0||<\delta$ para $t \in \Omega$. \\
     Si una función es semicontinua superiormente e inferiormente, se dice que es \textbf{continua.}
@@ -482,11 +482,11 @@ En este caso, si $\mathbb{U}=\mathbb{R}$ se obtiene que si $A$ es un conjunto di
     Sea $F : \Omega \rightarrow \mathcal{F}_\mathcal{H}(\IR^n)$, $\Omega \subset \IR^m$ se dice que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
     \[
     \rho([F(t)]^\alpha, [F(t_0)]^\alpha)<\varepsilon
-    \]
+    .\]
     Si $||t-t_0||<\delta$ para $t \in \Omega$, para todo $\alpha \in [0, 1]$. \\
     Por otro lado, se dice que $F$ es \textbf{semicontinua superiormente} en $t_0 \in \Omega$, si para todo $\varepsilon>0$ existe un $\delta>0$ tal que:
     \[
-    \rho([F(t_0)]^\alpha, [F(t)]^\alpha)<\varepsilon
+    \rho([F(t_0)]^\alpha, [F(t)]^\alpha)<\varepsilon.
     \]
     Si $||t-t_0||<\delta$ para $t \in \Omega$, para todo $\alpha \in [0, 1]$. \\
     Si una función es semicontinua superiormente e inferiormente, se dice que es \textbf{continua.}
