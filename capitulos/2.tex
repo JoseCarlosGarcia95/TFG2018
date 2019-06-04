@@ -421,3 +421,101 @@ A continuación se ofrece un teorema análogo al teorema que se vio en la secci�
 	\]
 	para todo $t \in [0, T]$.
 \end{teorema}
+
+\section{Ecuaciones en derivadas parciales}
+Hasta aquí toda nuestra discusión se ha enfocado en tratar de desarrollar una teoría para plantear y resolver ecuaciones diferenciales difusas.
+
+En esta sección se va a desarrollar un método para resolver ecuaciones en derivadas parciales con condiciones de contorno difusas.
+
+\subsection{Método de líneas (MOL) \cite{MOL}}
+Para desarrollar este método, se va a exponer un ejercicio.
+
+Se considera el siguiente problema, ligado a una ecuación parabólica, con $x \in [0, 1]$ y $t > 0$
+
+\[
+	\frac{\delta u(x, t)}{\delta t} = \frac{\delta^2 u (x, t)}{\delta x^2}
+\]
+
+Donde debido a las limitaciones de nuestros instrumentos de medidas, no somos capaces de dar unas condiciones de contornos exactas, y consideramos un número difuso $\epsilon$ para representar este error en la medida. Y definimos las condiciones de contornos de la siguiente forma:
+
+\[
+u(x, 0) = \epsilon \sin{\pi x}
+\]
+\[
+u(0, t) = u(1, t) = 0
+\]
+
+\subsubsection{Desarrollo del método de líneas}
+Consideramos la discretización de $[0, 1]$ dada por $\mathcal{P}_N = \displaystyle \left\{\frac{n}{N} :  n\in \mathbb{Z}, 0 \leq n \leq N \right\}$ y  $h=\frac{1}{N}$.
+
+Definimos $(x_n, t)$ con $x_n \in \mathcal{P}_N$ y $t>0$ para algún $N > 0$   como la semirrecta vertical. Consideramos en esta recta una función de $t>0$ como:
+\[
+	u_n(t) = u(x_n, t)
+\]
+
+Observemos que por las condiciones de contorno tenemos:
+\[
+	u_0(t) = u(0, t) = 0
+\]
+\[
+	u_N(t) =u(1, t) = 0
+\]
+
+Observemos  que hemos conseguido una discretización de una variable, pero sigue siendo continua para la variable $t$.  
+
+Consideremos ahora para un $t \in [0, +\infty]$
+\[
+f: x \longrightarrow u(x, t)
+\]
+
+Esta función cumple:
+\[
+	\frac{\delta u(x, t)}{\delta t} = f''(x)
+\]
+
+En particular,
+\[
+\frac{\delta u(x_n, t)}{\delta t} = f''(x_n)
+\]
+Aproximamos $\frac{\delta u(x_n, t)}{\delta t}$  mediante:
+
+\[
+\frac{\delta u(x_n, t)}{\delta t} = \frac{u(x_{n-1}, t)  -2 u(x_{n}, t )+ u(x_{n+1}, t)}{h^2} + \mathcal{O}(h^2)
+\]
+
+Agrupando las soluciones escalares en el vector de funciones:
+\[
+	u(t) = (u_1(t), u_2(t), ..., u_{N-1} (t))
+\]
+
+Teniendo en cuenta que las funciones $u_0(t)$ y $u_N(t)$ son condiciones de contorno, idénticamente nulas, podemos escribir lo siguiente:
+
+\[
+	u' = \frac{1}{h^2} A u
+\]
+
+Donde A es la matriz:
+
+\[
+	A= \left[
+		\begin{array}{cccc}
+			-2 & 1 & 0 & \cdots \\
+			1 & -2 & 1 & \cdots \\
+			0 & 1 & -2 & \cdots \\
+			\vdots & \vdots & \vdots & \ddots
+		\end{array}
+	 \right]
+\]
+
+Por otra parte, la condición inicial para $u$:
+\[
+	u(x, 0) = \epsilon \sin{\pi x}
+\]
+Para $u_n(0)$ podemos escribir:
+\[
+	u_n(0) = u(x_n, 0) = \epsilon \sin{\pi \ n h}
+\]
+
+Con este procedimiento hemos conseguido escribir nuestra ecuación en derivadas parciales como una ecuación diferencial ordinaria.
+
+La resolución numérica de este problema se puede llevar a cabo mediante métodos clásicos como Runge-Kutta.
